@@ -8,4 +8,5 @@
 
 ![figma wireframe image](https://github.com/CookBotAI/cook-bot-app/assets/53655406/e47ceb9f-bb96-458f-921f-59c713052e38)
 
-[invision whiteboard link](https://codepeoples.invisionapp.com/freehand/Code-301-Project-WSprYFpy9?inviteToken=022587-dfbf0397de430aaecb044f49649ae883)
+### See link below for Database Schema Diagram
+[Invision Whiteboard](https://codepeoples.invisionapp.com/freehand/Code-301-Project-WSprYFpy9?inviteToken=022587-dfbf0397de430aaecb044f49649ae883)
