@@ -1,8 +1,9 @@
 import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { withAuth0 } from '@auth0/auth0-react';
+// import { withAuth0 } from '@auth0/auth0-react';
 import Header from './assets/components/Header';
+
 
 
 class App extends React.Component {
