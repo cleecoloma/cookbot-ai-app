@@ -6,3 +6,4 @@
 > 2. Chester Lee Coloma
 > 3. David Danilchik
 
+![image](https://github.com/CookBotAI/cook-bot-app/assets/53655406/e47ceb9f-bb96-458f-921f-59c713052e38)
