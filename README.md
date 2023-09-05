@@ -1,8 +1,12 @@
-# React + Vite
+# Cook Bot App
+## Cook Bot App will help user(s) create a dish based on existing ingredients they currently have in the fridge/pantry. Using Open AI, responses will include dish name, steps, cook duration, maybe country of origin for the fish, and an image of the dish.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Team Members
+> 1. Anthony Cunningham
+> 2. Chester Lee Coloma
+> 3. David Danilchik
 
-Currently, two official plugins are available:
+![figma wireframe image](https://github.com/CookBotAI/cook-bot-app/assets/53655406/e47ceb9f-bb96-458f-921f-59c713052e38)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### See link below for Database Schema Diagram
+[Invision Whiteboard](https://codepeoples.invisionapp.com/freehand/Code-301-Project-WSprYFpy9?inviteToken=022587-dfbf0397de430aaecb044f49649ae883)
