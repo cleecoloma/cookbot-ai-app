@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 
 class Header extends React.Component {
@@ -12,7 +12,6 @@ class Header extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link href="/about">About Us</Nav.Link>
           </Nav>
-          <Button variant="outline-success" href="/add-recipe">Add New Recipe</Button>
         </Navbar.Collapse>
       </Navbar>
     );

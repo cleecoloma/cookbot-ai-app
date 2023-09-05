@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import AddModal from "./AddModal";
+import { Button } from 'react-bootstrap';
 // import { withAuth0 } from "@auth0/auth0-react";
 
 const PORT = import.meta.env.VITE_SERVER_URL;
@@ -8,10 +10,19 @@ class Recipe extends React.Component {
 
     state = {
         recipes: [],
+        showModal: false,
     }
 
     componentDidMount() {
         this.fetchRecipes();
+    }
+
+    handleShowModal = () => {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal = () => {
+        this.setState({ showModal: false });
     }
 
     //GET//
@@ -56,7 +67,21 @@ class Recipe extends React.Component {
             console.log(response.data)
         });
     }
+
+    render() {
+        return (
+            <div>
+                <Button variant="outline-success" onClick={this.handleShowModal}>Add New Recipe</Button>
+                <AddModal 
+                    show={this.state.showModal} 
+                    onHide={this.handleCloseModal} 
+                />
+            </div>
+        );
+    }
 }
 
 export default Recipe;
+
+
 

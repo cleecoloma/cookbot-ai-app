@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, Button, Form, ListGroup} from 'react-bootstrap'
 
-class RecipeModal extends React.Component {
+class AddModal extends React.Component {
   constructor(props) {
     super(props);
     this.state={
@@ -66,4 +66,4 @@ class RecipeModal extends React.Component {
 }
 
 
-export default RecipeModal; 
+export default AddModal; 
