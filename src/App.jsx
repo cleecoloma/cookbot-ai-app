@@ -1,31 +1,25 @@
-import { useState } from 'react'
+import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
-import Header from './Header';
+import Header from './assets/components/Header';
 
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-     <Header />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
+  }
+  render() {
+    return(
       <div>
+        <Header />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-      </p>
-    </>
-  )
+    );
+  }
 }
 
-export default withAuth0(App);
+export default App;
+// export default withAuth0(App);
