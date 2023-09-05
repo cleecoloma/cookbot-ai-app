@@ -23,6 +23,7 @@ class AddModal extends React.Component {
 
   handleSubmit = () => {
     console.log('Submitted recipe', this.state.ingredients)
+    this.props.addRecipe(this.state.ingredients);
   }
 
     render() {

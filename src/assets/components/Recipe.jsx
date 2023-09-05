@@ -36,6 +36,7 @@ class Recipe extends React.Component {
 
     //POST//
     addRecipe = async (ingredients) => {
+        console.log('Im here before post request');
         axios.post(`${PORT}/recipes`, ingredients)
         .then(response => {
             this.setState({recipes: [...this.state.recipes, response.data]})
@@ -74,7 +75,8 @@ class Recipe extends React.Component {
                 <Button variant="outline-success" onClick={this.handleShowModal}>Add New Recipe</Button>
                 <AddModal 
                     show={this.state.showModal} 
-                    onHide={this.handleCloseModal} 
+                    onHide={this.handleCloseModal}
+                    addRecipe={this.addRecipe}
                 />
             </div>
         );
