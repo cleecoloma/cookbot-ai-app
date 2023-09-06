@@ -19,8 +19,9 @@ class Recipe extends React.Component {
     // grab a token
     const res = await this.props.auth0.getIdTokenClaims();
     const token = res.__raw;
-    this.setState({ token: token });
-    this.fetchRecipes(this.state.token);
+    this.setState({ token }, () => {
+      this.fetchRecipes();
+    });
   }
 
   handleShowModal = () => {
