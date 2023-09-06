@@ -2,7 +2,7 @@ import React from "react";
 import AddModal from "./AddModal";
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from "@auth0/auth0-react";
-import useAuthRequest from "../../Auth_Folder/Authorization";
+import {useAuthRequest} from "../../Auth_Folder/Authorization";
 // import axios from "axios";
 
 
