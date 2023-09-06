@@ -77,6 +77,12 @@ class Recipe extends React.Component {
     render() {
         return (
             <div>
+              <Button variant="outline-success" onClick={this.handleShowModal}>Add New Recipe</Button>
+                <AddModal 
+                    show={this.state.showModal} 
+                    onHide={this.handleCloseModal}
+                    addRecipe={this.addRecipe}
+                />
   <Carousel>
     {this.state.recipes.map((recipe, idx) => (
         <Carousel.Item key={idx} className="carousel-item-custom">
@@ -87,12 +93,6 @@ class Recipe extends React.Component {
                     alt="Recipe Image Placeholder"
                 />
                 <div>
-                <Button variant="outline-success" onClick={this.handleShowModal}>Add New Recipe</Button>
-                <AddModal 
-                    show={this.state.showModal} 
-                    onHide={this.handleCloseModal}
-                    addRecipe={this.addRecipe}
-                />
                     <h3 >{recipe.dishName}</h3>
                     <ul>
                       <h4>
