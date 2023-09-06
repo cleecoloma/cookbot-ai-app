@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { withAuth0 } from '@auth0/auth0-react';
+import { withAuth0 } from '@auth0/auth0-react';
 import Header from './assets/components/Header';
 import Recipe from './assets/components/Recipe';
+
 
 
 class App extends React.Component {
@@ -14,14 +15,16 @@ class App extends React.Component {
     };
   }
   render() {
+    const { isAuthenticated } = this.props.auth0;
     return(
       <div>
-        <Recipe />
         <Header />
+        { isAuthenticated ? <Recipe /> : <h2> Please log in to view recipes </h2> }
       </div>
     );
   }
 }
 
-export default App;
-// export default withAuth0(App);
+const namedComp = withAuth0(App);
+
+export default namedComp;

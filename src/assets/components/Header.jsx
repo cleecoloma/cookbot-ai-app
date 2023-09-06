@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-
+import AuthButtons from '../../Auth_Folder/AuthButtons';
 
 class Header extends React.Component {
   render() {
@@ -12,6 +12,7 @@ class Header extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link href="/about">About Us</Nav.Link>
           </Nav>
+          <AuthButtons />
         </Navbar.Collapse>
       </Navbar>
     );
@@ -19,4 +20,3 @@ class Header extends React.Component {
 }
 
 export default Header;
-// export default withAuth0(Header);
