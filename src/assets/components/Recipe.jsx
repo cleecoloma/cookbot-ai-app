@@ -1,12 +1,11 @@
 import React from "react";
 import './Recipe.css'
 import Carousel from 'react-bootstrap/Carousel';
-import axios from "axios";
 import AddModal from "./AddModal";
 import { Button } from 'react-bootstrap';
-// import { withAuth0 } from "@auth0/auth0-react";
+import { withAuth0 } from "@auth0/auth0-react";
+import {useAuthRequest} from "../../Auth_Folder/Authorization";
 
-const PORT = import.meta.env.VITE_SERVER_URL;
 
 class Recipe extends React.Component {
 
@@ -28,33 +27,30 @@ class Recipe extends React.Component {
   };
 
     //GET//
-  fetchRecipes = async () => {
-      axios.get(`${PORT}/recipes`)
-      .then(response => {
-          this.setState({recipes: response.data})
-          console.log(response.data)
-      });
-  }
+    fetchRecipes = async () => {
+        const authRequest = useAuthRequest();
+        authRequest('GET', null, null)
+        .then(response => {
+            this.setState({recipes: response.data})
+            console.log(response.data)
+        });
+    }
 
   //POST//
-  addRecipe = (input) => {
+  addRecipe = async (input) => {
     let ingredientsObj = {foodItems: input}
-    const config = {
-      method: 'POST',
-      baseURL: `${PORT}`,
-      url: '/recipes',
-      data: ingredientsObj,
-    };
-     console.log('Im here before post request', { ingredientsObj });
-     axios(config).then(response => {
+    const authRequest = useAuthRequest();
+    authRequest('POST', null, ingredientsObj)
+    .then(response => {
         this.setState({recipes: [...this.state.recipes, response.data]})
         console.log(response.data)
     });
-  };
+};
 
     //PUT//
     updateRecipe = async (id, updatedData) => {
-        axios.put(`${PORT}/recipes/${id}`, updatedData)
+        const authRequest = useAuthRequest();
+        authRequest('PUT', id, updatedData)
         .then(response => {
             const updatedRecipes = this.state.recipes.map(recipe => {
                 if (recipe.id === id) {
@@ -69,7 +65,8 @@ class Recipe extends React.Component {
 
     //DELETE//
     deleteRecipe = async (id) => {
-        axios.delete(`${PORT}/recipes/${id}`)
+        const authRequest = useAuthRequest();
+        authRequest('DELETE', id, null)
         .then(response => {
             const filteredRecipes = this.state.recipes.filter(recipe => recipe.id !== id);
             this.setState({recipes: filteredRecipes});
@@ -120,7 +117,9 @@ class Recipe extends React.Component {
   }
 }
 
-export default Recipe;
+const AuthRecipe = withAuth0(Recipe);
+
+export default AuthRecipe;
 
 
 
