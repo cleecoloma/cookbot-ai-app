@@ -21,9 +21,9 @@ class Recipe extends React.Component {
         this.setState({ showModal: true });
     }
 
-    handleCloseModal = () => {
-        this.setState({ showModal: false });
-    }
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
 
     //GET//
     fetchRecipes = async () => {
@@ -34,15 +34,21 @@ class Recipe extends React.Component {
         });
     }
 
-    //POST//
-    addRecipe = async (ingredients) => {
-        console.log('Im here before post request');
-        axios.post(`${PORT}/recipes`, ingredients)
-        .then(response => {
-            this.setState({recipes: [...this.state.recipes, response.data]})
-            console.log(response.data)
-        });
-    }
+  //POST//
+  addRecipe = (input) => {
+    let ingredientsObj = {foodItems: input}
+    const config = {
+      method: 'POST',
+      baseURL: `${PORT}`,
+      url: '/recipes',
+      data: ingredientsObj,
+    };
+     console.log('Im here before post request', { ingredientsObj });
+     axios(config).then(response => {
+        this.setState({recipes: [...this.state.recipes, response.data]})
+        console.log(response.data)
+    });
+  };
 
     //PUT//
     updateRecipe = async (id, updatedData) => {
