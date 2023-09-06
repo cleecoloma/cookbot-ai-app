@@ -1,25 +1,26 @@
 import React from "react";
+import './Recipe.css'
+import Carousel from 'react-bootstrap/Carousel';
 import AddModal from "./AddModal";
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from "@auth0/auth0-react";
 import {useAuthRequest} from "../../Auth_Folder/Authorization";
-// import axios from "axios";
 
 
 class Recipe extends React.Component {
 
-    state = {
-        recipes: [],
-        showModal: false,
-    }
+  state = {
+      recipes: [],
+      showModal: false,
+  }
 
-    componentDidMount() {
-        this.fetchRecipes();
-    }
+  componentDidMount() {
+      this.fetchRecipes();
+  }
 
-    handleShowModal = () => {
-        this.setState({ showModal: true });
-    }
+  handleShowModal = () => {
+      this.setState({ showModal: true });
+  }
 
   handleCloseModal = () => {
     this.setState({ showModal: false });
@@ -76,15 +77,44 @@ class Recipe extends React.Component {
     render() {
         return (
             <div>
+  <Carousel>
+    {this.state.recipes.map((recipe, idx) => (
+        <Carousel.Item key={idx} className="carousel-item-custom">
+            <div className="d-flex justify-content-center align-items-center recipe-content">
+                <img
+                    className="img-fluid recipe-placeholder mx-3"
+                    src="https://placehold.co/600x400"
+                    alt="Recipe Image Placeholder"
+                />
+                <div>
                 <Button variant="outline-success" onClick={this.handleShowModal}>Add New Recipe</Button>
                 <AddModal 
                     show={this.state.showModal} 
                     onHide={this.handleCloseModal}
                     addRecipe={this.addRecipe}
                 />
+                    <h3 >{recipe.dishName}</h3>
+                    <ul>
+                      <h4>
+                        <strong>Ingredients:</strong>
+                      </h4>
+                            <ul>
+                                {recipe.ingredients && recipe.ingredients.map((ingredient, ingrIdx) => (
+                                    <li key={ingrIdx}>{ingredient}</li>
+                                ))}
+                            </ul>
+                        {/* Add more items here as needed */}
+                    </ul>
+                <Button varian="outline-success" onClick={this.handleShowModal}>Delete Recipe</Button>
+                </div>
             </div>
-        );
-    }
+        </Carousel.Item>
+    ))}
+  </Carousel>
+
+      </div>
+    );
+  }
 }
 
 const AuthRecipe = withAuth0(Recipe);
