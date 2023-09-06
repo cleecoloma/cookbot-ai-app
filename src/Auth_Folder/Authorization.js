@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { useAuth0 } from '@auth0/auth0-react';
-const SERVER_URL = import.meta.env.SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 // async function authRequest(method, id, data) {
 
@@ -30,7 +30,7 @@ export function useAuthRequest() {
     const authRequest = async (method, token, id, data) => {
       // const res = await getIdTokenClaims();
       // const token = res.__raw;
-  
+       console.log(token);
       const config = {
         method,
         headers: {

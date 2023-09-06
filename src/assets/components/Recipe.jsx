@@ -20,8 +20,9 @@ class Recipe extends React.Component {
     // grab a token
     const res = await this.props.auth0.getIdTokenClaims();
     const token = res.__raw;
-    this.setState({ token: token });
-    this.fetchRecipes(this.state.token);
+    this.setState({ token }, () => {
+      this.fetchRecipes();
+    });
   }
 
   handleShowModal = () => {
@@ -35,6 +36,7 @@ class Recipe extends React.Component {
   //GET//
   fetchRecipes = async () => {
     const authRequest = useAuthRequest();
+    //  console.log(this.state.token);
     authRequest('GET', this.state.token, null, null).then((response) => {
       this.setState({ recipes: response.data });
       console.log(response.data);
