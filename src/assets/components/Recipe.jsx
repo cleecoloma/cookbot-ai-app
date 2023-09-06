@@ -93,7 +93,7 @@ class Recipe extends React.Component {
               <div className="d-flex justify-content-center align-items-center recipe-content">
                 <img
                   className="img-fluid recipe-placeholder mx-3"
-                  src="https://placehold.co/600x400"
+                  src={recipe.imageUrl}
                   alt="Recipe Image Placeholder"
                 />
                 <div>
