@@ -98,19 +98,17 @@ class Recipe extends React.Component {
                 />
                     <h3 >{recipe.dishName}</h3>
                     <ul>
-                        <li>
-                            <strong>{recipe.dishName}</strong>
-                        </li>
-                        <li >
-                            <strong>Ingredients:</strong>
+                      <h4>
+                        <strong>Ingredients:</strong>
+                      </h4>
                             <ul>
                                 {recipe.ingredients && recipe.ingredients.map((ingredient, ingrIdx) => (
                                     <li key={ingrIdx}>{ingredient}</li>
                                 ))}
                             </ul>
-                        </li>
                         {/* Add more items here as needed */}
                     </ul>
+                <Button varian="outline-success" onClick={this.handleShowModal}>Delete Recipe</Button>
                 </div>
             </div>
         </Carousel.Item>
