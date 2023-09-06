@@ -4,7 +4,6 @@ import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
-import { useAuthRequest } from '../../Auth_Folder/Authorization';
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -34,49 +33,45 @@ class Recipe extends React.Component {
 
   //GET//
   fetchRecipes = async () => {
-    const authRequest = useAuthRequest();
-    authRequest('GET', this.state.token, null, null).then((response) => {
-      this.setState({ recipes: response.data });
-      console.log(response.data);
+    this.props.authRequest('GET', this.state.token, null, null)
+    .then(response => {
+        this.setState({recipes: response.data})
+        console.log(response.data)
     });
-  };
+  }
 
   //POST//
   addRecipe = async (input) => {
-    let ingredientsObj = { foodItems: input };
-    const authRequest = useAuthRequest();
-    authRequest('POST', this.state.token, null, ingredientsObj).then(
-      (response) => {
-        this.setState({ recipes: [...this.state.recipes, response.data] });
-        console.log(response.data);
-      }
-    );
+    let ingredientsObj = {foodItems: input}
+    this.props.authRequest('POST', this.state.token, null, ingredientsObj)
+    .then(response => {
+        this.setState({recipes: [...this.state.recipes, response.data]})
+        console.log(response.data)
+    });
   };
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
-    const authRequest = useAuthRequest();
-    authRequest('PUT', this.state.token, id, updatedData).then((response) => {
-      const updatedRecipes = this.state.recipes.map((recipe) => {
-        if (recipe.id === id) {
-          return response.data;
-        }
-        return recipe;
-      });
-      this.setState({ recipes: updatedRecipes });
-      console.log(response.data);
+    this.props.authRequest('PUT', this.state.token, id, updatedData)
+    .then(response => {
+        const updatedRecipes = this.state.recipes.map(recipe => {
+            if (recipe.id === id) {
+                return response.data;
+            }
+            return recipe;
+        });
+        this.setState({recipes: updatedRecipes});
+        console.log(response.data)
     });
-  };
+  }
 
   //DELETE//
   deleteRecipe = async (id) => {
-    const authRequest = useAuthRequest();
-    authRequest('DELETE', this.state.token, id, null).then((response) => {
-      const filteredRecipes = this.state.recipes.filter(
-        (recipe) => recipe.id !== id
-      );
-      this.setState({ recipes: filteredRecipes });
-      console.log(response.data);
+    this.props.authRequest('DELETE', this.state.token, id, null)
+    .then(response => {
+        const filteredRecipes = this.state.recipes.filter(recipe => recipe.id !== id);
+        this.setState({recipes: filteredRecipes});
+        console.log(response.data)
     });
   };
 

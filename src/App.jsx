@@ -3,9 +3,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './assets/components/Header';
-import Recipe from './assets/components/Recipe';
-
-
+import RecipeContainer from './assets/components/RecipeContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,7 +17,7 @@ class App extends React.Component {
     return(
       <div>
         <Header />
-        { isAuthenticated ? <Recipe /> : <h2> Please log in to view recipes </h2> }
+        { isAuthenticated ? <RecipeContainer /> : <h2> Please log in to view recipes </h2> }
       </div>
     );
   }
