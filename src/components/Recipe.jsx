@@ -82,7 +82,6 @@ class Recipe extends React.Component {
 
   //DELETE//
   deleteRecipe = async (id) => {
-    console.log('authRequest parameters:', 'DELETE', this.state.token, id, null);
     this.props.authRequest('DELETE', this.state.token, id, null)
     .then(response => {
         const filteredRecipes = this.state.recipes.filter(recipe => recipe._id !== id);
