@@ -2,6 +2,7 @@ import React from 'react';
 import './Recipe.css';
 import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
+import FullRecipeModal from './FullRecipeModal';
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
 
@@ -11,6 +12,7 @@ class Recipe extends React.Component {
     this.state = {
       recipes: [],
       showModal: false,
+      showFullRecipeModal: false,
       token: null,
     };
   }
@@ -30,6 +32,14 @@ class Recipe extends React.Component {
 
   handleCloseModal = () => {
     this.setState({ showModal: false });
+  };
+
+  handleShowFullRecipeModal = () => {
+    this.setState({ showFullRecipeModal: true });
+  };
+
+  handleCloseFullRecipeModal = () => {
+      this.setState({ showFullRecipeModal: false });
   };
 
   //GET//
@@ -79,14 +89,14 @@ class Recipe extends React.Component {
   render() {
     return (
       <div>
-        <Button variant="outline-success" onClick={this.handleShowModal}>
-          Add New Recipe
-        </Button>
-        <AddModal
-          show={this.state.showModal}
-          onHide={this.handleCloseModal}
-          addRecipe={this.addRecipe}
-        />
+      <Button variant="outline-success" onClick={this.handleShowAddModal}>
+      Add New Recipe
+      </Button>
+      <AddModal
+        show={this.state.showAddModal}
+        onHide={this.handleCloseAddModal}
+        addRecipe={this.addRecipe}
+      />
         <Carousel>
           {this.state.recipes.map((recipe, idx) => (
             <Carousel.Item key={idx} className="carousel-item-custom">
@@ -98,24 +108,13 @@ class Recipe extends React.Component {
                 />
                 <div>
                   <h3>{recipe.dishName}</h3>
-                  <ul>
-                    <h4>
-                      <strong>Ingredients:</strong>
-                    </h4>
-                    <ul>
-                      {recipe.ingredients &&
-                        recipe.ingredients.map((ingredient, ingrIdx) => (
-                          <li key={ingrIdx}>{ingredient}</li>
-                        ))}
-                    </ul>
-                    {/* Add more items here as needed */}
-                  </ul>
-                  <Button
-                    varian="outline-success"
-                    onClick={this.handleShowModal}
-                  >
-                    Delete Recipe
+                  <Button variant="outline-success" onClick={this.handleShowFullRecipeModal}>
+                      Click Here For Full Recipe!
                   </Button>
+                  <FullRecipeModal
+                      show={this.state.showFullRecipeModal}
+                      onHide={this.handleCloseFullRecipeModal}
+                  />
                 </div>
               </div>
             </Carousel.Item>
