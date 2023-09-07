@@ -15,16 +15,18 @@ class FullRecipeModal extends React.Component {
           <Modal.Title>Full Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h3>{this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
+          <h3>
+            {this.props.currentRecipe ? this.props.currentRecipe.dishName : null}
+          </h3>
           <img
-                  className="img-fluid recipe-placeholder mx-3"
-                  src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
-                  alt="Recipe Image Placeholder"
-                />
+            className="img-fluid recipe-placeholder mx-3"
+            src={this.props.currentRecipe ? this.props.currentRecipe.imageUrl : null}
+            alt="Recipe Image Placeholder"
+          />
           <ul>
             <ul>
-              {this.props.editRecipe &&
-                this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
+              {this.props.currentRecipe &&
+                this.props.currentRecipe.cookingSteps.map((step, recipIdx) => (
                   <li key={recipIdx}>{step}</li>
                 ))}
             </ul>
@@ -32,14 +34,17 @@ class FullRecipeModal extends React.Component {
               <strong>Ingredients:</strong>
             </h4>
             <ul>
-              {this.props.editRecipe &&
-                this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
+              {this.props.currentRecipe &&
+                this.props.currentRecipe.ingredients.map((ingredient, ingrIdx) => (
                   <li key={ingrIdx}>{ingredient}</li>
                 ))}
             </ul>
           </ul>
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="secondary" onClick={() => {this.props.handleUpdateRecipe(this.props.currentRecipe)}}>
+            Edit
+          </Button>
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
