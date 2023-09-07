@@ -97,72 +97,45 @@ class Recipe extends React.Component {
 
   //DELETE//
   deleteRecipe = async (id) => {
-    this.props
-      .authRequest('DELETE', this.state.token, id, null)
-      .then((response) => {
-        const filteredRecipes = this.state.recipes.filter(
-          (recipe) => recipe.id !== id
-        );
-        this.setState({ recipes: filteredRecipes });
-        console.log(response.data);
-      });
-  };
-
-  handleUpdateRecipe = (recipe) => {
-    console.log(recipe);
-    this.setState({
-      editRecipe: recipe,
-      showFullRecipeModal: false,
-      showEditModal: true,
+    this.props.authRequest('DELETE', this.state.token, id, null)
+    .then(response => {
+        const filteredRecipes = this.state.recipes.filter(recipe => recipe._id !== id);
+        this.setState({recipes: filteredRecipes});
+        console.log(response.data)
     });
     console.log(this.state.editRecipe);
   };
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          margin: '1rem 5%',
-        }}
-      >
-        <Button
-          style={{ width: '10rem', margin: '0 auto' }}
-          variant="success"
-          onClick={this.handleShowModal}
-        >
-          Add New Recipe
-        </Button>
-        <AddModal
-          show={this.state.showModal}
-          onHide={this.handleCloseModal}
-          addRecipe={this.addRecipe}
-        />
-        <EditModal
+        <div style={{ display:"flex", justifyContent:"center", flexDirection:"column", margin:"1rem 5%" }}>
+          <Button style={{ width:"10rem", margin:"0 auto"}} variant="success" onClick={this.handleShowModal}>
+            Add New Recipe
+          </Button>
+          <AddModal
+            show={this.state.showModal}
+            onHide={this.handleCloseModal}
+            addRecipe={this.addRecipe}
+          />
+         <EditModal
           show={this.state.showEditModal}
           onHide={this.handleCloseEditModal}
           editRecipe={this.state.editRecipe}
           updateRecipe={this.updateRecipe}
         />
-        {this.state.recipes.length > 0 ? (
-          <Carousel>
+        {this.state.recipes.length > 0 ? 
+          <Carousel className="custom-carousel">
             {this.state.recipes.map((recipe, idx) => (
-              <Carousel.Item key={idx} className="carousel-item-custom">
-                <div className="d-flex justify-content-center align-items-center recipe-content">
-                  <img
-                    className="img-fluid recipe-placeholder mx-3"
-                    src={recipe.imageUrl}
-                    alt="Recipe Image Placeholder"
-                  />
-                  <div>
+              <Carousel.Item key={idx} interval={1000}>
+                <img
+                  className="d-block w-100" 
+                  src={recipe.imageUrl}
+                  alt="Recipe"
+                  style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+                />
+                  <div className="info-div"> 
                     <h3>{recipe.dishName}</h3>
-
-                    <Button
-                      variant="outline-success"
-                      onClick={() => this.handleShowFullRecipeModal(recipe)}
-                    >
+                    <Button variant="outline-success" onClick={() => this.handleShowFullRecipeModal(recipe)}>
                       Click Here For Full Recipe!
                     </Button>
                     <FullRecipeModal
@@ -171,6 +144,7 @@ class Recipe extends React.Component {
                       currentRecipe={this.state.currentRecipe}
                       updateRecipe={this.updateRecipe}
                       handleUpdateRecipe={this.handleUpdateRecipe}
+                      deleteRecipe={this.deleteRecipe}
                     />
                   </div>
                 </div>

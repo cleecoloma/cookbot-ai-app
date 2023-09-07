@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, Button, Form, ListGroup} from 'react-bootstrap'
+import './FullRecipeModal.css';
+import {Modal, Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 
 
@@ -10,36 +11,49 @@ class FullRecipeModal extends React.Component {
 
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.props.onHide}>
+      <Modal 
+          show={this.props.show} 
+          onHide={this.props.onHide} 
+          fullscreen={true}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Full Recipe</Modal.Title>
+          <Modal.Title>
+            <h3 className="recipe-title">  Full Recipe for {this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
+            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h3>
-            {this.props.currentRecipe ? this.props.currentRecipe.dishName : null}
-          </h3>
-          <img
-            className="img-fluid recipe-placeholder mx-3"
-            src={this.props.currentRecipe ? this.props.currentRecipe.imageUrl : null}
-            alt="Recipe Image Placeholder"
-          />
-          <ul>
-            <ul>
-              {this.props.currentRecipe &&
-                this.props.currentRecipe.cookingSteps.map((step, recipIdx) => (
-                  <li key={recipIdx}>{step}</li>
-                ))}
-            </ul>
-            <h4>
-              <strong>Ingredients:</strong>
-            </h4>
-            <ul>
-              {this.props.currentRecipe &&
-                this.props.currentRecipe.ingredients.map((ingredient, ingrIdx) => (
-                  <li key={ingrIdx}>{ingredient}</li>
-                ))}
-            </ul>
-          </ul>
+            <div className="recipe-content">
+                <img
+                    className="img-fluid recipe-image"
+                    src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
+                    alt="Recipe"
+                    style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+                />
+                <div className="recipe-details">
+                    <div className="recipe-ingredients">
+                        <h4>
+                            <strong>Ingredients:</strong>
+                        </h4>
+                        <ul>
+                            {this.props.editRecipe &&
+                            this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
+                                <li key={ingrIdx}>{ingredient}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="recipe-steps">
+                        <h4>
+                            <strong>Cooking Steps</strong>
+                        </h4>
+                        <ul>
+                            {this.props.editRecipe &&
+                            this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
+                                <li key={recipIdx}>{step}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => {this.props.handleUpdateRecipe(this.props.currentRecipe)}}>
@@ -47,6 +61,13 @@ class FullRecipeModal extends React.Component {
           </Button>
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
+          </Button>
+          <Button variant="danger" onClick={() => {
+            console.log('Deleting recipe with _id:', this.props.editRecipe._id);
+              this.props.deleteRecipe(this.props.editRecipe._id);
+              this.props.onHide();
+            }}>
+            Delete Recipe
           </Button>
         </Modal.Footer>
       </Modal>
@@ -57,11 +78,15 @@ class FullRecipeModal extends React.Component {
 FullRecipeModal.propTypes = {
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  editRecipe: PropTypes.object,
 };
 
 FullRecipeModal.defaultProps = {
   show: false,
   onHide: () => {},
+  deleteRecipe: () => {},
+  editRecipe: null,
 };
 
 export default FullRecipeModal; 
