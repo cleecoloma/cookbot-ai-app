@@ -2,7 +2,6 @@ import React from 'react';
 import './Recipe.css';
 import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
-import EditModal from './EditModal';
 import FullRecipeModal from './FullRecipeModal';
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
@@ -15,9 +14,7 @@ class Recipe extends React.Component {
       showModal: false,
       showFullRecipeModal: false,
       token: null,
-      currentRecipe: null,
       editRecipe: null,
-      showEditModal: false,
     };
   }
 
@@ -38,62 +35,50 @@ class Recipe extends React.Component {
     this.setState({ showModal: false });
   };
 
-  handleShowEditModal = () => {
-    this.setState({ showEditModal: true });
-  };
-
-  handleCloseEditModal = () => {
-    this.setState({ showEditModal: false });
-  };
-
   handleShowFullRecipeModal = (recipe) => {
-    this.setState({
+    this.setState({ 
       showFullRecipeModal: true,
-      currentRecipe: recipe,
-    });
+      editRecipe: recipe,
+     });
   };
 
   handleCloseFullRecipeModal = () => {
-    this.setState({ showFullRecipeModal: false });
+      this.setState({ showFullRecipeModal: false });
   };
 
   //GET//
   fetchRecipes = async () => {
-    this.props
-      .authRequest('GET', this.state.token, null, null)
-      .then((response) => {
-        this.setState({ recipes: response.data });
-        console.log(response.data);
-      });
-  };
+    this.props.authRequest('GET', this.state.token, null, null)
+    .then(response => {
+        this.setState({recipes: response.data})
+        console.log(response.data)
+    });
+  }
 
   //POST//
   addRecipe = async (input) => {
-    let ingredientsObj = { foodItems: input };
-    this.props
-      .authRequest('POST', this.state.token, null, ingredientsObj)
-      .then((response) => {
-        this.setState({ recipes: [...this.state.recipes, response.data] });
-        console.log(response.data);
-      });
+    let ingredientsObj = {foodItems: input}
+    this.props.authRequest('POST', this.state.token, null, ingredientsObj)
+    .then(response => {
+        this.setState({recipes: [...this.state.recipes, response.data]})
+        console.log(response.data)
+    });
   };
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
-    console.log( id + updatedData);
-    this.props
-      .authRequest('PUT', this.state.token, id, updatedData)
-      .then((response) => {
-        const updatedRecipes = this.state.recipes.map((recipe) => {
-          if (recipe.id === id) {
-            return response.data;
-          }
-          return recipe;
+    this.props.authRequest('PUT', this.state.token, id, updatedData)
+    .then(response => {
+        const updatedRecipes = this.state.recipes.map(recipe => {
+            if (recipe.id === id) {
+                return response.data;
+            }
+            return recipe;
         });
-        this.setState({ recipes: updatedRecipes });
-        console.log(response.data);
-      });
-  };
+        this.setState({recipes: updatedRecipes});
+        console.log(response.data)
+    });
+  }
 
   //DELETE//
   deleteRecipe = async (id) => {
@@ -103,7 +88,6 @@ class Recipe extends React.Component {
         this.setState({recipes: filteredRecipes});
         console.log(response.data)
     });
-    console.log(this.state.editRecipe);
   };
 
   render() {
@@ -117,12 +101,6 @@ class Recipe extends React.Component {
             onHide={this.handleCloseModal}
             addRecipe={this.addRecipe}
           />
-         <EditModal
-          show={this.state.showEditModal}
-          onHide={this.handleCloseEditModal}
-          editRecipe={this.state.editRecipe}
-          updateRecipe={this.updateRecipe}
-        />
         {this.state.recipes.length > 0 ? 
           <Carousel className="custom-carousel">
             {this.state.recipes.map((recipe, idx) => (
@@ -141,17 +119,13 @@ class Recipe extends React.Component {
                     <FullRecipeModal
                       show={this.state.showFullRecipeModal}
                       onHide={this.handleCloseFullRecipeModal}
-                      currentRecipe={this.state.currentRecipe}
-                      updateRecipe={this.updateRecipe}
-                      handleUpdateRecipe={this.handleUpdateRecipe}
+                      editRecipe={this.state.editRecipe}
                       deleteRecipe={this.deleteRecipe}
-                    />
-                  </div>
+                  />
                 </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        ) : null}
+            </Carousel.Item>
+          ))}
+        </Carousel> : null}
       </div>
     );
   }
