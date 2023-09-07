@@ -88,16 +88,16 @@ class Recipe extends React.Component {
 
   render() {
     return (
-      <div>
-      <Button variant="outline-success" onClick={this.handleShowAddModal}>
-      Add New Recipe
-      </Button>
-      <AddModal
-        show={this.state.showAddModal}
-        onHide={this.handleCloseAddModal}
-        addRecipe={this.addRecipe}
-      />
-        <Carousel>
+      <div style={{ display:"flex", justifyContent:"center", flexDirection:"column", margin:"1rem 5%" }}>
+        <Button style={{ width:"10rem", margin:"0 auto" }} variant="success" onClick={this.handleShowModal}>
+          Add New Recipe
+        </Button>
+        <AddModal
+          show={this.state.showModal}
+          onHide={this.handleCloseModal}
+          addRecipe={this.addRecipe}
+        />
+        { this.state.recipes.length > 0 ? <Carousel>
           {this.state.recipes.map((recipe, idx) => (
             <Carousel.Item key={idx} className="carousel-item-custom">
               <div className="d-flex justify-content-center align-items-center recipe-content">
@@ -120,7 +120,7 @@ class Recipe extends React.Component {
               </div>
             </Carousel.Item>
           ))}
-        </Carousel>
+        </Carousel> : null}
       </div>
     );
   }
