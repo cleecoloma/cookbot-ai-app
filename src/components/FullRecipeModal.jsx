@@ -43,6 +43,12 @@ class FullRecipeModal extends React.Component {
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
+          <Button variant="danger" onClick={() => {
+            console.log('Deleting recipe with _id:', this.props.editRecipe._id);
+              this.props.deleteRecipe(this.props.editRecipe._id);
+            }}>
+            Delete Recipe
+          </Button>
         </Modal.Footer>
       </Modal>
     );
@@ -52,11 +58,15 @@ class FullRecipeModal extends React.Component {
 FullRecipeModal.propTypes = {
   show: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  editRecipe: PropTypes.object,
 };
 
 FullRecipeModal.defaultProps = {
   show: false,
   onHide: () => {},
+  deleteRecipe: () => {},
+  editRecipe: null,
 };
 
 export default FullRecipeModal; 

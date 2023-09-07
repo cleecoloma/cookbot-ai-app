@@ -82,9 +82,10 @@ class Recipe extends React.Component {
 
   //DELETE//
   deleteRecipe = async (id) => {
+    console.log('authRequest parameters:', 'DELETE', this.state.token, id, null);
     this.props.authRequest('DELETE', this.state.token, id, null)
     .then(response => {
-        const filteredRecipes = this.state.recipes.filter(recipe => recipe.id !== id);
+        const filteredRecipes = this.state.recipes.filter(recipe => recipe._id !== id);
         this.setState({recipes: filteredRecipes});
         console.log(response.data)
     });
@@ -120,13 +121,13 @@ class Recipe extends React.Component {
                       show={this.state.showFullRecipeModal}
                       onHide={this.handleCloseFullRecipeModal}
                       editRecipe={this.state.editRecipe}
-                    />
-                  </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        : 
-        null}
+                      deleteRecipe={this.deleteRecipe}
+                  />
+                </div>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel> : null}
 
       </div>
     );
