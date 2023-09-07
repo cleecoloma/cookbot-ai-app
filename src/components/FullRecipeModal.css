@@ -1,0 +1,18 @@
+.recipe-content {
+  padding: 10px;
+}
+
+.recipe-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.recipe-steps, .recipe-ingredients {
+  margin-bottom: 20px;
+}

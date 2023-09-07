@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, Button, Form, ListGroup} from 'react-bootstrap'
+import './FullRecipeModal.css';
+import {Modal, Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 
 
@@ -10,34 +11,43 @@ class FullRecipeModal extends React.Component {
 
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.props.onHide}>
+      <Modal 
+          show={this.props.show} 
+          onHide={this.props.onHide} 
+          fullscreen={true}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Full Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h3>{this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
-          <img
-                  className="img-fluid recipe-placeholder mx-3"
-                  src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
-                  alt="Recipe Image Placeholder"
-                />
-          <ul>
-            <ul>
-              {this.props.editRecipe &&
-                this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
-                  <li key={recipIdx}>{step}</li>
+          <div className="recipe-content">
+            <h3 className="recipe-title">{this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
+            <img
+              className="img-fluid recipe-image"
+              src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
+              alt="Recipe"
+              style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+            />
+            <div className="recipe-steps">
+              <ul>
+                {this.props.editRecipe &&
+                  this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
+                    <li key={recipIdx}>{step}</li>
                 ))}
-            </ul>
-            <h4>
-              <strong>Ingredients:</strong>
-            </h4>
-            <ul>
-              {this.props.editRecipe &&
-                this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
-                  <li key={ingrIdx}>{ingredient}</li>
+              </ul>
+            </div>
+            <div className="recipe-ingredients">
+              <h4>
+                <strong>Ingredients:</strong>
+              </h4>
+              <ul>
+                {this.props.editRecipe &&
+                  this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
+                    <li key={ingrIdx}>{ingredient}</li>
                 ))}
-            </ul>
-          </ul>
+              </ul>
+            </div>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.onHide}>
