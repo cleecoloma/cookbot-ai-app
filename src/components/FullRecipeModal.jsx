@@ -18,14 +18,14 @@ class FullRecipeModal extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            <h3 className="recipe-title">  Full Recipe for {this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
+            <h3 className="recipe-title">  Full Recipe for {this.props.currentRecipe ? this.props.currentRecipe.dishName : null}</h3>
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div className="recipe-content">
                 <img
                     className="img-fluid recipe-image"
-                    src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
+                    src={this.props.currentRecipe ? this.props.currentRecipe.imageUrl : null}
                     alt="Recipe"
                     style={{ width: '400px', height: '400px', objectFit: 'cover' }}
                 />
@@ -35,8 +35,8 @@ class FullRecipeModal extends React.Component {
                             <strong>Ingredients:</strong>
                         </h4>
                         <ul>
-                            {this.props.editRecipe &&
-                            this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
+                            {this.props.currentRecipe &&
+                            this.props.currentRecipe.ingredients.map((ingredient, ingrIdx) => (
                                 <li key={ingrIdx}>{ingredient}</li>
                             ))}
                         </ul>
@@ -46,8 +46,8 @@ class FullRecipeModal extends React.Component {
                             <strong>Cooking Steps</strong>
                         </h4>
                         <ul>
-                            {this.props.editRecipe &&
-                            this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
+                            {this.props.currentRecipe &&
+                            this.props.currentRecipe.cookingSteps.map((step, recipIdx) => (
                                 <li key={recipIdx}>{step}</li>
                             ))}
                         </ul>
@@ -63,8 +63,8 @@ class FullRecipeModal extends React.Component {
             Close
           </Button>
           <Button variant="danger" onClick={() => {
-            console.log('Deleting recipe with _id:', this.props.editRecipe._id);
-              this.props.deleteRecipe(this.props.editRecipe._id);
+            console.log('Deleting recipe with _id:', this.props.currentRecipe._id);
+              this.props.deleteRecipe(this.props.currentRecipe._id);
               this.props.onHide();
             }}>
             Delete Recipe
