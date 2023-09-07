@@ -16,6 +16,11 @@ class FullRecipeModal extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <h3>{this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
+          <img
+                  className="img-fluid recipe-placeholder mx-3"
+                  src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
+                  alt="Recipe Image Placeholder"
+                />
           <ul>
             <ul>
               {this.props.editRecipe &&
@@ -44,14 +49,14 @@ class FullRecipeModal extends React.Component {
   }
 }
 
-// FullRecipeModal.propTypes = {
-//   show: PropTypes.bool.isRequired,
-//   onHide: PropTypes.func.isRequired,
-// };
+FullRecipeModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onHide: PropTypes.func.isRequired,
+};
 
-// FullRecipeModal.defaultProps = {
-//   show: false,
-//   onHide: () => {},
-// };
+FullRecipeModal.defaultProps = {
+  show: false,
+  onHide: () => {},
+};
 
 export default FullRecipeModal; 
