@@ -56,6 +56,9 @@ class FullRecipeModal extends React.Component {
             </div>
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="secondary" onClick={() => {this.props.handleUpdateRecipe(this.props.currentRecipe)}}>
+            Edit
+          </Button>
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
