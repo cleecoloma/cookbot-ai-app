@@ -5,6 +5,7 @@ import AddModal from './AddModal';
 import FullRecipeModal from './FullRecipeModal';
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
+import EditModal from './EditModal';
 
 class Recipe extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Recipe extends React.Component {
       recipes: [],
       showModal: false,
       showFullRecipeModal: false,
+      currentRecipe: null,
       token: null,
       editRecipe: null,
     };
@@ -38,7 +40,7 @@ class Recipe extends React.Component {
   handleShowFullRecipeModal = (recipe) => {
     this.setState({ 
       showFullRecipeModal: true,
-      editRecipe: recipe,
+      currentRecipe: recipe,
      });
   };
 
@@ -156,7 +158,7 @@ class Recipe extends React.Component {
                 </div>
             </Carousel.Item>
           ))}
-        </Carousel> : null}
+        </Carousel>) : null}
       </div>
     );
   }
