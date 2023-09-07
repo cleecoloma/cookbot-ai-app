@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 class About extends React.Component {
   render() {
     return (
-      <Container className="d-flex justify-content-center align-items-center">
+      <Container className="d-flex justify-content-center align-items-center flex-wrap">
         <Card style={{ width: '18rem', margin: '2rem 2rem' }}>
           <Card.Img
             variant="top"
