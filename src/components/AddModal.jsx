@@ -24,6 +24,7 @@ class AddModal extends React.Component {
   handleSubmit = () => {
     console.log('Submitted recipe', this.state.ingredients)
     this.props.addRecipe(this.state.ingredients);
+    this.props.onHide();
   }
 
     render() {
@@ -57,7 +58,10 @@ class AddModal extends React.Component {
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
-          <Button variant="primary" onClick={this.handleSubmit}>
+          <Button variant="primary" onClick={() => {
+            this.handleSubmit();
+            this.props.onHide();
+            }}>
             Submit Recipe
           </Button>
         </Modal.Footer>

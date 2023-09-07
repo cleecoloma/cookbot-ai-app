@@ -56,6 +56,7 @@ class FullRecipeModal extends React.Component {
           <Button variant="danger" onClick={() => {
             console.log('Deleting recipe with _id:', this.props.editRecipe._id);
               this.props.deleteRecipe(this.props.editRecipe._id);
+              this.props.onHide();
             }}>
             Delete Recipe
           </Button>

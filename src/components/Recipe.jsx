@@ -124,7 +124,6 @@ class Recipe extends React.Component {
                       deleteRecipe={this.deleteRecipe}
                   />
                 </div>
-              </div>
             </Carousel.Item>
           ))}
         </Carousel> : null}
