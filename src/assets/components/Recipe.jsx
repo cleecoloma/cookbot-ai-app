@@ -14,6 +14,7 @@ class Recipe extends React.Component {
       showModal: false,
       showFullRecipeModal: false,
       token: null,
+      editRecipe: null,
     };
   }
 
@@ -34,8 +35,11 @@ class Recipe extends React.Component {
     this.setState({ showModal: false });
   };
 
-  handleShowFullRecipeModal = () => {
-    this.setState({ showFullRecipeModal: true });
+  handleShowFullRecipeModal = (recipe) => {
+    this.setState({ 
+      showFullRecipeModal: true,
+      editRecipe: recipe,
+     });
   };
 
   handleCloseFullRecipeModal = () => {
@@ -109,12 +113,13 @@ class Recipe extends React.Component {
                 <div>
                   <h3>{recipe.dishName}</h3>
 
-                  <Button variant="outline-success" onClick={this.handleShowFullRecipeModal}>
+                  <Button variant="outline-success" onClick={() => this.handleShowFullRecipeModal(recipe)}>
                       Click Here For Full Recipe!
                   </Button>
                   <FullRecipeModal
                       show={this.state.showFullRecipeModal}
                       onHide={this.handleCloseFullRecipeModal}
+                      editRecipe={this.state.editRecipe}
                   />
                 </div>
               </div>
