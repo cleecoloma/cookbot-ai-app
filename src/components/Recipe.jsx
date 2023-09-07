@@ -80,6 +80,7 @@ class Recipe extends React.Component {
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
+    console.log( id + updatedData);
     this.props
       .authRequest('PUT', this.state.token, id, updatedData)
       .then((response) => {
@@ -139,11 +140,12 @@ class Recipe extends React.Component {
           onHide={this.handleCloseModal}
           addRecipe={this.addRecipe}
         />
-        <EditModal 
-        show={this.state.showEditModal} 
-        onHide={this.handleCloseEditModal}
-        editRecipe={this.state.editRecipe}
-         />
+        <EditModal
+          show={this.state.showEditModal}
+          onHide={this.handleCloseEditModal}
+          editRecipe={this.state.editRecipe}
+          updateRecipe={this.updateRecipe}
+        />
         {this.state.recipes.length > 0 ? (
           <Carousel>
             {this.state.recipes.map((recipe, idx) => (

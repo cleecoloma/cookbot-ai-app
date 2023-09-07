@@ -23,11 +23,10 @@ class EditModal extends React.Component {
 
   handleSubmit = () => {
     console.log('Submitted recipe', this.state.ingredients);
-    this.props.addRecipe(this.state.ingredients);
+    this.props.updateRecipe(this.props.editRecipe._id, this.state.ingredients);
   };
 
   render() {
-    console.log(this.props.editRecipe);
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
         <Modal.Header closeButton>
@@ -36,22 +35,20 @@ class EditModal extends React.Component {
         <Modal.Body>
           <Form>
             <ListGroup>
-              {this.props.editRecipe ? this.props.editRecipe.ingredients.map((ingredient, index) => (
-                <ListGroup.Item key={index}>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter ingredient"
-                    value={ingredient}
-                    onChange={(e) =>
-                      this.handleIngredientChange(index, e.target.value)
-                    }
-                  />
-                </ListGroup.Item>
-              )) : null}
+              {this.props.editRecipe
+                ? this.props.editRecipe.ingredients.map((ingredient, index) => (
+                    <ListGroup.Item key={index}>
+                      <Form.Control
+                        type="text"
+                        placeholder={ingredient}
+                        onChange={(e) =>
+                          this.handleIngredientChange(index, e.target.value)
+                        }
+                      />
+                    </ListGroup.Item>
+                  ))
+                : null}
             </ListGroup>
-            <Button variant="primary" onClick={this.handleAddIngredient}>
-              Add Ingredient
-            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
