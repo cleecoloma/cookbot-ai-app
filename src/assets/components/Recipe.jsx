@@ -112,7 +112,7 @@ class Recipe extends React.Component {
                   </ul>
                   <Button
                     varian="outline-success"
-                    onClick={this.handleShowModal}
+                    onClick={() => this.deleteRecipe(recipe._id)}
                   >
                     Delete Recipe
                   </Button>
