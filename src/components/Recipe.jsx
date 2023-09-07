@@ -92,40 +92,42 @@ class Recipe extends React.Component {
 
   render() {
     return (
-      <div style={{ display:"flex", justifyContent:"center", flexDirection:"column", margin:"1rem 5%" }}>
-        <Button style={{ width:"10rem", margin:"0 auto" }} variant="success" onClick={this.handleShowModal}>
-          Add New Recipe
-        </Button>
-        <AddModal
-          show={this.state.showModal}
-          onHide={this.handleCloseModal}
-          addRecipe={this.addRecipe}
-        />
-        { this.state.recipes.length > 0 ? <Carousel>
-          {this.state.recipes.map((recipe, idx) => (
-            <Carousel.Item key={idx} className="carousel-item-custom">
-              <div className="d-flex justify-content-center align-items-center recipe-content">
+        <div style={{ display:"flex", justifyContent:"center", flexDirection:"column", margin:"1rem 5%" }}>
+          <Button style={{ width:"10rem", margin:"0 auto"}} variant="success" onClick={this.handleShowModal}>
+            Add New Recipe
+          </Button>
+          <AddModal
+            show={this.state.showModal}
+            onHide={this.handleCloseModal}
+            addRecipe={this.addRecipe}
+          />
+        {this.state.recipes.length > 0 ? 
+          <Carousel className="custom-carousel">
+            {this.state.recipes.map((recipe, idx) => (
+              <Carousel.Item key={idx} interval={1000}>
                 <img
-                  className="img-fluid recipe-placeholder mx-3"
+                  className="d-block w-100" 
                   src={recipe.imageUrl}
-                  alt="Recipe Image Placeholder"
+                  alt="Recipe"
+                  style={{ width: '400px', height: '400px', objectFit: 'cover' }}
                 />
-                <div>
-                  <h3>{recipe.dishName}</h3>
-
-                  <Button variant="outline-success" onClick={() => this.handleShowFullRecipeModal(recipe)}>
+                  <div className="info-div"> 
+                    <h3>{recipe.dishName}</h3>
+                    <Button variant="outline-success" onClick={() => this.handleShowFullRecipeModal(recipe)}>
                       Click Here For Full Recipe!
-                  </Button>
-                  <FullRecipeModal
+                    </Button>
+                    <FullRecipeModal
                       show={this.state.showFullRecipeModal}
                       onHide={this.handleCloseFullRecipeModal}
                       editRecipe={this.state.editRecipe}
-                  />
-                </div>
-              </div>
-            </Carousel.Item>
-          ))}
-        </Carousel> : null}
+                    />
+                  </div>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        : 
+        null}
+
       </div>
     );
   }
