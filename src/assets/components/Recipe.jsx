@@ -87,7 +87,7 @@ class Recipe extends React.Component {
           onHide={this.handleCloseModal}
           addRecipe={this.addRecipe}
         />
-        <Carousel>
+        { this.state.recipes.length > 0 ? <Carousel>
           {this.state.recipes.map((recipe, idx) => (
             <Carousel.Item key={idx} className="carousel-item-custom">
               <div className="d-flex justify-content-center align-items-center recipe-content">
@@ -108,7 +108,6 @@ class Recipe extends React.Component {
                           <li key={ingrIdx}>{ingredient}</li>
                         ))}
                     </ul>
-                    {/* Add more items here as needed */}
                   </ul>
                   <Button
                     varian="outline-success"
@@ -120,7 +119,7 @@ class Recipe extends React.Component {
               </div>
             </Carousel.Item>
           ))}
-        </Carousel>
+        </Carousel> : null}
       </div>
     );
   }
