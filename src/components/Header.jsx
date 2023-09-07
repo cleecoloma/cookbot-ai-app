@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import AuthButtons from '../../Auth_Folder/AuthButtons';
+import AuthButtons from '../Auth_Folder/AuthButtons';
 
 class Header extends React.Component {
   render() {
