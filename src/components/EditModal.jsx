@@ -55,7 +55,10 @@ class EditModal extends React.Component {
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
-          <Button variant="primary" onClick={this.handleSubmit}>
+          <Button variant="primary" onClick={() => {
+            this.handleSubmit();
+            this.props.onHide();
+            }}>
             Submit Recipe
           </Button>
         </Modal.Footer>
