@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import AuthButtons from '../Auth_Folder/AuthButtons';
 
 class Header extends React.Component {
@@ -18,10 +19,14 @@ class Header extends React.Component {
         <div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <Nav.Link href="/About.jsx">About Us</Nav.Link>
-              <Nav.Link href="/Profile.jsx">Profile</Nav.Link>
-            </Nav>
+            <NavItem>
+              <Link to="/About" className="nav-link">
+                About Us
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link href="/Profile.jsx">Profile</Link>
+            </NavItem>
             <AuthButtons />
           </Navbar.Collapse>
         </div>
