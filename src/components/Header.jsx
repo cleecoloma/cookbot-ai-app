@@ -19,12 +19,12 @@ class Header extends React.Component {
         <div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <NavItem>
+            <NavItem style={{ marginRight: '10px' }}>
               <Link to="/About" className="nav-link">
                 About Us
               </Link>
             </NavItem>
-            <NavItem>
+            <NavItem style={{ marginRight: '10px' }}>
               <Link href="/Profile.jsx">Profile</Link>
             </NavItem>
             <AuthButtons />
