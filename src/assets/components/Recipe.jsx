@@ -78,7 +78,7 @@ class Recipe extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ display:"flex", justifyContent:"center", margin:"1rem auto" }}>
         <Button variant="outline-success" onClick={this.handleShowModal}>
           Add New Recipe
         </Button>

@@ -7,10 +7,9 @@ class Header extends React.Component {
     return (
       <Navbar bg="light" expand="lg" style={{ display:"flex", justifyContent:"space-between", padding:"0 5%" }}>
         <Navbar.Brand
-          // style={{ margin:" 0 10%" }}
           href="/"
         >
-          Welcome to CookBot!
+          CookBot AI
         </Navbar.Brand>
         <div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
