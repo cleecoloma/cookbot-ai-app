@@ -67,26 +67,42 @@ class Recipe extends React.Component {
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
-    this.props.authRequest('PUT', this.state.token, id, updatedData)
-    .then(response => {
-        const updatedRecipes = this.state.recipes.map(recipe => {
-            if (recipe.id === id) {
-                return response.data;
-            }
-            return recipe;
+    console.log(id + updatedData);
+    this.props
+      .authRequest('PUT', this.state.token, id, updatedData)
+      .then((response) => {
+        const updatedRecipes = this.state.recipes.map((recipe) => {
+          if (recipe.id === id) {
+            return response.data;
+          }
+          return recipe;
         });
-        this.setState({recipes: updatedRecipes});
-        console.log(response.data)
-    });
-  }
+        this.setState({ recipes: updatedRecipes });
+        this.fetchRecipes();
+        console.log(response.data);
+      });
+  };
 
   //DELETE//
   deleteRecipe = async (id) => {
-    this.props.authRequest('DELETE', this.state.token, id, null)
-    .then(response => {
-        const filteredRecipes = this.state.recipes.filter(recipe => recipe._id !== id);
-        this.setState({recipes: filteredRecipes});
-        console.log(response.data)
+    this.props
+      .authRequest('DELETE', this.state.token, id, null)
+      .then((response) => {
+        const filteredRecipes = this.state.recipes.filter(
+          (recipe) => recipe._id !== id
+        );
+        this.setState({ recipes: filteredRecipes });
+        console.log(response.data);
+      });
+    console.log(this.state.editRecipe);
+  };
+
+  handleUpdateRecipe = (recipe) => {
+    console.log(recipe);
+    this.setState({
+      editRecipe: recipe,
+      showFullRecipeModal: false,
+      showEditModal: true,
     });
   };
 
@@ -101,26 +117,41 @@ class Recipe extends React.Component {
             onHide={this.handleCloseModal}
             addRecipe={this.addRecipe}
           />
-        {this.state.recipes.length > 0 ? 
+          <EditModal
+            show={this.state.showEditModal}
+            onHide={this.handleCloseEditModal}
+            editRecipe={this.state.editRecipe}
+            updateRecipe={this.updateRecipe}
+          />
+        {this.state.recipes.length > 0 ? (
           <Carousel className="custom-carousel">
             {this.state.recipes.map((recipe, idx) => (
               <Carousel.Item key={idx} interval={1000}>
                 <img
-                  className="d-block w-100" 
+                  className="d-block w-100"
                   src={recipe.imageUrl}
                   alt="Recipe"
-                  style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+                  style={{
+                    width: '400px',
+                    height: '400px',
+                    objectFit: 'cover',
+                  }}
                 />
-                  <div className="info-div"> 
-                    <h3>{recipe.dishName}</h3>
-                    <Button variant="outline-success" onClick={() => this.handleShowFullRecipeModal(recipe)}>
-                      Click Here For Full Recipe!
-                    </Button>
-                    <FullRecipeModal
-                      show={this.state.showFullRecipeModal}
-                      onHide={this.handleCloseFullRecipeModal}
-                      editRecipe={this.state.editRecipe}
-                      deleteRecipe={this.deleteRecipe}
+                <div className="info-div">
+                  <h3>{recipe.dishName}</h3>
+                  <Button
+                    variant="outline-success"
+                    onClick={() => this.handleShowFullRecipeModal(recipe)}
+                  >
+                    Click Here For Full Recipe!
+                  </Button>
+                  <FullRecipeModal
+                    show={this.state.showFullRecipeModal}
+                    onHide={this.handleCloseFullRecipeModal}
+                    currentRecipe={this.state.currentRecipe}
+                    updateRecipe={this.updateRecipe}
+                    handleUpdateRecipe={this.handleUpdateRecipe}
+                    deleteRecipe={this.deleteRecipe}
                   />
                 </div>
             </Carousel.Item>
