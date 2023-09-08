@@ -20,13 +20,13 @@
 .recipe-ingredients ul {
   list-style-position: inside;
   margin-bottom: 20px;
-  
+}
+
 .recipe-details {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
   width: 100%;
-
 }
 
 .recipe-ingredients, .recipe-steps {
