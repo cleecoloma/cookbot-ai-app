@@ -8,7 +8,7 @@
   font-size: xx-large;
   color: white !important;
   font-weight: bold;
-  margin-right: 50px;
+  margin-right: 20px;
 }
 
 .custom-nav-link {
@@ -23,13 +23,14 @@
 }
 
 .AuthButtons button {
-  background-color: #00ff04;
+  background-color: #23b399;
   border: none;
   margin-left: 10px;
   padding: 8px 16px;
   border-radius: 20px;
   color: #ff897d;
   transition: background-color 0.3s ease-in-out;
+ 
 }
 
 .AuthButtons button:hover {
