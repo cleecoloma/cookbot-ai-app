@@ -14,7 +14,7 @@ class FullRecipeModal extends React.Component {
       <Modal
         show={this.props.show}
         onHide={this.props.onHide}
-        fullscreen={true}
+        fullscreen={false}
       >
         <Modal.Header closeButton>
           <Modal.Title>
@@ -40,6 +40,18 @@ class FullRecipeModal extends React.Component {
               style={{ width: '400px', height: '400px', objectFit: 'cover' }}
             />
             <div className="recipe-details">
+              <div className="recipe-duration">
+                <h4>
+                  <strong>Cooking Time:</strong>
+                </h4>
+                <ul>
+                  <li>
+                    {this.props.currentRecipe
+                      ? this.props.currentRecipe.cookingDuration
+                      : null}
+                  </li>
+                </ul>
+              </div>
               <div className="recipe-ingredients">
                 <h4>
                   <strong>Ingredients:</strong>
