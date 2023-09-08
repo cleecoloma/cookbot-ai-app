@@ -79,9 +79,10 @@ class FullRecipeModal extends React.Component {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{ margin: '0 auto' }}>
           <Button
-            variant="secondary"
+            variant="primary"
+            style={{ width: '6rem' }}
             onClick={() => {
               this.props.handleUpdateRecipe(this.props.currentRecipe);
             }}
@@ -90,6 +91,7 @@ class FullRecipeModal extends React.Component {
           </Button>
           <Button
             variant="danger"
+            style={{ width: '6rem' }}
             onClick={() => {
               console.log(
                 'Deleting recipe with _id:',
@@ -99,9 +101,13 @@ class FullRecipeModal extends React.Component {
               this.props.onHide();
             }}
           >
-            Delete Recipe
+            Delete
           </Button>
-          <Button variant="secondary" onClick={this.props.onHide}>
+          <Button
+            variant="secondary"
+            onClick={this.props.onHide}
+            style={{ width: '6rem' }}
+          >
             Close
           </Button>
         </Modal.Footer>

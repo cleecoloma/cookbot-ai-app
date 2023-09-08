@@ -1,5 +1,3 @@
-
-
 .modal-content {
   border-radius: 15px;
   background-color: #d7d7d7;
@@ -11,6 +9,12 @@
   align-items: center;
 }
 
+.recipe-duration, .recipe-ingredients, .recipe-steps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .recipe-duration ul {
   list-style-position: inside;
@@ -22,17 +26,24 @@
   margin-bottom: 20px;
 }
 
+.recipe-steps ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
 .recipe-details {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* flex-direction: row; */
   margin-top: 20px;
   width: 100%;
 }
 
-.recipe-ingredients, .recipe-steps {
-  width: 100%; 
+.recipe-ingredients,
+.recipe-steps {
+  width: 100%;
 }
 
-.m-body{
+.m-body {
   background-color: grey;
 }

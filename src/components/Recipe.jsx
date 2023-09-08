@@ -26,8 +26,10 @@ class Recipe extends React.Component {
     // grab a token
     const res = await this.props.auth0.getIdTokenClaims();
     const token = res.__raw;
+    // this.toggleLoading();
     this.setState({ token }, () => {
       this.fetchRecipes();
+      // this.toggleLoading();
     });
   }
 
