@@ -15,8 +15,11 @@ class About extends React.Component {
           <Card.Body>
             <Card.Title>Anthony Cunningham</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            <ul>
+             <li>
+              Former US Army Airborne Infantryman & Cannabis Technician - The military gave me the skills and tools to shape myself. The Cannabis industry helped me think deeper. Software development allows me to apply it all in one.
+             </li>
+            </ul>
             </Card.Text>
             <div className="d-flex justify-content-between">
               <Button variant="dark" className="github-button">
