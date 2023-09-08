@@ -8,21 +8,47 @@
 .custom-carousel .d-block {
   max-width: 100%;
   max-height: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
   display: block;
 }
 
+@media screen and (max-width: 700px) {
+  .custom-carousel {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .custom-carousel {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .custom-carousel {
+    width: 380px;
+    height: 380px;
+    margin: 0 auto;
+    margin-top: 25px;
+  }
+}
 
 .info-div {
-  background-color: #9c9c9c; 
-  padding: 10px; 
-  text-align: center; 
+  background-color: #9c9c9c;
+  padding: 10px;
+  text-align: center;
   width: 100%;
   box-sizing: border-box;
 }
 
 .info-div h3 {
-  margin: 0 0 10px 0; 
+  margin: 0 0 10px 0;
 }
 
 .info-div button {
@@ -48,7 +74,7 @@ body {
 .plate {
   width: 230px;
   height: 14px;
-  background: #D3EBEA;
+  background: #d3ebea;
   position: relative;
   border-radius: 6px 6px 2rem 2rem;
   animation: slide-plate-in 6000ms infinite;
@@ -84,7 +110,7 @@ body {
 .butter {
   width: 48px;
   height: 12px;
-  background: #EADD4D;
+  background: #eadd4d;
   margin: auto;
   border-radius: 2px;
   box-shadow: inset 0 -2px 0 2px rgba(85, 74, 35, 0.1);
@@ -92,7 +118,7 @@ body {
 .pancake {
   width: 200px;
   height: 14px;
-  background: #D8CB9F;
+  background: #d8cb9f;
   border-radius: 1rem;
   box-shadow: inset 0 -2px 0 3px rgba(85, 74, 35, 0.1);
   margin: auto;
@@ -129,7 +155,8 @@ body {
   animation-delay: 1.94s;
 }
 @keyframes element-drop {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-100vh) scaleY(0.7);
     opacity: 1;
   }
@@ -139,7 +166,8 @@ body {
   13% {
     transform: translateY(-30%) scaleY(0.9);
   }
-  14%, 67% {
+  14%,
+  67% {
     transform: translateY(0%) scaleY(1);
     opacity: 1;
   }
@@ -153,7 +181,8 @@ body {
   0% {
     transform: translateX(100vw);
   }
-  15%, 100% {
+  15%,
+  100% {
     transform: translateX(0);
   }
 }
@@ -161,7 +190,8 @@ body {
   65% {
     transform: translateX(0);
   }
-  85%, 100% {
+  85%,
+  100% {
     transform: translateX(-100vw);
   }
 }
