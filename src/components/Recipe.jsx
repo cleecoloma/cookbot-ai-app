@@ -18,6 +18,7 @@ class Recipe extends React.Component {
       token: null,
       editRecipe: null,
       showEditModal: false,
+      isLoading: false,
     };
   }
 
@@ -73,7 +74,12 @@ class Recipe extends React.Component {
     this.props
       .authRequest('POST', this.state.token, null, ingredientsObj)
       .then((response) => {
-        this.setState({ recipes: [...this.state.recipes, response.data] });
+        this.setState(
+          { recipes: [...this.state.recipes, response.data] },
+          () => {
+            this.toggleLoading();
+          }
+        );
         console.log(response.data);
       });
   };
@@ -90,7 +96,9 @@ class Recipe extends React.Component {
           }
           return recipe;
         });
-        this.setState({ recipes: updatedRecipes });
+        this.setState({ recipes: updatedRecipes }, () => {
+          this.toggleLoading();
+        });
         this.fetchRecipes();
         console.log(response.data);
       });
@@ -119,70 +127,99 @@ class Recipe extends React.Component {
     });
   };
 
+  toggleLoading = () => {
+    this.setState({
+      isLoading: !this.state.isLoading,
+    });
+  };
+
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          margin: '1rem 5%',
-        }}
-      >
-        <Button
-          style={{ width: '10rem', margin: '0 auto' }}
-          variant="success"
-          onClick={this.handleShowModal}
-        >
-          Add New Recipe
-        </Button>
-        <AddModal
-          show={this.state.showModal}
-          onHide={this.handleCloseModal}
-          addRecipe={this.addRecipe}
-        />
-        <EditModal
-          show={this.state.showEditModal}
-          onHide={this.handleCloseEditModal}
-          editRecipe={this.state.editRecipe}
-          updateRecipe={this.updateRecipe}
-        />
-        {this.state.recipes.length > 0 ? (
-          <Carousel className="custom-carousel">
-            {this.state.recipes.map((recipe, idx) => (
-              <Carousel.Item key={idx} interval={1000}>
-                <img
-                  className="d-block w-100"
-                  src={recipe.imageUrl}
-                  alt="Recipe"
-                  style={{
-                    width: '400px',
-                    height: '400px',
-                    objectFit: 'cover',
-                  }}
-                />
-                <div className="info-div">
-                  <h3>{recipe.dishName}</h3>
-                  <Button
-                    variant="outline-success"
-                    onClick={() => this.handleShowFullRecipeModal(recipe)}
-                  >
-                    Click Here For Full Recipe!
-                  </Button>
-                  <FullRecipeModal
-                    show={this.state.showFullRecipeModal}
-                    onHide={this.handleCloseFullRecipeModal}
-                    currentRecipe={this.state.currentRecipe}
-                    updateRecipe={this.updateRecipe}
-                    handleUpdateRecipe={this.handleUpdateRecipe}
-                    deleteRecipe={this.deleteRecipe}
-                  />
-                </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        ) : null}
-      </div>
+      <>
+        {this.state.isLoading ? (
+          /* Loading screen/Div with className loader is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
+          <div className="loader">
+            <div className="tall-stack">
+              <div className="butter falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="pancake falling-element"></div>
+              <div className="plate">
+                <div className="plate-bottom"></div>
+                <div className="shadow"></div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection: 'column',
+              margin: '1rem 5%',
+            }}
+          >
+            <Button
+              style={{ width: '10rem', margin: '0 auto' }}
+              variant="success"
+              onClick={this.handleShowModal}
+            >
+              Add New Recipe
+            </Button>
+            <AddModal
+              show={this.state.showModal}
+              onHide={this.handleCloseModal}
+              addRecipe={this.addRecipe}
+              toggleLoading={this.toggleLoading}
+            />
+            <EditModal
+              show={this.state.showEditModal}
+              onHide={this.handleCloseEditModal}
+              editRecipe={this.state.editRecipe}
+              updateRecipe={this.updateRecipe}
+              toggleLoading={this.toggleLoading}
+            />
+            {this.state.recipes.length > 0 ? (
+              <Carousel className="custom-carousel">
+                {this.state.recipes.map((recipe, idx) => (
+                  <Carousel.Item key={idx} interval={1000}>
+                    <img
+                      className="d-block w-100"
+                      src={recipe.imageUrl}
+                      alt="Recipe"
+                      style={{
+                        width: '400px',
+                        height: '400px',
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <div className="info-div">
+                      <h3>{recipe.dishName}</h3>
+                      <Button
+                        variant="outline-success"
+                        onClick={() => this.handleShowFullRecipeModal(recipe)}
+                      >
+                        Click Here For Full Recipe!
+                      </Button>
+                      <FullRecipeModal
+                        show={this.state.showFullRecipeModal}
+                        onHide={this.handleCloseFullRecipeModal}
+                        currentRecipe={this.state.currentRecipe}
+                        updateRecipe={this.updateRecipe}
+                        handleUpdateRecipe={this.handleUpdateRecipe}
+                        deleteRecipe={this.deleteRecipe}
+                      />
+                    </div>
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            ) : null}
+          </div>
+        )}
+      </>
     );
   }
 }
