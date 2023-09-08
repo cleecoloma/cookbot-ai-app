@@ -14,7 +14,7 @@ class FullRecipeModal extends React.Component {
       <Modal
         show={this.props.show}
         onHide={this.props.onHide}
-        fullscreen={true}
+        fullscreen={false}
       >
         <Modal.Header closeButton>
           <Modal.Title>
