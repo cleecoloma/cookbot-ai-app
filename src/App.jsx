@@ -6,6 +6,7 @@ import Header from './components/Header';
 import RecipeContainer from './components/RecipeContainer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from '../src/components/About';
+import Profile from './components/Profile';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,17 @@ class App extends React.Component {
               }
             ></Route>
             <Route exact path="/About" element={<About />}></Route>
+            <Route
+              exact
+              path="/Profile"
+              element={
+                isAuthenticated ? (
+                  <Profile />
+                ) : (
+                  null
+                )
+              }
+            ></Route>
           </Routes>
         </Router>
       </>

@@ -24,6 +24,8 @@ class EditModal extends React.Component {
   handleSubmit = () => {
     console.log('Submitted recipe', this.state.ingredients);
     this.props.updateRecipe(this.props.editRecipe._id, this.state.ingredients);
+    this.props.toggleLoading();
+    this.props.onHide();
   };
 
   render() {
