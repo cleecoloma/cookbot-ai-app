@@ -6,7 +6,6 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 let AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN;
 let AUTH_CLIENT_ID = import.meta.env.VITE_AUTH_CLIENT_ID;
-let AUTH_REDIRECT_URI = import.meta.env.VITE_AUTH_REDIRECT_URI;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       domain={AUTH_DOMAIN}
       clientId={AUTH_CLIENT_ID}
       authorizationParams={{
-        redirect_uri: 'http://localhost:5173',
+        redirect_uri: window.location.origin,
       }}
     >
       <App />
