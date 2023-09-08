@@ -1,0 +1,37 @@
+
+.custom-navbar {
+  background-color: #23b399;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.brand-name {
+  font-size: xx-large;
+  color: white !important;
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+.custom-nav-link {
+  color: black !important;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.AuthButtons button {
+  background-color: #00ff04;
+  border: none;
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #ff897d;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.AuthButtons button:hover {
+  background-color: #6fff79;
+}

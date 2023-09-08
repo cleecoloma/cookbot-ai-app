@@ -1,0 +1,30 @@
+.recipe-content {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.recipe-image {
+  margin-right: 20px; 
+  flex: 0 0 400px;
+}
+
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1; 
+}
+
+
+.recipe-ingredients ul {
+  list-style-position: inside;
+  margin-bottom: 20px;
+}
+
+
+.recipe-steps ul {
+  list-style-position: inside;
+}
