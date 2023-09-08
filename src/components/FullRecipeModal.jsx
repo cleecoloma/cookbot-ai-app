@@ -11,53 +11,86 @@ class FullRecipeModal extends React.Component {
 
   render() {
     return (
-      <Modal 
-          show={this.props.show} 
-          onHide={this.props.onHide} 
-          fullscreen={true}
+      <Modal
+        show={this.props.show}
+        onHide={this.props.onHide}
+        fullscreen={true}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Full Recipe</Modal.Title>
+          <Modal.Title>
+            <h3 className="recipe-title">
+              {' '}
+              Full Recipe for{' '}
+              {this.props.currentRecipe
+                ? this.props.currentRecipe.dishName
+                : null}
+            </h3>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="recipe-content">
-            <h3 className="recipe-title">{this.props.editRecipe ? this.props.editRecipe.dishName : null}</h3>
             <img
               className="img-fluid recipe-image"
-              src={this.props.editRecipe ? this.props.editRecipe.imageUrl : null}
+              src={
+                this.props.currentRecipe
+                  ? this.props.currentRecipe.imageUrl
+                  : null
+              }
               alt="Recipe"
               style={{ width: '400px', height: '400px', objectFit: 'cover' }}
             />
-            <div className="recipe-steps">
-              <ul>
-                {this.props.editRecipe &&
-                  this.props.editRecipe.cookingSteps.map((step, recipIdx) => (
-                    <li key={recipIdx}>{step}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="recipe-ingredients">
-              <h4>
-                <strong>Ingredients:</strong>
-              </h4>
-              <ul>
-                {this.props.editRecipe &&
-                  this.props.editRecipe.ingredients.map((ingredient, ingrIdx) => (
-                    <li key={ingrIdx}>{ingredient}</li>
-                ))}
-              </ul>
+            <div className="recipe-details">
+              <div className="recipe-ingredients">
+                <h4>
+                  <strong>Ingredients:</strong>
+                </h4>
+                <ul>
+                  {this.props.currentRecipe &&
+                    this.props.currentRecipe.ingredients.map(
+                      (ingredient, ingrIdx) => (
+                        <li key={ingrIdx}>{ingredient}</li>
+                      )
+                    )}
+                </ul>
+              </div>
+              <div className="recipe-steps">
+                <h4>
+                  <strong>Cooking Steps</strong>
+                </h4>
+                <ul>
+                  {this.props.currentRecipe &&
+                    this.props.currentRecipe.cookingSteps.map(
+                      (step, recipIdx) => <li key={recipIdx}>{step}</li>
+                    )}
+                </ul>
+              </div>
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              this.props.handleUpdateRecipe(this.props.currentRecipe);
+            }}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="danger"
+            onClick={() => {
+              console.log(
+                'Deleting recipe with _id:',
+                this.props.currentRecipe._id
+              );
+              this.props.deleteRecipe(this.props.currentRecipe._id);
+              this.props.onHide();
+            }}
+          >
+            Delete Recipe
+          </Button>
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
-          </Button>
-          <Button variant="danger" onClick={() => {
-            console.log('Deleting recipe with _id:', this.props.editRecipe._id);
-              this.props.deleteRecipe(this.props.editRecipe._id);
-            }}>
-            Delete Recipe
           </Button>
         </Modal.Footer>
       </Modal>
