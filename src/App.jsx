@@ -28,7 +28,7 @@ class App extends React.Component {
                 isAuthenticated ? (
                   <RecipeContainer />
                 ) : (
-                  <h2> Please log in to view recipes </h2>
+                  <h2 style={{ display:"flex", justifyContent:"center" }}> Please log in to view recipes </h2>
                 )
               }
             ></Route>
