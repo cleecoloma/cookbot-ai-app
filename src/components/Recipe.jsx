@@ -123,12 +123,10 @@ class Recipe extends React.Component {
                       editRecipe={this.state.editRecipe}
                       deleteRecipe={this.deleteRecipe}
                   />
-                </div>
               </div>
             </Carousel.Item>
           ))}
         </Carousel> : null}
-
       </div>
     );
   }
