@@ -185,7 +185,7 @@ class Recipe extends React.Component {
             {this.state.recipes.length > 0 ? (
               <Carousel className="custom-carousel">
                 {this.state.recipes.map((recipe, idx) => (
-                  <Carousel.Item key={idx} interval={1000}>
+                  <Carousel.Item key={idx} interval={2500}>
                     <img
                       className="d-block w-100"
                       src={recipe.imageUrl}
@@ -199,7 +199,7 @@ class Recipe extends React.Component {
                     <div className="info-div">
                       <h3>{recipe.dishName}</h3>
                       <Button
-                        variant="outline-success"
+                        variant="success"
                         onClick={() => this.handleShowFullRecipeModal(recipe)}
                       >
                         Click Here For Full Recipe!

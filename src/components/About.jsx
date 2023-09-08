@@ -15,7 +15,7 @@ class About extends React.Component {
           <Card.Body>
             <Card.Title>Anthony Cunningham</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
+            Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
             <div className="d-flex justify-content-between">
@@ -90,8 +90,17 @@ class About extends React.Component {
           <Card.Body>
             <Card.Title>David Danilchik</Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            <ul>
+                <li>Software Developer || Abledbodied Seaman</li>
+                <li>
+                  Previous Experience: Maintained safety and security 
+                  onboard a vehicle and passanger ferry for Washington State.
+                </li>
+                <li>
+                  Strong passion for Tech, and decided that 
+                  Software Development would be the best way to get my foot in the door.
+                </li>
+              </ul>
             </Card.Text>
             <div className="d-flex justify-content-between">
               <Button variant="dark" className="github-button">
