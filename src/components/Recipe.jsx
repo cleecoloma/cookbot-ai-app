@@ -17,6 +17,7 @@ class Recipe extends React.Component {
       currentRecipe: null,
       token: null,
       editRecipe: null,
+      showEditModal: false,
     };
   }
 
@@ -37,34 +38,44 @@ class Recipe extends React.Component {
     this.setState({ showModal: false });
   };
 
+  handleShowEditModal = () => {
+    this.setState({ showEditModal: true });
+  };
+
+  handleCloseEditModal = () => {
+    this.setState({ showEditModal: false });
+  };
+
   handleShowFullRecipeModal = (recipe) => {
-    this.setState({ 
+    this.setState({
       showFullRecipeModal: true,
       currentRecipe: recipe,
-     });
+    });
   };
 
   handleCloseFullRecipeModal = () => {
-      this.setState({ showFullRecipeModal: false });
+    this.setState({ showFullRecipeModal: false });
   };
 
   //GET//
   fetchRecipes = async () => {
-    this.props.authRequest('GET', this.state.token, null, null)
-    .then(response => {
-        this.setState({recipes: response.data})
-        console.log(response.data)
-    });
-  }
+    this.props
+      .authRequest('GET', this.state.token, null, null)
+      .then((response) => {
+        this.setState({ recipes: response.data });
+        console.log(response.data);
+      });
+  };
 
   //POST//
   addRecipe = async (input) => {
-    let ingredientsObj = {foodItems: input}
-    this.props.authRequest('POST', this.state.token, null, ingredientsObj)
-    .then(response => {
-        this.setState({recipes: [...this.state.recipes, response.data]})
-        console.log(response.data)
-    });
+    let ingredientsObj = { foodItems: input };
+    this.props
+      .authRequest('POST', this.state.token, null, ingredientsObj)
+      .then((response) => {
+        this.setState({ recipes: [...this.state.recipes, response.data] });
+        console.log(response.data);
+      });
   };
 
   //PUT//
@@ -110,21 +121,32 @@ class Recipe extends React.Component {
 
   render() {
     return (
-        <div style={{ display:"flex", justifyContent:"center", flexDirection:"column", margin:"1rem 5%" }}>
-          <Button style={{ width:"10rem", margin:"0 auto"}} variant="success" onClick={this.handleShowModal}>
-            Add New Recipe
-          </Button>
-          <AddModal
-            show={this.state.showModal}
-            onHide={this.handleCloseModal}
-            addRecipe={this.addRecipe}
-          />
-          <EditModal
-            show={this.state.showEditModal}
-            onHide={this.handleCloseEditModal}
-            editRecipe={this.state.editRecipe}
-            updateRecipe={this.updateRecipe}
-          />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          margin: '1rem 5%',
+        }}
+      >
+        <Button
+          style={{ width: '10rem', margin: '0 auto' }}
+          variant="success"
+          onClick={this.handleShowModal}
+        >
+          Add New Recipe
+        </Button>
+        <AddModal
+          show={this.state.showModal}
+          onHide={this.handleCloseModal}
+          addRecipe={this.addRecipe}
+        />
+        <EditModal
+          show={this.state.showEditModal}
+          onHide={this.handleCloseEditModal}
+          editRecipe={this.state.editRecipe}
+          updateRecipe={this.updateRecipe}
+        />
         {this.state.recipes.length > 0 ? (
           <Carousel className="custom-carousel">
             {this.state.recipes.map((recipe, idx) => (
@@ -156,9 +178,10 @@ class Recipe extends React.Component {
                     deleteRecipe={this.deleteRecipe}
                   />
                 </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>) : null}
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        ) : null}
       </div>
     );
   }
