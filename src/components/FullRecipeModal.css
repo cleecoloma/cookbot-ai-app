@@ -18,6 +18,10 @@
   flex: 1; 
 }
 
+.recipe-duration ul {
+  list-style-position: inside;
+  margin-bottom: 20px;
+}
 
 .recipe-ingredients ul {
   list-style-position: inside;
