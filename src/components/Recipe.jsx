@@ -62,6 +62,7 @@ class Recipe extends React.Component {
 
   //GET//
   fetchRecipes = async () => {
+    // console.log(this.state.token)
     this.props
       .authRequest('GET', this.state.token, null, null)
       .then((response) => {

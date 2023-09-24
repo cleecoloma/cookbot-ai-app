@@ -4,7 +4,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
 import RecipeContainer from './components/RecipeContainer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import About from '../src/components/About';
+import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 
@@ -75,7 +75,7 @@ class App extends React.Component {
                 )
               }
             ></Route>
-            <Route exact path="/About" element={<About />}></Route>
+            <Route exact path="/Contact" element={<Contact />}></Route>
             <Route
               exact
               path="/Profile"
