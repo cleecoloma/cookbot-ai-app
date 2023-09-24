@@ -27,14 +27,20 @@ class App extends React.Component {
     };
   }
 
-  authRequest = async (method, token, id, data) => {
+  authRequest = async (method, token, id, data, queryParams) => {
+    const baseURL = SERVER_URL;
+    let url = id ? `/recipes/${id}` : '/recipes';
+    if (queryParams) {
+      url += '?' + new URLSearchParams(queryParams).toString();
+    }
+
     const config = {
       method,
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      baseURL: SERVER_URL,
-      url: id ? `/recipes/${id}` : '/recipes',
+      baseURL,
+      url,
       data: data ? data : null,
     };
     return await axios(config);

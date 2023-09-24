@@ -23,7 +23,7 @@ class AddModal extends React.Component {
 
   handleSubmit = () => {
     console.log('Submitted recipe', this.state.ingredients);
-    this.props.addRecipe(this.props.user, this.state.ingredients);
+    this.props.addRecipe(this.state.ingredients);
     this.props.toggleLoading();
     this.setState({
       ingredients: [''],
@@ -65,7 +65,7 @@ class AddModal extends React.Component {
           <Button
             variant="primary"
             onClick={() => {
-              this.handleSubmit(this.props.user.email);
+              this.handleSubmit();
               this.props.onHide();
             }}
           >

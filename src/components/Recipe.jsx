@@ -13,6 +13,7 @@ class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       recipes: [],
       showModal: false,
       showFullRecipeModal: false,
@@ -41,9 +42,11 @@ class Recipe extends React.Component {
     } else {
       const res = await this.props.auth0.getIdTokenClaims();
       const token = res.__raw;
-      this.setState({ token }, () => {
+      this.setState({ 
+        user: res,
+        token }, () => {
         this.fetchRecipes(res.email);
-        this.props.handleProfilePage(res);
+        // this.props.handleProfilePage(res);
       });
     }
   }
@@ -87,9 +90,9 @@ class Recipe extends React.Component {
   };
 
   //POST//
-  addRecipe = async (user, input) => {
+  addRecipe = async (input) => {
     let ingredientsObj = { 
-      user: user.email,
+      user: this.state.user.email,
       foodItems: input 
     };
     this.props
