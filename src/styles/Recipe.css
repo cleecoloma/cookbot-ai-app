@@ -1,8 +1,21 @@
+.addButton {
+  position: absolute;
+  width: 20rem;
+  height: 3rem;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .custom-carousel {
   width: 600px;
   height: 600px;
   margin: 0 auto;
   margin-top: 25px;
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .custom-carousel .d-block {

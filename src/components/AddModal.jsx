@@ -25,6 +25,9 @@ class AddModal extends React.Component {
     console.log('Submitted recipe', this.state.ingredients)
     this.props.addRecipe(this.state.ingredients);
     this.props.toggleLoading();
+    this.setState({
+      ingredients: ['']
+    })
     this.props.onHide();
   }
 

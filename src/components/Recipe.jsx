@@ -139,6 +139,27 @@ class Recipe extends React.Component {
   render() {
     return (
       <>
+        <Button
+          className="addButton"
+          style={{ width: '10rem', margin: '0 auto' }}
+          variant="success"
+          onClick={this.handleShowModal}
+        >
+          Add New Recipe
+        </Button>
+        <AddModal
+          show={this.state.showModal}
+          onHide={this.handleCloseModal}
+          addRecipe={this.addRecipe}
+          toggleLoading={this.toggleLoading}
+        />
+        <EditModal
+          show={this.state.showEditModal}
+          onHide={this.handleCloseEditModal}
+          editRecipe={this.state.editRecipe}
+          updateRecipe={this.updateRecipe}
+          toggleLoading={this.toggleLoading}
+        />
         {this.state.isLoading ? (
           /* Loading screen/Div with className loader is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
           <div className="loader">
@@ -165,26 +186,6 @@ class Recipe extends React.Component {
               margin: '1rem 5%',
             }}
           >
-            <Button
-              style={{ width: '10rem', margin: '0 auto' }}
-              variant="success"
-              onClick={this.handleShowModal}
-            >
-              Add New Recipe
-            </Button>
-            <AddModal
-              show={this.state.showModal}
-              onHide={this.handleCloseModal}
-              addRecipe={this.addRecipe}
-              toggleLoading={this.toggleLoading}
-            />
-            <EditModal
-              show={this.state.showEditModal}
-              onHide={this.handleCloseEditModal}
-              editRecipe={this.state.editRecipe}
-              updateRecipe={this.updateRecipe}
-              toggleLoading={this.toggleLoading}
-            />
             {this.state.recipes.length > 0 ? (
               <Carousel className="custom-carousel">
                 {this.state.recipes.map((recipe, idx) => (
