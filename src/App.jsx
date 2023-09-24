@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
+import DemoAccount from './components/DemoAccount';
 import axios from 'axios';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
@@ -37,7 +38,7 @@ class App extends React.Component {
       data: data ? data : null,
     };
     return await axios(config);
-  }
+  };
 
   toggleLoginModal = () => {
     this.setState({
@@ -59,6 +60,12 @@ class App extends React.Component {
     });
   };
 
+  handleProfilePage = (person) => {
+    this.setState({
+      user: person,
+    });
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth0;
     return (
@@ -77,25 +84,52 @@ class App extends React.Component {
             toggleLoginModal={this.toggleLoginModal}
           />
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                isAuthenticated ? (
-                  <Recipe authRequest={this.authRequest} />
-                ) : (
-                  <h2 style={{ display: 'flex', justifyContent: 'center' }}>
-                    {' '}
-                    Please log in to view recipes{' '}
-                  </h2>
-                )
-              }
-            ></Route>
+            {this.state.isDemoAccount ? (
+              <Route
+                exact
+                path="/"
+                element={
+                  <Recipe
+                    isDemoAccount={this.state.isDemoAccount}
+                    authRequest={this.authRequest}
+                    demoUser={this.state.demoUser}
+                  />
+                }
+              ></Route>
+            ) : (
+              <Route
+                exact
+                path="/"
+                element={
+                  isAuthenticated ? (
+                    <Recipe
+                      handleProfilePage={this.handleProfilePage}
+                      authRequest={this.authRequest}
+                    />
+                  ) : (
+                    <h2 style={{ display: 'flex', justifyContent: 'center' }}>
+                      {' '}
+                      Please log in to view recipes{' '}
+                    </h2>
+                  )
+                }
+              ></Route>
+            )}
+
             <Route exact path="/Contact" element={<Contact />}></Route>
             <Route
               exact
               path="/Profile"
               element={isAuthenticated ? <Profile /> : null}
+            ></Route>
+            <Route
+              exact
+              path="/DemoAccount"
+              element={
+                this.state.isDemoAccount ? (
+                  <DemoAccount user={this.state.user} />
+                ) : null
+              }
             ></Route>
           </Routes>
         </Router>

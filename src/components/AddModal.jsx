@@ -1,10 +1,10 @@
 import React from 'react';
-import {Modal, Button, Form, ListGroup} from 'react-bootstrap'
+import { Modal, Button, Form, ListGroup } from 'react-bootstrap';
 
 class AddModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       ingredients: [''],
     };
   }
@@ -16,24 +16,24 @@ class AddModal extends React.Component {
   };
 
   handleIngredientChange = (index, value) => {
-    const updatedIngredients = [... this.state.ingredients];
+    const updatedIngredients = [...this.state.ingredients];
     updatedIngredients[index] = value;
-    this.setState({ingredients :updatedIngredients});
+    this.setState({ ingredients: updatedIngredients });
   };
 
   handleSubmit = () => {
-    console.log('Submitted recipe', this.state.ingredients)
-    this.props.addRecipe(this.state.ingredients);
+    console.log('Submitted recipe', this.state.ingredients);
+    this.props.addRecipe(this.props.user, this.state.ingredients);
     this.props.toggleLoading();
     this.setState({
-      ingredients: ['']
-    })
+      ingredients: [''],
+    });
     this.props.onHide();
-  }
+  };
 
-    render() {
-      return (
-        <Modal show={this.props.show} onHide={this.props.onHide}>
+  render() {
+    return (
+      <Modal show={this.props.show} onHide={this.props.onHide}>
         <Modal.Header closeButton>
           <Modal.Title>New Recipe</Modal.Title>
         </Modal.Header>
@@ -62,10 +62,13 @@ class AddModal extends React.Component {
           <Button variant="secondary" onClick={this.props.onHide}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => {
-            this.handleSubmit();
-            this.props.onHide();
-            }}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              this.handleSubmit(this.props.user.email);
+              this.props.onHide();
+            }}
+          >
             Submit Recipe
           </Button>
         </Modal.Footer>
@@ -74,5 +77,4 @@ class AddModal extends React.Component {
   }
 }
 
-
-export default AddModal; 
+export default AddModal;
