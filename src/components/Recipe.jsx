@@ -1,5 +1,5 @@
 import React from 'react';
-import './Recipe.css';
+import '../styles/Recipe.css';
 import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
 import FullRecipeModal from './FullRecipeModal';

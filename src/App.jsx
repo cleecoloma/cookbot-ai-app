@@ -6,12 +6,20 @@ import RecipeContainer from './components/RecipeContainer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from '../src/components/About';
 import Profile from './components/Profile';
+import LoginModal from './components/LoginModal';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
+      loginModalPreview: false,
+      isDemoAccount: false,
+      demoUser: {
+        picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
+        nickname: 'Demo User',
+        email: 'demo_user@email.com',
+      },
     };
   }
   render() {
@@ -19,7 +27,18 @@ class App extends React.Component {
     return (
       <>
         <Router>
-          <Header />
+          <Header
+            user={this.state.user}
+            isDemoAccount={this.state.isDemoAccount}
+            handleDemoAccount={this.handleDemoAccount}
+            handleDemoLogout={this.handleDemoLogout}
+            toggleLoginModal={this.toggleLoginModal}
+          />
+          <LoginModal
+            handleDemoAccount={this.handleDemoAccount}
+            loginModalPreview={this.state.loginModalPreview}
+            toggleLoginModal={this.toggleLoginModal}
+          />
           <Routes>
             <Route
               exact
@@ -28,7 +47,10 @@ class App extends React.Component {
                 isAuthenticated ? (
                   <RecipeContainer />
                 ) : (
-                  <h2 style={{ display:"flex", justifyContent:"center" }}> Please log in to view recipes </h2>
+                  <h2 style={{ display: 'flex', justifyContent: 'center' }}>
+                    {' '}
+                    Please log in to view recipes{' '}
+                  </h2>
                 )
               }
             ></Route>
@@ -36,13 +58,7 @@ class App extends React.Component {
             <Route
               exact
               path="/Profile"
-              element={
-                isAuthenticated ? (
-                  <Profile />
-                ) : (
-                  null
-                )
-              }
+              element={isAuthenticated ? <Profile /> : null}
             ></Route>
           </Routes>
         </Router>
