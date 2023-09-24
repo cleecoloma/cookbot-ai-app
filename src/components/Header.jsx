@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button';
 import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends React.Component {
   render() {
@@ -18,6 +20,7 @@ class Header extends React.Component {
         <Navbar fixed="top" expand="lg" className="bg-body-tertiary header">
           <Container fluid>
             <Navbar.Brand href="/" id="brand-name">
+              <FontAwesomeIcon icon={faUtensils} id="brand-logo" />
               CookBot AI
             </Navbar.Brand>
             <Nav

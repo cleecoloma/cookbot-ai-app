@@ -22,6 +22,27 @@ class App extends React.Component {
       },
     };
   }
+
+  toggleLoginModal = () => {
+    this.setState({
+      loginModalPreview: !this.state.loginModalPreview,
+    });
+  };
+
+  handleDemoAccount = () => {
+    this.setState({
+      isDemoAccount: !this.state.isDemoAccount,
+      user: this.state.demoUser,
+    });
+  };
+
+  handleDemoLogout = () => {
+    this.setState({
+      isDemoAccount: !this.state.isDemoAccount,
+      user: '',
+    });
+  };
+
   render() {
     const { isAuthenticated } = this.props.auth0;
     return (
