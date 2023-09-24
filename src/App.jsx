@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
-import RecipeContainer from './components/RecipeContainer';
 import Recipe from './components/Recipe';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contact from './components/Contact';

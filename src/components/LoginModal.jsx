@@ -40,4 +40,6 @@ class LoginModal extends React.Component {
   }
 }
 
-export default withAuth0(LoginModal);
+const AuthLoginModal = withAuth0(LoginModal);
+
+export default AuthLoginModal;
