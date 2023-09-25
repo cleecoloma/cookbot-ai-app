@@ -26,7 +26,7 @@
 }
 
 .github-icon {
-  color: #000000
+  color: #000000;
 }
 
 .linkedin-icon {
@@ -47,4 +47,20 @@
   #contact-buttons {
     margin: 0 1rem;
   }
+}
+
+#team {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#team h4 {
+  margin-top: 2rem;
+}
+
+#team ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

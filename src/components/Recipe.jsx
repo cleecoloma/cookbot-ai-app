@@ -231,7 +231,7 @@ class Recipe extends React.Component {
                           ? recipe.imageUrl
                           : 'src/images/cookbot-ai-default-img.png'
                       }
-                      alt="Recipe"
+                      alt={recipe.name}
                       style={{
                         width: '400px',
                         height: '400px',
@@ -254,6 +254,7 @@ class Recipe extends React.Component {
                         updateRecipe={this.updateRecipe}
                         handleUpdateRecipe={this.handleUpdateRecipe}
                         deleteRecipe={this.deleteRecipe}
+                        handleTimestampCheck={this.handleTimestampCheck}
                       />
                     </div>
                   </Carousel.Item>

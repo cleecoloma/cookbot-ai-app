@@ -52,8 +52,8 @@ class Contact extends React.Component {
               </div>
             </Card.Body>
           </Card>
-          <div>
-            <h4>Collaborators</h4>
+          <div id="team">
+            <h4>Team Members</h4>
             <ul>
               <li>Anthony Cunningham</li>
               <li>David Danilchik</li>
