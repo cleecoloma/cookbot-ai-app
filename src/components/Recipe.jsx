@@ -154,7 +154,7 @@ class Recipe extends React.Component {
     const timestampDate = new Date(timestamp);
     const currentTime = new Date();
     const timeDifference = currentTime - timestampDate;
-    const twoHoursInMilliS = 7200000 // Two hours converted to milliseconds
+    const twoHoursInMilliS = 3600000 // One hour converted to milliseconds
     if (timeDifference > twoHoursInMilliS) {
       return false;
     } else {
@@ -222,7 +222,7 @@ class Recipe extends React.Component {
                       src={
                         this.handleTimestampCheck(recipe.timestamp)
                           ? recipe.imageUrl
-                          : 'src/images/cookbot-ai-default-img.png'
+                          : '/images/cookbot-ai-default-img.png'
                       }
                       alt={recipe.name}
                       style={{

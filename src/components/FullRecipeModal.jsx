@@ -34,9 +34,11 @@ class FullRecipeModal extends React.Component {
             <img
               className="img-fluid recipe-image"
               src={
-                this.props.handleTimestampCheck(this.props.currentRecipe.timestamp)
+                this.props.handleTimestampCheck(
+                  this.props.currentRecipe.timestamp
+                )
                   ? this.props.currentRecipe.imageUrl
-                  : 'src/images/cookbot-ai-default-img.png'
+                  : '/images/cookbot-ai-default-img.png'
               }
               alt={this.props.currentRecipe.name}
               style={{ width: '400px', height: '400px', objectFit: 'cover' }}

@@ -4,7 +4,7 @@
 
 **Added Features and Refactored Code**
 1. Demo Account - I added demo account to user doesn't have to input personal information to view the functionality of the web application.
-2. Recipe Image - AI generated images from OpenAI API only lasts for TWO hours. Instead of displaying no image after two hours, I added a feature to check the time stamp of the AI generated image. If two hours have elapsed from creation, web application will display a default image (spoon and fork image).
+2. Recipe Image - AI generated images from OpenAI API only lasts for ONE hour. Instead of displaying no image after one hour, I added a feature to check the time stamp of the AI generated image. If two hours have elapsed from creation, web application will display a default image (spoon and fork image).
 3. Styling - I updated the styling web application to be more responsive:
   * Added an extra modal for user to login either via demo code or Auth0.
   * When the recipe button is clicked, recipe is now displayed in a bigger modal.
