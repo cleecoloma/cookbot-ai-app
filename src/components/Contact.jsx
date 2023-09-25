@@ -20,16 +20,14 @@ class Contact extends React.Component {
                 Chester Lee Coloma
               </Card.Title>
               <br />
-              <Card.Text>• Software Developer && Mechanical Engineer</Card.Text>
-              <br />
               <Card.Text>
-                • Previous experience - planned and executed maintenance repairs
-                of US Navy nuclear submarines
-              </Card.Text>
-              <br />
-              <Card.Text>
-                • Passion for front-end web development with a focus on
-                responsive design and user interface (UI) development
+                {' '}
+                Full-stack software developer with a focus on responsive design
+                and user interface (UI) development. Former mechanical engineer
+                with an active secret clearance and 8+ years of professional
+                working experience in team oriented roles to deliver technically
+                sound solutions to maintain US Navy submarines while adhering to
+                rigid documentation.
               </Card.Text>
               <br />
               <div id="contact-buttons">

@@ -9,6 +9,7 @@ import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 import DemoAccount from './components/DemoAccount';
 import axios from 'axios';
+import './styles/App.css';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -113,10 +114,9 @@ class App extends React.Component {
                       authRequest={this.authRequest}
                     />
                   ) : (
-                    <h2 style={{ display: 'flex', justifyContent: 'center' }}>
-                      {' '}
-                      Please log in to view recipes{' '}
-                    </h2>
+                    <h4 id="login-text">
+                      Click 'Login' to access your options.
+                    </h4>
                   )
                 }
               ></Route>

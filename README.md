@@ -29,3 +29,5 @@
 
 ## Architecture
 > Tech stack: MongoDB, Express, React, Node, JavaScript, HTML, CSS, Axios, Bootstrap, Auth0
+
+
