@@ -222,7 +222,7 @@ class Recipe extends React.Component {
                       src={
                         this.handleTimestampCheck(recipe.timestamp)
                           ? recipe.imageUrl
-                          : '/images/cookbot-ai-default-img.png'
+                          : '/images/cookbot-ai-default-img.jpg'
                       }
                       alt={recipe.name}
                       style={{
