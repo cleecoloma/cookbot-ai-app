@@ -230,7 +230,7 @@ class Recipe extends React.Component {
                         height: '400px',
                         objectFit: 'cover',
                       }}
-                      title="AI generates the images, and their lifespan is limited to only two hours. Once this time elapses, the image will automatically revert to a default one."
+                      title="OpenAI generated the image, but response url has limited lifespan of only one hour, after which they will automatically revert to this default image."
                     />
                     <div className="info-div">
                       <h3>{recipe.dishName}</h3>
