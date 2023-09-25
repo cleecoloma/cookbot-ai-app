@@ -1,0 +1,14 @@
+#login-text {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+@media (max-width: 400px) {
+  #login-text {
+    font-size: 95%;
+  }
+}

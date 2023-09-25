@@ -1,5 +1,5 @@
 import React from 'react';
-import './FullRecipeModal.css';
+import '../styles/FullRecipeModal.css';
 import {Modal, Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 
@@ -10,14 +10,16 @@ class FullRecipeModal extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.currentRecipe ? (
       <Modal
         show={this.props.show}
         onHide={this.props.onHide}
-        fullscreen={false}
+        size="xl"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">
             <h3 className="recipe-title">
               {' '}
               Full Recipe for{' '}
@@ -32,12 +34,13 @@ class FullRecipeModal extends React.Component {
             <img
               className="img-fluid recipe-image"
               src={
-                this.props.currentRecipe
+                this.props.handleTimestampCheck(this.props.currentRecipe.timestamp)
                   ? this.props.currentRecipe.imageUrl
-                  : null
+                  : 'src/images/cookbot-ai-default-img.png'
               }
-              alt="Recipe"
+              alt={this.props.currentRecipe.name}
               style={{ width: '400px', height: '400px', objectFit: 'cover' }}
+              title="AI generates the images, and their lifespan is limited to only two hours. Once this time elapses, the image will automatically revert to a default one."
             />
             <div className="recipe-details">
               <div className="recipe-duration">
@@ -112,7 +115,7 @@ class FullRecipeModal extends React.Component {
           </Button>
         </Modal.Footer>
       </Modal>
-    );
+    ) : null;
   }
 }
 

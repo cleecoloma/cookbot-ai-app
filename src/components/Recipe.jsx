@@ -1,5 +1,5 @@
 import React from 'react';
-import './Recipe.css';
+import '../styles/Recipe.css';
 import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
 import FullRecipeModal from './FullRecipeModal';
@@ -7,10 +7,13 @@ import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
 import EditModal from './EditModal';
 
+const DEMO_TOKEN = import.meta.env.VITE_DEMO_TOKEN;
+
 class Recipe extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       recipes: [],
       showModal: false,
       showFullRecipeModal: false,
@@ -24,13 +27,28 @@ class Recipe extends React.Component {
 
   async componentDidMount() {
     // grab a token
-    const res = await this.props.auth0.getIdTokenClaims();
-    const token = res.__raw;
-    // this.toggleLoading();
-    this.setState({ token }, () => {
-      this.fetchRecipes();
-      // this.toggleLoading();
-    });
+    if (this.props.isDemoAccount) {
+      const token = DEMO_TOKEN;
+      const user = this.props.demoUser;
+      this.setState(
+        {
+          token,
+          user,
+        },
+        () => {
+          this.fetchRecipes(user.email);
+        }
+      );
+    } else {
+      const res = await this.props.auth0.getIdTokenClaims();
+      const token = res.__raw;
+      this.setState({ 
+        user: res,
+        token }, () => {
+        this.fetchRecipes(res.email);
+        // this.props.handleProfilePage(res);
+      });
+    }
   }
 
   handleShowModal = () => {
@@ -61,18 +79,21 @@ class Recipe extends React.Component {
   };
 
   //GET//
-  fetchRecipes = async () => {
+  fetchRecipes = async (email) => {
+    const queryParams = { user: email };
     this.props
-      .authRequest('GET', this.state.token, null, null)
+      .authRequest('GET', this.state.token, null, null, queryParams)
       .then((response) => {
         this.setState({ recipes: response.data });
-        console.log(response.data);
       });
   };
 
   //POST//
   addRecipe = async (input) => {
-    let ingredientsObj = { foodItems: input };
+    let ingredientsObj = { 
+      user: this.state.user.email,
+      foodItems: input 
+    };
     this.props
       .authRequest('POST', this.state.token, null, ingredientsObj)
       .then((response) => {
@@ -82,13 +103,11 @@ class Recipe extends React.Component {
             this.toggleLoading();
           }
         );
-        console.log(response.data);
       });
   };
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
-    console.log(id + updatedData);
     this.props
       .authRequest('PUT', this.state.token, id, updatedData)
       .then((response) => {
@@ -102,7 +121,6 @@ class Recipe extends React.Component {
           this.toggleLoading();
         });
         this.fetchRecipes();
-        console.log(response.data);
       });
   };
 
@@ -115,13 +133,10 @@ class Recipe extends React.Component {
           (recipe) => recipe._id !== id
         );
         this.setState({ recipes: filteredRecipes });
-        console.log(response.data);
       });
-    console.log(this.state.editRecipe);
   };
 
   handleUpdateRecipe = (recipe) => {
-    console.log(recipe);
     this.setState({
       editRecipe: recipe,
       showFullRecipeModal: false,
@@ -135,9 +150,43 @@ class Recipe extends React.Component {
     });
   };
 
+  handleTimestampCheck = (timestamp) => {
+    const timestampDate = new Date(timestamp);
+    const currentTime = new Date();
+    const timeDifference = currentTime - timestampDate;
+    const twoHoursInMilliS = 7200000 // Two hours converted to milliseconds
+    if (timeDifference > twoHoursInMilliS) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     return (
       <>
+        <Button
+          className="addButton"
+          style={{ width: '10rem', margin: '0 auto' }}
+          variant="success"
+          onClick={this.handleShowModal}
+        >
+          Add New Recipe
+        </Button>
+        <AddModal
+          user={this.state.user}
+          show={this.state.showModal}
+          onHide={this.handleCloseModal}
+          addRecipe={this.addRecipe}
+          toggleLoading={this.toggleLoading}
+        />
+        <EditModal
+          show={this.state.showEditModal}
+          onHide={this.handleCloseEditModal}
+          editRecipe={this.state.editRecipe}
+          updateRecipe={this.updateRecipe}
+          toggleLoading={this.toggleLoading}
+        />
         {this.state.isLoading ? (
           /* Loading screen/Div with className loader is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
           <div className="loader">
@@ -164,39 +213,24 @@ class Recipe extends React.Component {
               margin: '1rem 5%',
             }}
           >
-            <Button
-              style={{ width: '10rem', margin: '0 auto' }}
-              variant="success"
-              onClick={this.handleShowModal}
-            >
-              Add New Recipe
-            </Button>
-            <AddModal
-              show={this.state.showModal}
-              onHide={this.handleCloseModal}
-              addRecipe={this.addRecipe}
-              toggleLoading={this.toggleLoading}
-            />
-            <EditModal
-              show={this.state.showEditModal}
-              onHide={this.handleCloseEditModal}
-              editRecipe={this.state.editRecipe}
-              updateRecipe={this.updateRecipe}
-              toggleLoading={this.toggleLoading}
-            />
             {this.state.recipes.length > 0 ? (
               <Carousel className="custom-carousel">
                 {this.state.recipes.map((recipe, idx) => (
                   <Carousel.Item key={idx} interval={2500}>
                     <img
                       className="d-block w-100"
-                      src={recipe.imageUrl}
-                      alt="Recipe"
+                      src={
+                        this.handleTimestampCheck(recipe.timestamp)
+                          ? recipe.imageUrl
+                          : 'src/images/cookbot-ai-default-img.png'
+                      }
+                      alt={recipe.name}
                       style={{
                         width: '400px',
                         height: '400px',
                         objectFit: 'cover',
                       }}
+                      title="AI generates the images, and their lifespan is limited to only two hours. Once this time elapses, the image will automatically revert to a default one."
                     />
                     <div className="info-div">
                       <h3>{recipe.dishName}</h3>
@@ -213,6 +247,7 @@ class Recipe extends React.Component {
                         updateRecipe={this.updateRecipe}
                         handleUpdateRecipe={this.handleUpdateRecipe}
                         deleteRecipe={this.deleteRecipe}
+                        handleTimestampCheck={this.handleTimestampCheck}
                       />
                     </div>
                   </Carousel.Item>
