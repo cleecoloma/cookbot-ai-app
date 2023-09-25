@@ -14,10 +14,12 @@ class FullRecipeModal extends React.Component {
       <Modal
         show={this.props.show}
         onHide={this.props.onHide}
-        fullscreen={false}
+        size="xl"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">
             <h3 className="recipe-title">
               {' '}
               Full Recipe for{' '}

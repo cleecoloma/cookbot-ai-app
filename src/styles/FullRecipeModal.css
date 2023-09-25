@@ -27,14 +27,10 @@
 }
 
 .recipe-steps ul {
-/*   list-style-type: none; */
   margin-bottom: 20px;
 }
 
 .recipe-details {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* flex-direction: row; */
   margin-top: 20px;
   width: 100%;
 }

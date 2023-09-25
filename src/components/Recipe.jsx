@@ -157,6 +157,18 @@ class Recipe extends React.Component {
     });
   };
 
+  handleTimestampCheck = (timestamp) => {
+    const timestampDate = new Date(timestamp);
+    const currentTime = new Date();
+    const timeDifference = currentTime - timestampDate;
+    const twoHoursInMilliS = 7200000 // Two hours converted to milliseconds
+    if (timeDifference > twoHoursInMilliS) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   render() {
     return (
       <>
@@ -214,13 +226,18 @@ class Recipe extends React.Component {
                   <Carousel.Item key={idx} interval={2500}>
                     <img
                       className="d-block w-100"
-                      src={recipe.imageUrl}
+                      src={
+                        this.handleTimestampCheck(recipe.timestamp)
+                          ? recipe.imageUrl
+                          : 'src/images/cookbot-ai-default-img.png'
+                      }
                       alt="Recipe"
                       style={{
                         width: '400px',
                         height: '400px',
                         objectFit: 'cover',
                       }}
+                      title="AI generates the images, and their lifespan is limited to only two hours. Once this time elapses, the image will automatically revert to a default one."
                     />
                     <div className="info-div">
                       <h3>{recipe.dishName}</h3>

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Thasadith:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
 
 #brand-name {
   color: rgb(22, 22, 22);
-  font-family: 'Thasadith', sans-serif;
+  font-family: 'Nova Mono', monospace;
   padding: 6px 12px;
   font-weight: 700;
   border-radius: 6px;
