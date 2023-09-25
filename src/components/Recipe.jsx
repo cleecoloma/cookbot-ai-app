@@ -80,7 +80,6 @@ class Recipe extends React.Component {
 
   //GET//
   fetchRecipes = async (email) => {
-    // console.log(this.state.token)
     const queryParams = { user: email };
     this.props
       .authRequest('GET', this.state.token, null, null, queryParams)
@@ -104,13 +103,11 @@ class Recipe extends React.Component {
             this.toggleLoading();
           }
         );
-        console.log(response.data);
       });
   };
 
   //PUT//
   updateRecipe = async (id, updatedData) => {
-    console.log(id + updatedData);
     this.props
       .authRequest('PUT', this.state.token, id, updatedData)
       .then((response) => {
@@ -124,7 +121,6 @@ class Recipe extends React.Component {
           this.toggleLoading();
         });
         this.fetchRecipes();
-        console.log(response.data);
       });
   };
 
@@ -137,13 +133,10 @@ class Recipe extends React.Component {
           (recipe) => recipe._id !== id
         );
         this.setState({ recipes: filteredRecipes });
-        console.log(response.data);
       });
-    console.log(this.state.editRecipe);
   };
 
   handleUpdateRecipe = (recipe) => {
-    console.log(recipe);
     this.setState({
       editRecipe: recipe,
       showFullRecipeModal: false,
