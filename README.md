@@ -1,6 +1,6 @@
-# Cook Bot App
-
-CookBot is a full-stack application utilizing OpenAI's API in order to build users recipe cards that they can save to their profiles based on their input. Ideally, the user will provide a list of ingredients of items they already have, and the OpenAI will query the request and return an object that the user can view based on the parameters set in the display modal.
+# Cook Bot APP
+[Deployed Link]()
+## CookBot is a full-stack application utilizing OpenAI's API in order to build users recipe cards that they can save to their profiles based on their input. Ideally, the user will provide a list of ingredients of items they already have, and the OpenAI will query the request and return an object that the user can view based on the parameters set in the display modal.
 
 **Added Features and Refactored Code**
 1. Demo Account - I added demo account to user doesn't have to input personal information to view the functionality of the web application.
@@ -13,7 +13,7 @@ CookBot is a full-stack application utilizing OpenAI's API in order to build use
 
 
 > **NOTE:** This is a forked repository of my team project that was developed with 2 other teammates. See below for old version of code/repository.
-* [Old CookBotAI App](https://github.com/CookBotAI/cook-bot-app)
+* [Old CookBotAI APP](https://github.com/CookBotAI/cook-bot-app)
 
 ## Getting Started
 
@@ -63,8 +63,9 @@ npm run build (production mode)
 ### See link below for Database Schema Diagram
 [Invision Whiteboard](https://codepeoples.invisionapp.com/freehand/Code-301-Project-WSprYFpy9?inviteToken=022587-dfbf0397de430aaecb044f49649ae883)
 
-## Stack
-> MongoDB, Express, React, Node, OpenAI API, JavaScript, HTML, CSS, Axios, Bootstrap, Auth0, Trello
+## Language and Tools
+> Language: JavaScript, HTML5, CSS3
+> Tools: VScode, Git, GitHub, MongoDB, Express, React, Node, OpenAI API, Axios, Bootstrap, Auth0, Trello
 
 ## Team members
 1. Anthony Cunningham
