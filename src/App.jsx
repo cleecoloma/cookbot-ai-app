@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
@@ -13,22 +13,18 @@ import './styles/App.css';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-      loginModalPreview: false,
-      isDemoAccount: false,
-      demoUser: {
-        picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
-        nickname: 'Demo User',
-        email: 'demo_user@email.com',
-      },
-    };
-  }
+function App(props) {
+  const [user, setUser] = useState(null);
+  const [loginModalPreview, setLoginModalPreview] = useState(false);
+  const [isDemoAccount, setIsDemoAccount] = useState(false);
 
-  authRequest = async (method, token, id, data, queryParams) => {
+  const demoUser = {
+    picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
+    nickname: 'Demo User',
+    email: 'demo_user@email.com',
+  };
+
+  const authRequest = async (method, token, id, data, queryParams) => {
     const baseURL = SERVER_URL;
     let url = id ? `/recipes/${id}` : '/recipes';
     if (queryParams) {
@@ -47,101 +43,86 @@ class App extends React.Component {
     return await axios(config);
   };
 
-  toggleLoginModal = () => {
-    this.setState({
-      loginModalPreview: !this.state.loginModalPreview,
-    });
+  const toggleLoginModal = () => {
+    setLoginModalPreview(!loginModalPreview);
   };
 
-  handleDemoAccount = () => {
-    this.setState({
-      isDemoAccount: !this.state.isDemoAccount,
-      user: this.state.demoUser,
-    });
+  const handleDemoAccount = () => {
+    setIsDemoAccount(!isDemoAccount);
+    setUser(isDemoAccount ? '' : demoUser);
   };
 
-  handleDemoLogout = () => {
-    this.setState({
-      isDemoAccount: !this.state.isDemoAccount,
-      user: '',
-    });
+  const handleDemoLogout = () => {
+    setIsDemoAccount(!isDemoAccount);
+    setUser('');
   };
 
-  handleProfilePage = (person) => {
-    this.setState({
-      user: person,
-    });
+  const handleProfilePage = (person) => {
+    setUser(person);
   };
 
-  render() {
-    const { isAuthenticated } = this.props.auth0;
-    return (
-      <>
-        <Router>
-          <Header
-            user={this.state.user}
-            isDemoAccount={this.state.isDemoAccount}
-            handleDemoAccount={this.handleDemoAccount}
-            handleDemoLogout={this.handleDemoLogout}
-            toggleLoginModal={this.toggleLoginModal}
-          />
-          <LoginModal
-            handleDemoAccount={this.handleDemoAccount}
-            loginModalPreview={this.state.loginModalPreview}
-            toggleLoginModal={this.toggleLoginModal}
-          />
-          <Routes>
-            {this.state.isDemoAccount ? (
-              <Route
-                exact
-                path="/"
-                element={
-                  <Recipe
-                    isDemoAccount={this.state.isDemoAccount}
-                    authRequest={this.authRequest}
-                    demoUser={this.state.demoUser}
-                  />
-                }
-              ></Route>
-            ) : (
-              <Route
-                exact
-                path="/"
-                element={
-                  isAuthenticated ? (
-                    <Recipe
-                      handleProfilePage={this.handleProfilePage}
-                      authRequest={this.authRequest}
-                    />
-                  ) : (
-                    <h4 id="login-text">
-                      Click 'Login' to access your options.
-                    </h4>
-                  )
-                }
-              ></Route>
-            )}
+  const { isAuthenticated } = props.auth0;
 
-            <Route exact path="/Contact" element={<Contact />}></Route>
+  return (
+    <>
+      <Router>
+        <Header
+          user={user}
+          isDemoAccount={isDemoAccount}
+          handleDemoAccount={handleDemoAccount}
+          handleDemoLogout={handleDemoLogout}
+          toggleLoginModal={toggleLoginModal}
+        />
+        <LoginModal
+          handleDemoAccount={handleDemoAccount}
+          loginModalPreview={loginModalPreview}
+          toggleLoginModal={toggleLoginModal}
+        />
+        <Routes>
+          {isDemoAccount ? (
             <Route
               exact
-              path="/Profile"
-              element={isAuthenticated ? <Profile /> : null}
-            ></Route>
-            <Route
-              exact
-              path="/DemoAccount"
+              path='/'
               element={
-                this.state.isDemoAccount ? (
-                  <DemoAccount user={this.state.user} />
-                ) : null
+                <Recipe
+                  isDemoAccount={isDemoAccount}
+                  authRequest={authRequest}
+                  demoUser={demoUser}
+                />
               }
             ></Route>
-          </Routes>
-        </Router>
-      </>
-    );
-  }
+          ) : (
+            <Route
+              exact
+              path='/'
+              element={
+                isAuthenticated ? (
+                  <Recipe
+                    handleProfilePage={handleProfilePage}
+                    authRequest={authRequest}
+                  />
+                ) : (
+                  <h4 id='login-text'>Click 'Login' to access your options.</h4>
+                )
+              }
+            ></Route>
+          )}
+
+          <Route exact path='/Contact' element={<Contact />}></Route>
+          <Route
+            exact
+            path='/Profile'
+            element={isAuthenticated ? <Profile /> : null}
+          ></Route>
+          <Route
+            exact
+            path='/DemoAccount'
+            element={isDemoAccount ? <DemoAccount user={user} /> : null}
+          ></Route>
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
 const namedComp = withAuth0(App);
