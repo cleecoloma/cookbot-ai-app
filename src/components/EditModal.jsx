@@ -1,72 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form, ListGroup } from 'react-bootstrap';
 
-class EditModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ingredients: [''],
-    };
-  }
+function EditModal(props) {
+  const [ingredients, setIngredients] = useState(['']);
 
-  handleAddIngredient = () => {
-    this.setState((prevState) => ({
-      ingredients: [...prevState.ingredients, ''],
-    }));
+  const handleAddIngredient = () => {
+    setIngredients([...ingredients, '']);
   };
 
-  handleIngredientChange = (index, value) => {
-    const updatedIngredients = [...this.state.ingredients];
+  const handleIngredientChange = (index, value) => {
+    const updatedIngredients = [...ingredients];
     updatedIngredients[index] = value;
-    this.setState({ ingredients: updatedIngredients });
+    setIngredients(updatedIngredients);
   };
 
-  handleSubmit = () => {
-    console.log('Submitted recipe', this.state.ingredients);
-    this.props.updateRecipe(this.props.editRecipe._id, this.state.ingredients);
-    this.props.toggleLoading();
-    this.props.onHide();
+  const handleSubmit = () => {
+    console.log('Submitted recipe', ingredients);
+    props.updateRecipe(props.editRecipe._id, ingredients);
+    props.toggleLoading();
+    props.onHide();
   };
 
-  render() {
-    return (
-      <Modal show={this.props.show} onHide={this.props.onHide}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Recipe</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <ListGroup>
-              {this.props.editRecipe
-                ? this.props.editRecipe.ingredients.map((ingredient, index) => (
-                    <ListGroup.Item key={index}>
-                      <Form.Control
-                        type="text"
-                        placeholder={ingredient}
-                        onChange={(e) =>
-                          this.handleIngredientChange(index, e.target.value)
-                        }
-                      />
-                    </ListGroup.Item>
-                  ))
-                : null}
-            </ListGroup>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={this.props.onHide}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => {
-            this.handleSubmit();
-            this.props.onHide();
-            }}>
-            Submit Recipe
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
+  return (
+    <Modal show={props.show} onHide={props.onHide}>
+      <Modal.Header closeButton>
+        <Modal.Title>Edit Recipe</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <ListGroup>
+            {props.editRecipe
+              ? props.editRecipe.ingredients.map((ingredient, index) => (
+                  <ListGroup.Item key={index}>
+                    <Form.Control
+                      type='text'
+                      placeholder={ingredient}
+                      onChange={(e) =>
+                        handleIngredientChange(index, e.target.value)
+                      }
+                    />
+                  </ListGroup.Item>
+                ))
+              : null}
+          </ListGroup>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant='secondary' onClick={props.onHide}>
+          Close
+        </Button>
+        <Button
+          variant='primary'
+          onClick={() => {
+            handleSubmit();
+            props.onHide();
+          }}
+        >
+          Submit Recipe
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
 
 export default EditModal;
