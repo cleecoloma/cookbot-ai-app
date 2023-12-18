@@ -24,10 +24,10 @@ function AddModal(props) {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>
+      <Modal.Header id='add-modal-header' closeButton>
         <Modal.Title>New Recipe</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body id='add-modal-header'>
         <Form>
           <ListGroup>
             {ingredients.map((ingredient, index) => (
@@ -43,12 +43,16 @@ function AddModal(props) {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <Button id='add-ingredient-button' variant='primary' onClick={handleAddIngredient}>
+          <Button
+            id='add-ingredient-button'
+            variant='primary'
+            onClick={handleAddIngredient}
+          >
             Add Ingredient
           </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer id='add-modal-footer'>
         <Button variant='secondary' onClick={props.onHide}>
           Close
         </Button>
