@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, ListGroup } from 'react-bootstrap';
-import '../styles/AddModal.css'
+import '../styles/AddModal.css';
 
 function AddModal(props) {
   const [ingredients, setIngredients] = useState(['']);
@@ -29,20 +29,17 @@ function AddModal(props) {
       </Modal.Header>
       <Modal.Body id='add-modal-header'>
         <Form>
-          <ListGroup>
-            {ingredients.map((ingredient, index) => (
-              <ListGroup.Item key={index}>
-                <Form.Control
-                  type='text'
-                  placeholder='Enter ingredient'
-                  value={ingredient}
-                  onChange={(e) =>
-                    handleIngredientChange(index, e.target.value)
-                  }
-                />
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
+          {ingredients.map((ingredient, index) => (
+            <ListGroup.Item key={index}>
+              <Form.Control
+                type='text'
+                placeholder='Enter ingredient'
+                value={ingredient}
+                onChange={(e) => handleIngredientChange(index, e.target.value)}
+              />
+            </ListGroup.Item>
+          ))}
+
           <Button
             id='add-ingredient-button'
             variant='primary'
