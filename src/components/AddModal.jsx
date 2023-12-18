@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, ListGroup } from 'react-bootstrap';
+import '../styles/AddModal.css'
 
 function AddModal(props) {
   const [ingredients, setIngredients] = useState(['']);
@@ -42,7 +43,7 @@ function AddModal(props) {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <Button variant='primary' onClick={handleAddIngredient}>
+          <Button id='add-ingredient-button' variant='primary' onClick={handleAddIngredient}>
             Add Ingredient
           </Button>
         </Form>
