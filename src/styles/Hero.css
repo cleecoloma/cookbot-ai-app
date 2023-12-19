@@ -3,6 +3,7 @@
 #hero-container {
   padding: 3.5rem;
   display: flex;
+  height: 100vh;
 }
 
 #hero-left {
@@ -22,12 +23,15 @@
 }
 
 #hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50%;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 #hero-image {
-  width: 80%;
+  width: 100%;
   object-fit: fill;
   border-radius: 3rem;
 }
