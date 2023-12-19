@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;500;700;800&display=swap');
 
 #hero-container {
-  padding: 3.5rem;
+  margin-top: 80px;
   display: flex;
-  height: 100vh;
+  min-height: calc(100vh - 80px);
 }
 
 #hero-left {
   width: 50%;
-  padding: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +21,7 @@
   font-size: 350%;
   text-shadow: 2px 3px 0px #ffffff;
   text-align: center;
+  padding: 0 5rem;
 }
 
 #hero-right {
@@ -40,4 +40,8 @@
 
 #try-it-button {
   margin-left: 1rem;
+}
+
+#hero-buttons {
+  margin-top: 2rem;
 }

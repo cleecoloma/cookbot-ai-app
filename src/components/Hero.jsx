@@ -9,7 +9,7 @@ function Hero() {
     <div id='hero-container'>
       <div id='hero-left'>
         <h2>Infinite recipes, one click away</h2>
-        <div>
+        <div id='hero-buttons'>
           <Button variant='success'>See some recipes</Button>
           <Button variant='success' id='try-it-button'>Try it</Button>
         </div>

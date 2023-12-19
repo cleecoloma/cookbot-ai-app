@@ -24,7 +24,8 @@
 }
 
 .header {
-  padding: 8px 2rem;
+  padding: 0 2rem;
+  height: 5rem;
 }
 
 .header-button {
