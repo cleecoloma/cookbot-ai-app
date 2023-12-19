@@ -18,15 +18,25 @@ function RecipeBook() {
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label='lab API tabs example'>
+          <TabList
+            onChange={handleChange}
+            aria-label='lab API tabs example'
+            centered
+          >
             <Tab label='Item One' value='1' />
             <Tab label='Item Two' value='2' />
             <Tab label='Item Three' value='3' />
           </TabList>
         </Box>
-        <TabPanel value='1'>Item One</TabPanel>
-        <TabPanel value='2'>Item Two</TabPanel>
-        <TabPanel value='3'>Item Three</TabPanel>
+        <TabPanel value='1'>
+          Item One <img src='https://placehold.co/600x400' />
+        </TabPanel>
+        <TabPanel value='2'>
+          Item Two <img src='https://placehold.co/600x400' />
+        </TabPanel>
+        <TabPanel value='3'>
+          Item Three <img src='https://placehold.co/600x400' />
+        </TabPanel>
       </TabContext>
     </Box>
   );
