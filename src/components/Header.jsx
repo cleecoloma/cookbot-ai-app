@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
+import Login from '../auth/Login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header(props) {
@@ -78,16 +79,20 @@ function Header(props) {
             </NavDropdown>
           )}
           {!isAuthenticated && !props.isDemoAccount ? (
-            <>
+            <div>
               <Button
-                id='demo-button'
-                variant='primary'
-                onClick={() => props.toggleLoginModal()}
+              id='demo-button'
+                variant='success'
+                onClick={() => {
+                  props.handleDemoAccount();
+                }}
               >
-                Login
+                Create a recipe
               </Button>
-            </>
-          ) : null}
+              <Login />
+            </div>
+          ) :
+          null}
         </Container>
       </Navbar>
     </>

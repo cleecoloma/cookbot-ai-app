@@ -49,6 +49,10 @@
   align-items: center;
 }
 
+#demo-button {
+  margin-right: 1rem;
+}
+
 @media (max-width: 1000px) {
   .header {
     padding: 8px 2rem;

@@ -18,8 +18,9 @@
 #hero-left h2 {
   font-family: 'Gluten', cursive;
   color: #3e6a76;
-  font-size: 300%;
-  text-shadow: 2px 4px 4px #ffffff;
+  font-weight: 300;
+  font-size: 350%;
+  text-shadow: 2px 3px 0px #ffffff;
   text-align: center;
 }
 
