@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 import DemoAccount from './components/DemoAccount';
+import Hero from './components/Hero';
 import axios from 'axios';
 import './styles/App.css';
 
@@ -102,7 +103,7 @@ function App(props) {
                     authRequest={authRequest}
                   />
                 ) : (
-                  <h4 id='login-text'>Click 'Login' to access your options.</h4>
+                  <Hero />
                 )
               }
             ></Route>

@@ -1,0 +1,19 @@
+#hero-container {
+  padding: 3.5rem;
+  display: flex;
+}
+
+#hero-left {
+  width: 50%;
+}
+
+#hero-right {
+  width: 50%;
+  padding: 2rem;
+}
+
+#hero-image {
+  width: 80%;
+  object-fit: fill;
+  border-radius: 3rem;
+}
