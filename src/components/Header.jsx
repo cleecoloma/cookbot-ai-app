@@ -82,14 +82,13 @@ function Header(props) {
             <div>
               <Button
               id='demo-button'
-                variant='success'
                 onClick={() => {
                   props.handleDemoAccount();
                 }}
               >
                 Create a recipe
               </Button>
-              <Login />
+              <Login id='login-style-button' />
             </div>
           ) :
           null}

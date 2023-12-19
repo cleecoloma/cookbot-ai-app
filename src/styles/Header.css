@@ -52,6 +52,12 @@
 
 #demo-button {
   margin-right: 1rem;
+  border: 2px solid #438951;
+  background-color: #51945f;
+}
+
+#demo-button:hover {
+  background-color: #438951;
 }
 
 @media (max-width: 1000px) {
