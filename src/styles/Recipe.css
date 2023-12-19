@@ -55,13 +55,9 @@
 }
 
 /* Styling for loading screen - CSS is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
-body {
-  background: lightgray;
-  overflow: hidden;
-}
+
 body {
   background: #E4D0D0;
-  overflow: hidden;
 }
 .loader {
   position: absolute;
