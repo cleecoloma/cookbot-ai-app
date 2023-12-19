@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 #hero-container {
   padding: 3.5rem;
   display: flex;
@@ -5,6 +7,16 @@
 
 #hero-left {
   width: 50%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero-left h2 {
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  font-size: 300%;
 }
 
 #hero-right {
