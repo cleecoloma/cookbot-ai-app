@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #hero-left h2 {
@@ -29,4 +30,8 @@
   width: 80%;
   object-fit: fill;
   border-radius: 3rem;
+}
+
+#try-it-button {
+  margin-left: 1rem;
 }
