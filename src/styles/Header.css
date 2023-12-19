@@ -1,11 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
 
 #brand-name {
-  color: rgb(22, 22, 22);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3e6a76;
   font-family: 'Nova Mono', monospace;
   padding: 6px 12px;
-  font-weight: 700;
+  font-weight: 900;
   border-radius: 6px;
+}
+
+#brand-name h2 {
+  margin: auto 0.5rem;
+}
+
+#brand-image {
+  width: 50px;
 }
 
 #brand-logo {

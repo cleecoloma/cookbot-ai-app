@@ -10,7 +10,6 @@ import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 function Header(props) {
   const { isAuthenticated } = props.auth0;
@@ -20,8 +19,8 @@ function Header(props) {
       <Navbar fixed='top' expand='lg' className='bg-body-tertiary header'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/' id='brand-name'>
-            <FontAwesomeIcon icon={faUtensils} id='brand-logo' />
-            CookBot AI
+            <img id='brand-image' src='../../images/cookbot-logo.png' />
+            <h2>CookBot AI</h2>
           </Navbar.Brand>
           <Nav
             className='me-auto my-2 my-lg-0'
