@@ -13,6 +13,7 @@ import axios from 'axios';
 import './styles/App.css';
 import RecipeBook from './components/RecipeBook';
 import HowTo from './components/HowTo';
+import Footer from './components/Footer';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -109,6 +110,7 @@ function App(props) {
                     <Hero />
                     <RecipeBook />
                     <HowTo />
+                    <Footer />
                   </>
                 )
               }
