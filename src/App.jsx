@@ -68,7 +68,7 @@ function App(props) {
   const { isAuthenticated } = props.auth0;
 
   return (
-    <>
+    <div className='content'>
       <Router>
         <Header
           user={user}
@@ -130,7 +130,7 @@ function App(props) {
           ></Route>
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
 

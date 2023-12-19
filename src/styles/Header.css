@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;500;700;800&display=swap');
 
 #brand-name {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #3e6a76;
-  font-family: 'Nova Mono', monospace;
+  font-family: 'Gluten', cursive;
   padding: 6px 12px;
   font-weight: 900;
   border-radius: 6px;
@@ -24,7 +24,7 @@
 }
 
 .header {
-  padding: 8px 10rem;
+  padding: 8px 2rem;
 }
 
 .header-button {

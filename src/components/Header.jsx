@@ -22,11 +22,6 @@ function Header(props) {
             <img id='brand-image' src='../../images/cookbot-logo.png' />
             <h2>CookBot AI</h2>
           </Navbar.Brand>
-          <Nav
-            className='me-auto my-2 my-lg-0'
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          ></Nav>
           {props.isDemoAccount && (
             <NavDropdown
               title={<PersonCircle size={30} />}

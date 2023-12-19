@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;500;700;800&display=swap');
 
 #hero-container {
   padding: 3.5rem;
@@ -16,10 +16,11 @@
 }
 
 #hero-left h2 {
-  font-family: 'Indie Flower', cursive;
-  color: white;
+  font-family: 'Gluten', cursive;
+  color: #3e6a76;
   font-size: 300%;
-  text-shadow: 2px 2px 4px #d7d7d7;
+  text-shadow: 2px 4px 4px #ffffff;
+  text-align: center;
 }
 
 #hero-right {
