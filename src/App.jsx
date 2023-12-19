@@ -11,6 +11,7 @@ import DemoAccount from './components/DemoAccount';
 import Hero from './components/Hero';
 import axios from 'axios';
 import './styles/App.css';
+import RecipeBook from './components/RecipeBook';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -103,7 +104,10 @@ function App(props) {
                     authRequest={authRequest}
                   />
                 ) : (
-                  <Hero />
+                  <>
+                    <Hero />
+                    <RecipeBook />
+                  </>
                 )
               }
             ></Route>
