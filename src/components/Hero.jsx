@@ -10,8 +10,12 @@ function Hero() {
       <div id='hero-left'>
         <h2>Infinite recipes, one click away</h2>
         <div id='hero-buttons'>
-          <Button variant='success'>See some recipes</Button>
-          <Button variant='success' id='try-it-button'>Try it</Button>
+          <Button variant='secondary' id='see-recipes-button' size='lg'>
+            See some recipes
+          </Button>
+          <Button variant='success' id='try-it-button' size='lg'>
+            Try it!
+          </Button>
         </div>
       </div>
       <div id='hero-right'>
