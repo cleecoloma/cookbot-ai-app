@@ -8,6 +8,7 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import recipes from '../data/recipes.json';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import '../styles/RecipeBook.css';
 
 function RecipeBook() {
