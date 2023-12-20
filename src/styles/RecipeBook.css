@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap');
 
 #recipe-book {
-  padding: 2rem;
+  padding-top: 1rem;
   background-color: white;
 }
 
@@ -18,6 +18,8 @@
   padding: 6px 10px;
   border-radius: 1rem;
   font-size: 350%;
+  color: #717270;
+  border: 2px solid #c3c5c1;
 }
 
 .recipe-icons {
@@ -25,7 +27,17 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: 30%;
+  width: 50%;
+  margin-top: 1rem;
+}
+
+.recipe-icons-divs {
+  text-align: center;
+}
+
+.recipe-icons-divs p {
+  margin-top: 0.5rem;
+  color: #717270;
 }
 
 .recipe-container {
@@ -35,7 +47,16 @@
   border-radius: 1rem;
 }
 
+.recipe-image {
+  width: 40%;
+}
+
 .recipe-text {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  width: 60%;
+  margin-left: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
 }

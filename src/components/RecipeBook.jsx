@@ -27,26 +27,26 @@ function RecipeBook() {
               aria-label='lab API tabs example'
               centered
             >
-              <Tab label='Ribeye and Egg Stir Fry' value='1' />
-              <Tab label='Item Two' value='2' />
-              <Tab label='Item Three' value='3' />
+              <Tab label='Recipe One' value='1' />
+              <Tab label='Recipe Two' value='2' />
+              <Tab label='Recipe Three' value='3' />
             </TabList>
           </Box>
           <TabPanel value='1'>
             <div className='recipe-title'>
               <h3>Ribeye and Egg Stir Fry</h3>
               <div className='recipe-icons'>
-                <div>
+                <div className='recipe-icons-divs'>
                   <HourglassBottomIcon />
-                  <p>Prep</p>
+                  <p>PREP: 5 min</p>
                 </div>
-                <div>
+                <div className='recipe-icons-divs'>
                   <AccessTimeIcon />
-                  <p>Cook</p>
+                  <p>COOK: 30 min</p>
                 </div>
-                <div>
+                <div className='recipe-icons-divs'>
                   <RestaurantIcon />
-                  <p>Serving</p>
+                  <p>SERVING: 2</p>
                 </div>
               </div>
             </div>
