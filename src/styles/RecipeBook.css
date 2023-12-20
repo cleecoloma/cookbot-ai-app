@@ -42,27 +42,41 @@
 
 .recipe-container {
   display: flex;
-  background-color: #f7f7f7;
-  padding: 1rem;
-  border-radius: 1rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(230, 228, 226);
+  border-radius: 2rem;
+  min-height: 650px;
 }
 
 .recipe-image {
-  width: 40%;
+  width: 60%;
+  height: 500px;
   object-fit: contain;
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  right: 60%;
+  z-index: 1;
+}
+
+.recipe-image:hover {
+  transform: translateX(25%);
 }
 
 .recipe-text {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  background-color: white;
-  width: 60%;
+  width: 100%;
   margin-left: 0.5rem;
-  padding: 1rem;
   border-radius: 1rem;
+  padding: 2rem 0 2rem 40%;
 }
 
-.ingredients p:first-child, .directions p:first-child {
+.ingredients p:first-child,
+.directions p:first-child {
   font-family: 'Gemunu Libre', sans-serif;
   font-size: 130%;
   font-weight: 400;

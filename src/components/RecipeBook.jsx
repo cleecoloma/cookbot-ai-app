@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -16,6 +16,12 @@ function RecipeBook() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [recipeData, setRecipeData] = useState([]);
+
+  useEffect(() => {
+    setRecipeData(recipes);
+  }, []);
 
   return (
     <div id='recipe-book'>
@@ -48,7 +54,12 @@ function RecipeBook() {
                 </div>
               </div>
               <div className='recipe-container'>
-                <img className='recipe-image' src={recipe.image} />
+                <img
+                  className='recipe-image'
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
+
                 <div className='recipe-text'>
                   <div className='ingredients'>
                     <p>INGREDIENTS</p>
