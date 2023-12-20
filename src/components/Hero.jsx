@@ -8,7 +8,7 @@ function Hero() {
   return (
     <div id='hero-container'>
       <div id='hero-left'>
-        <h2>Infinite recipes, one click away</h2>
+        <h2>Infinite recipes,<br /> one click away</h2>
         <div id='hero-buttons'>
           <Button variant='secondary' id='see-recipes-button' size='lg'>
             See some recipes
