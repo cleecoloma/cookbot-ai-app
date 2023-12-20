@@ -1,4 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap');
+
 #recipe-book {
   padding: 2rem;
   background-color: white;
+}
+
+.recipe-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.recipe-title h3 {
+  font-family: 'Smooch Sans', sans-serif;
+  padding: 6px 10px;
+  border-radius: 1rem;
+  font-size: 350%;
+}
+
+.recipe-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 30%;
+}
+
+.recipe-container {
+  display: flex;
+  background-color: #f7f7f7;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.recipe-text {
+  display: flex;
+  flex-direction: column;
 }

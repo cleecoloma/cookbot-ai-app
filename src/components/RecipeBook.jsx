@@ -6,6 +6,9 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import '../styles/RecipeBook.css';
 
 function RecipeBook() {
@@ -24,13 +27,45 @@ function RecipeBook() {
               aria-label='lab API tabs example'
               centered
             >
-              <Tab label='Item One' value='1' />
+              <Tab label='Ribeye and Egg Stir Fry' value='1' />
               <Tab label='Item Two' value='2' />
               <Tab label='Item Three' value='3' />
             </TabList>
           </Box>
           <TabPanel value='1'>
-            Item One <img src='https://placehold.co/600x400' />
+            <div className='recipe-title'>
+              <h3>Ribeye and Egg Stir Fry</h3>
+              <div className='recipe-icons'>
+                <div>
+                  <HourglassBottomIcon />
+                  <p>Prep</p>
+                </div>
+                <div>
+                  <AccessTimeIcon />
+                  <p>Cook</p>
+                </div>
+                <div>
+                  <RestaurantIcon />
+                  <p>Serving</p>
+                </div>
+              </div>
+            </div>
+            <div className='recipe-container'>
+              <img
+                className='recipe-image'
+                src='https://placehold.co/300x200'
+              />
+              <div className='recipe-text'>
+                <div>
+                  <p>INGREDIENTS</p>
+                  <p>Here are the ingredients</p>
+                </div>
+                <div>
+                  <p>DIRECTIONS</p>
+                  <p>Here are the directions</p>
+                </div>
+              </div>
+            </div>
           </TabPanel>
           <TabPanel value='2'>
             Item Two <img src='https://placehold.co/600x400' />
