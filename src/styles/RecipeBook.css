@@ -60,3 +60,11 @@
   padding: 1rem;
   border-radius: 1rem;
 }
+
+.ingredients p:first-child {
+  text-decoration: underline;
+}
+
+.directions p:first-child {
+  text-decoration: underline;
+}

@@ -56,13 +56,54 @@ function RecipeBook() {
                 src='https://placehold.co/300x200'
               />
               <div className='recipe-text'>
-                <div>
+                <div className='ingredients'>
                   <p>INGREDIENTS</p>
-                  <p>Here are the ingredients</p>
+                  <ul>
+                    <li>Ribeye steak</li>
+                    <li>Egg</li>
+                    <li>Salt</li>
+                    <li>Black pepper</li>
+                    <li>Vegetable oil</li>
+                    <li>Garlic</li>
+                    <li>Green onion</li>
+                  </ul>
                 </div>
-                <div>
+                <div className='directions'>
                   <p>DIRECTIONS</p>
-                  <p>Here are the directions</p>
+                  <ol>
+                    <li>Slice the ribeye steak into thin strips.</li>
+                    <li>
+                      In a bowl, whisk together the egg with a pinch of salt and
+                      black peppe…
+                    </li>
+                    <li>
+                      Heat some vegetable oil in a pan or wok over high heat.
+                    </li>
+                    <li>
+                      Add the ribeye strips to the pan and cook until browned
+                      and slightly c…
+                    </li>
+                    <li>
+                      In the same pan, add a little more vegetable oil if needed
+                      and sauté t…
+                    </li>
+                    <li>
+                      Add the whisked egg to the pan and scramble until cooked
+                      through.
+                    </li>
+                    <li>
+                      Return the cooked ribeye strips to the pan and pour in a
+                      splash of soy…
+                    </li>
+                    <li>
+                      Toss everything together for a minute or two until the
+                      flavors meld an…
+                    </li>
+                    <li>
+                      Remove from heat and serve the Ribeye and Egg Stir Fry
+                      hot.
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>
