@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;700&display=swap');
+
 #recipe-book {
   padding-top: 1rem;
   background-color: white;
@@ -49,6 +51,7 @@
 
 .recipe-image {
   width: 40%;
+  object-fit: contain;
 }
 
 .recipe-text {
@@ -61,10 +64,10 @@
   border-radius: 1rem;
 }
 
-.ingredients p:first-child {
+.ingredients p:first-child, .directions p:first-child {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-size: 130%;
+  font-weight: 400;
   text-decoration: underline;
-}
-
-.directions p:first-child {
-  text-decoration: underline;
+  color: #0f8064;
 }

@@ -53,7 +53,7 @@ function RecipeBook() {
             <div className='recipe-container'>
               <img
                 className='recipe-image'
-                src='https://placehold.co/300x200'
+                src='../images/garlic-butter-ribeye-with-green-onions.png'
               />
               <div className='recipe-text'>
                 <div className='ingredients'>
@@ -71,37 +71,49 @@ function RecipeBook() {
                 <div className='directions'>
                   <p>DIRECTIONS</p>
                   <ol>
-                    <li>Slice the ribeye steak into thin strips.</li>
+                    <li>Preheat the oven to 400°F (200°C).</li>
                     <li>
-                      In a bowl, whisk together the egg with a pinch of salt and
-                      black peppe…
+                      Season the ribeye steak generously with salt and black
+                      pepper on both sides.
                     </li>
                     <li>
-                      Heat some vegetable oil in a pan or wok over high heat.
+                      Heat vegetable oil in an oven-safe skillet over high heat.
                     </li>
                     <li>
-                      Add the ribeye strips to the pan and cook until browned
-                      and slightly c…
+                      Sear the ribeye steak for 2 minutes on each side to
+                      develop a crust.
                     </li>
                     <li>
-                      In the same pan, add a little more vegetable oil if needed
-                      and sauté t…
+                      Transfer the skillet to the preheated oven and cook the
+                      steak for an additional 5-7 minutes for medium-rare.
                     </li>
                     <li>
-                      Add the whisked egg to the pan and scramble until cooked
-                      through.
+                      While the steak is cooking, in a separate skillet, heat
+                      vegetable oil over medium heat.
                     </li>
                     <li>
-                      Return the cooked ribeye strips to the pan and pour in a
-                      splash of soy…
+                      Add minced garlic and chopped green onion to the skillet
+                      and sauté until fragrant and lightly golden.
                     </li>
                     <li>
-                      Toss everything together for a minute or two until the
-                      flavors meld an…
+                      In a small mixing bowl, whisk an egg with a pinch of salt
+                      and black pepper.
                     </li>
                     <li>
-                      Remove from heat and serve the Ribeye and Egg Stir Fry
-                      hot.
+                      Push the garlic and green onion mixture to one side of the
+                      skillet and pour the whisked egg into the other side.
+                    </li>
+                    <li>
+                      Gently scramble the egg until cooked through, then mix it
+                      with the garlic and green onion.
+                    </li>
+                    <li>
+                      Remove the steak from the oven and let it rest for a few
+                      minutes.
+                    </li>
+                    <li>
+                      Serve the garlic butter ribeye topped with the scrambled
+                      egg, garlic, and green onion mixture.
                     </li>
                   </ol>
                 </div>
