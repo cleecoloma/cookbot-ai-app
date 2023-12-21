@@ -1,15 +1,12 @@
 import React from 'react';
 import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
-import Login from '../auth/Login';
 
 function Header(props) {
   const { isAuthenticated } = props.auth0;
@@ -25,12 +22,17 @@ function Header(props) {
           {props.isDemoAccount && (
             <>
               <Link className='nav-link custom-nav-link' to='/DemoAccount'>
-                <PersonCircle size={30} />
+                <Button
+                  id='profile-button'
+                  onClick={() => props.handleDemoLogout()}
+                >
+                  Welcome
+                </Button>
               </Link>
 
-              <div id='logout-button'>
+              <div>
                 <Button
-                  variant='primary'
+                  id='logout-style-button'
                   onClick={() => props.handleDemoLogout()}
                 >
                   Logout
@@ -43,9 +45,7 @@ function Header(props) {
               <Link className='nav-link custom-nav-link' to='/Profile'>
                 <PersonCircle size={30} />
               </Link>
-              <div id='logout-button'>
-                <Logout />
-              </div>
+              <Logout />
             </>
           )}
           {!isAuthenticated && !props.isDemoAccount ? (

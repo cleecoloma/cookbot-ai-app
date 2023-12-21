@@ -58,6 +58,11 @@
   background-color: #438951;
 }
 
+#profile-button {
+  border: 2px solid #cb864a;
+  background-color: #d3a47c;
+}
+
 @media (max-width: 1000px) {
   .header {
     padding: 8px 2rem;
