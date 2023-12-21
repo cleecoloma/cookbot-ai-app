@@ -172,11 +172,11 @@ function Recipe(props) {
         </div>
       ) : (
         <div className='card-container'>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {recipes.length ? (
+            recipes.map((recipe, idx) => <Cards key={idx} recipe={recipe} />)
+          ) : (
+            <p>No recipes yet</p>
+          )}
         </div>
       )}
     </div>
