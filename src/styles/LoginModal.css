@@ -11,7 +11,24 @@
 }
 
 .login-card p {
-  color: rgb(55, 53, 53);
+  margin: 0.5rem;
+  color: #3e6a76;
+}
+
+#login-title {
+  font-family: 'Smooch Sans', sans-serif;
+  font-size: 200%;
+  color: #1d3f48;
+}
+
+#demo-button {
+  width: 10rem;
+  border: 2px solid #438951;
+  background-color: #51945f;
+}
+
+#demo-button:hover {
+  background-color: #438951;
 }
 
 hr {
