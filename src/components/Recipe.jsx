@@ -3,6 +3,7 @@ import '../styles/Recipe.css';
 import Carousel from 'react-bootstrap/Carousel';
 import AddModal from './AddModal';
 import FullRecipeModal from './FullRecipeModal';
+import Cards from './Cards';
 import { Button } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
 import EditModal from './EditModal';
@@ -75,43 +76,35 @@ function Recipe(props) {
   };
 
   const addRecipe = async (input) => {
-    let ingredientsObj = { 
+    let ingredientsObj = {
       user: user.email,
-      foodItems: input 
+      foodItems: input,
     };
-    props
-      .authRequest('POST', token, null, ingredientsObj)
-      .then((response) => {
-        setRecipes([...recipes, response.data]);
-        toggleLoading();
-      });
+    props.authRequest('POST', token, null, ingredientsObj).then((response) => {
+      setRecipes([...recipes, response.data]);
+      toggleLoading();
+    });
   };
 
   const updateRecipe = async (id, updatedData) => {
-    props
-      .authRequest('PUT', token, id, updatedData)
-      .then((response) => {
-        const updatedRecipes = recipes.map((recipe) => {
-          if (recipe.id === id) {
-            return response.data;
-          }
-          return recipe;
-        });
-        setRecipes(updatedRecipes);
-        toggleLoading();
-        fetchRecipes();
+    props.authRequest('PUT', token, id, updatedData).then((response) => {
+      const updatedRecipes = recipes.map((recipe) => {
+        if (recipe.id === id) {
+          return response.data;
+        }
+        return recipe;
       });
+      setRecipes(updatedRecipes);
+      toggleLoading();
+      fetchRecipes();
+    });
   };
 
   const deleteRecipe = async (id) => {
-    props
-      .authRequest('DELETE', token, id, null)
-      .then((response) => {
-        const filteredRecipes = recipes.filter(
-          (recipe) => recipe._id !== id
-        );
-        setRecipes(filteredRecipes);
-      });
+    props.authRequest('DELETE', token, id, null).then((response) => {
+      const filteredRecipes = recipes.filter((recipe) => recipe._id !== id);
+      setRecipes(filteredRecipes);
+    });
   };
 
   const handleUpdateRecipe = (recipe) => {
@@ -128,7 +121,7 @@ function Recipe(props) {
     const timestampDate = new Date(timestamp);
     const currentTime = new Date();
     const timeDifference = currentTime - timestampDate;
-    const twoHoursInMilliS = 3600000 // One hour converted to milliseconds
+    const twoHoursInMilliS = 3600000; // One hour converted to milliseconds
     if (timeDifference > twoHoursInMilliS) {
       return false;
     } else {
@@ -137,11 +130,11 @@ function Recipe(props) {
   };
 
   return (
-    <>
+    <div id='recipe-container'>
       <Button
-        className="addButton"
+        className='addButton'
         style={{ width: '10rem', margin: '0 auto' }}
-        variant="success"
+        variant='success'
         onClick={handleShowModal}
       >
         Add New Recipe
@@ -162,74 +155,31 @@ function Recipe(props) {
       />
       {isLoading ? (
         /* Loading screen/Div with className loader is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
-        <div className="loader">
-          <div className="tall-stack">
-            <div className="butter falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="pancake falling-element"></div>
-            <div className="plate">
-              <div className="plate-bottom"></div>
-              <div className="shadow"></div>
+        <div className='loader'>
+          <div className='tall-stack'>
+            <div className='butter falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='pancake falling-element'></div>
+            <div className='plate'>
+              <div className='plate-bottom'></div>
+              <div className='shadow'></div>
             </div>
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            margin: '1rem 5%',
-          }}
-        >
-          {recipes.length > 0 ? (
-            <Carousel className="custom-carousel">
-              {recipes.map((recipe, idx) => (
-                <Carousel.Item key={idx} interval={2500}>
-                  <img
-                    className="d-block w-100"
-                    src={
-                      handleTimestampCheck(recipe.timestamp)
-                        ? recipe.imageUrl
-                        : '/images/cookbot-ai-default-img.jpg'
-                    }
-                    alt={recipe.name}
-                    style={{
-                      width: '400px',
-                      height: '400px',
-                      objectFit: 'cover',
-                    }}
-                    title="OpenAI generated the image, but response url has limited lifespan of only one hour, after which they will automatically revert to this default image."
-                  />
-                  <div className="info-div">
-                    <h3>{recipe.dishName}</h3>
-                    <Button
-                      variant="success"
-                      onClick={() => handleShowFullRecipeModal(recipe)}
-                    >
-                      Click Here For Full Recipe!
-                    </Button>
-                    <FullRecipeModal
-                      show={showFullRecipeModal}
-                      onHide={handleCloseFullRecipeModal}
-                      currentRecipe={currentRecipe}
-                      updateRecipe={updateRecipe}
-                      handleUpdateRecipe={handleUpdateRecipe}
-                      deleteRecipe={deleteRecipe}
-                      handleTimestampCheck={handleTimestampCheck}
-                    />
-                  </div>
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          ) : null}
+        <div className='card-container'>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
