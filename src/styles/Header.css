@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@300;500;700;800&display=swap');
-
 #brand-name {
   display: flex;
   justify-content: center;
@@ -50,13 +48,13 @@
   align-items: center;
 }
 
-#demo-button {
+#create-button {
   margin-right: 1rem;
   border: 2px solid #438951;
   background-color: #51945f;
 }
 
-#demo-button:hover {
+#create-button:hover {
   background-color: #438951;
 }
 

@@ -14,13 +14,12 @@ function LoginModal(props) {
         size='sm'
       >
         <Modal.Header closeButton>
-          <Modal.Title>Select a login method</Modal.Title>
+          <Modal.Title id='login-title'>Select a login method</Modal.Title>
         </Modal.Header>
         <div className='login-card'>
           <div className='login-div'>
             <Button
-              className='login-button'
-              variant='success'
+              id='demo-button'
               onClick={() => {
                 props.handleDemoAccount();
                 props.toggleLoginModal();

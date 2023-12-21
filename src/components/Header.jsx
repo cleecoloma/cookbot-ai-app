@@ -10,7 +10,6 @@ import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
 import Login from '../auth/Login';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header(props) {
   const { isAuthenticated } = props.auth0;
@@ -81,14 +80,13 @@ function Header(props) {
           {!isAuthenticated && !props.isDemoAccount ? (
             <div>
               <Button
-              id='demo-button'
+              id='create-button'
                 onClick={() => {
-                  props.handleDemoAccount();
+                  props.toggleLoginModal();
                 }}
               >
                 Create a recipe
               </Button>
-              <Login id='login-style-button' />
             </div>
           ) :
           null}
