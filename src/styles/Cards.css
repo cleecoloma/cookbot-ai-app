@@ -1,0 +1,20 @@
+.card {
+  margin: 0 0.5rem 1rem;
+}
+
+.card-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.card-icons-divs {
+  text-align: center;
+}
+
+.card-icons-divs p {
+  margin-top: 0.5rem;
+  color: #717270;
+}

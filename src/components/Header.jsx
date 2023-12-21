@@ -1,15 +1,12 @@
 import React from 'react';
 import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logout from '../auth/Logout';
 import { withAuth0 } from '@auth0/auth0-react';
 import { PersonCircle } from 'react-bootstrap-icons';
-import Login from '../auth/Login';
 
 function Header(props) {
   const { isAuthenticated } = props.auth0;
@@ -23,64 +20,38 @@ function Header(props) {
             <h2>CookBot AI</h2>
           </Navbar.Brand>
           {props.isDemoAccount && (
-            <NavDropdown
-              title={<PersonCircle size={30} />}
-              id='basic-nav-dropdown'
-              className='custom-dropdown'
-              align='end'
-            >
-              <NavDropdown.Item className='header-button'>
-                <Link className='nav-link custom-nav-link' to='/DemoAccount'>
-                  Profile
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className='header-button'>
-                <Link className='nav-link custom-nav-link' to='/Contact'>
-                  Contact
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <Link className='nav-link custom-nav-link' to='/'>
-                <div id='logout-button'>
-                  <Button
-                    variant='primary'
-                    onClick={() => props.handleDemoLogout()}
-                  >
-                    Logout
-                  </Button>
-                </div>
+            <div className='header-buttons'>
+              <Link className='nav-link' to='/DemoAccount'>
+                <Button id='profile-button'>Welcome</Button>
               </Link>
-            </NavDropdown>
+
+              <div>
+                <Button
+                  id='logout-style-button'
+                  onClick={() => props.handleDemoLogout()}
+                >
+                  Logout
+                </Button>
+              </div>
+            </div>
           )}
           {isAuthenticated && (
-            <NavDropdown
-              title={<PersonCircle size={30} />}
-              id='basic-nav-dropdown'
-              className='custom-dropdown'
-              align='end'
-            >
-              <NavDropdown.Item className='header-button'>
-                <Link className='nav-link custom-nav-link' to='/Profile'>
-                  Profile
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item className='header-button'>
-                <Link className='nav-link custom-nav-link' to='/Contact'>
-                  Contact
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <Link className='nav-link custom-nav-link' to='/'>
-                <div id='logout-button'>
-                  <Logout />
-                </div>
+            <div className='header-buttons'>
+              <Link className='nav-link' to='/Profile'>
+                <Button
+                  id='profile-button'
+                  onClick={() => props.handleProfilePage()}
+                >
+                  Welcome
+                </Button>
               </Link>
-            </NavDropdown>
+              <Logout />
+            </div>
           )}
           {!isAuthenticated && !props.isDemoAccount ? (
             <div>
               <Button
-              id='create-button'
+                id='create-button'
                 onClick={() => {
                   props.toggleLoginModal();
                 }}
@@ -88,8 +59,7 @@ function Header(props) {
                 Create a recipe
               </Button>
             </div>
-          ) :
-          null}
+          ) : null}
         </Container>
       </Navbar>
     </>

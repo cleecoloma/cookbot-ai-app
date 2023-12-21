@@ -1,10 +1,25 @@
+#recipe-container {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .addButton {
-  position: absolute;
   width: 20rem;
   height: 3rem;
-  top: 5rem;
   left: 50%;
-  transform: translateX(-50%);
+  border: 2px solid #438951;
+  background-color: #51945f;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem 5rem;
+  flex-wrap: wrap;
 }
 
 .custom-carousel {

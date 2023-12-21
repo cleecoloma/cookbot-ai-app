@@ -7,3 +7,12 @@
 #login-style-button:hover {
   background-color: #367eb9;
 }
+
+#logout-style-button {
+  border: 2px solid #878885;
+  background-color: #c3c5c1;
+}
+
+#logout-style-button:hover {
+  background-color: #878885;
+}

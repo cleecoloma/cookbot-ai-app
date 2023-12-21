@@ -13,9 +13,17 @@ function LogoutButton() {
     logout({ returnTo: window.location.origin });
   }
 
-  return isAuthenticated &&
-      <Button variant='secondary' onClick={handleLogout}>Log out</Button>
-    ;
+  return (
+    isAuthenticated && (
+      <Button
+        variant='secondary'
+        id='logout-style-button'
+        onClick={handleLogout}
+      >
+        Log out
+      </Button>
+    )
+  );
 }
 
 export default LogoutButton;
