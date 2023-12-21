@@ -26,3 +26,11 @@
   align-items: center;
   width: 30%;
 }
+
+#footer-container {
+  color: #717270;
+}
+
+#footer-container span {
+  color: #3e6a76;
+}
