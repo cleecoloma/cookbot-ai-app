@@ -61,6 +61,11 @@
 #profile-button {
   border: 2px solid #cb864a;
   background-color: #d3a47c;
+  margin-right: 1rem;
+}
+
+.header-buttons {
+  display: flex;
 }
 
 @media (max-width: 1000px) {

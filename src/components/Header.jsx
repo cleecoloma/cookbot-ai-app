@@ -20,14 +20,9 @@ function Header(props) {
             <h2>CookBot AI</h2>
           </Navbar.Brand>
           {props.isDemoAccount && (
-            <>
-              <Link className='nav-link custom-nav-link' to='/DemoAccount'>
-                <Button
-                  id='profile-button'
-                  onClick={() => props.handleDemoLogout()}
-                >
-                  Welcome
-                </Button>
+            <div className='header-buttons'>
+              <Link className='nav-link' to='/DemoAccount'>
+                <Button id='profile-button'>Welcome</Button>
               </Link>
 
               <div>
@@ -38,15 +33,20 @@ function Header(props) {
                   Logout
                 </Button>
               </div>
-            </>
+            </div>
           )}
           {isAuthenticated && (
-            <>
-              <Link className='nav-link custom-nav-link' to='/Profile'>
-                <PersonCircle size={30} />
+            <div className='header-buttons'>
+              <Link className='nav-link' to='/Profile'>
+                <Button
+                  id='profile-button'
+                  onClick={() => props.handleProfilePage()}
+                >
+                  Welcome
+                </Button>
               </Link>
               <Logout />
-            </>
+            </div>
           )}
           {!isAuthenticated && !props.isDemoAccount ? (
             <div>
