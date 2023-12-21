@@ -55,11 +55,14 @@ function RecipeBook() {
                 </div>
               </div>
               <div className='recipe-container'>
-                <img
-                  className='recipe-image'
-                  src={recipe.image}
-                  alt={recipe.title}
-                />
+                <div className='recipe-image-div'>
+                  <img
+                    className='recipe-image'
+                    src={recipe.image}
+                    alt={recipe.title}
+                  />
+                  <p className='recipe-image-see-more'>SEE MORE</p>
+                </div>
 
                 <div className='recipe-text'>
                   <div className='ingredients'>

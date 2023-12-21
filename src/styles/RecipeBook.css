@@ -50,18 +50,35 @@
   min-height: 650px;
 }
 
-.recipe-image {
-  width: 60%;
-  height: 500px;
-  object-fit: contain;
-  transition: transform 0.3s ease-in-out;
+.recipe-image-div {
+  display: flex;
+  align-items: center;
   position: absolute;
-  right: 60%;
-  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  width: 60%;
+  height: 540px;
+  right: 65%;
+  border-radius: 0.5rem;
+  background-color: #f9c9a5;
 }
 
-.recipe-image:hover {
-  transform: translateX(35%);
+.recipe-image {
+  padding: 1rem;
+}
+
+.recipe-image-see-more {
+  transform: rotate(90deg);
+  color: white;
+  text-wrap: nowrap;
+  position: absolute;
+  right: -12%;
+  background-color: #f9c9a5;
+  padding: 0.25rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.recipe-image-div:hover {
+  transform: translateX(45%);
 }
 
 .recipe-text {
