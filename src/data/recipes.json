@@ -1,0 +1,87 @@
+[
+  {
+    "id": "1",
+    "title": "Ribeye and Egg Stir Fry",
+    "prepTime": "5 min",
+    "cookTime": "30 min",
+    "servings": "2",
+    "ingredients": [
+      "Ribeye steak",
+      "Egg",
+      "Salt",
+      "Black pepper",
+      "Vegetable oil",
+      "Garlic",
+      "Green onion"
+    ],
+    "directions": [
+      "Preheat the oven to 400°F (200°C).",
+      "Season the ribeye steak generously with salt and black pepper on both sides.",
+      "Heat vegetable oil in an oven-safe skillet over high heat.",
+      "Sear the ribeye steak for 2 minutes on each side to develop a crust.",
+      "Transfer the skillet to the preheated oven and cook the steak for an additional 5-7 minutes for medium-rare.",
+      "While the steak is cooking, in a separate skillet, heat vegetable oil over medium heat.",
+      "Add minced garlic and chopped green onion to the skillet and sauté until fragrant and lightly golden.",
+      "In a small mixing bowl, whisk an egg with a pinch of salt and black pepper.",
+      "Push the garlic and green onion mixture to one side of the skillet and pour the whisked egg into the other side.",
+      "Gently scramble the egg until cooked through, then mix it with the garlic and green onion.",
+      "Remove the steak from the oven and let it rest for a few minutes.",
+      "Serve the garlic butter ribeye topped with the scrambled egg, garlic, and green onion mixture."
+    ],
+    "image": "../images/garlic-butter-ribeye-with-green-onions.png"
+  },
+  {
+    "id": "2",
+    "title": "Classic Margherita Pizza",
+    "prepTime": "15 min",
+    "cookTime": "20 min",
+    "servings": "4",
+    "ingredients": [
+      "Pizza dough",
+      "Tomato sauce",
+      "Fresh mozzarella cheese",
+      "Fresh basil leaves",
+      "Extra-virgin olive oil",
+      "Salt"
+    ],
+    "directions": [
+      "Preheat your oven to its highest setting, typically 475-500°F (245-260°C).",
+      "Roll out the pizza dough on a floured surface to your desired thickness.",
+      "Spread a thin layer of tomato sauce over the dough.",
+      "Tear the mozzarella cheese and distribute it evenly over the sauce.",
+      "Drizzle a little olive oil and sprinkle a pinch of salt over the top.",
+      "Bake in the preheated oven for about 10-15 minutes until the crust is golden and cheese is bubbly.",
+      "Remove from the oven and immediately add fresh basil leaves.",
+      "Slice and serve hot."
+    ],
+    "image": "../images/garlic-butter-ribeye-with-green-onions.png"
+  },
+  {
+    "id": "3",
+    "title": "Vegetable Stir Fry Noodles",
+    "prepTime": "10 min",
+    "cookTime": "15 min",
+    "servings": "3",
+    "ingredients": [
+      "Noodles",
+      "Carrots, thinly sliced",
+      "Bell pepper, sliced",
+      "Broccoli florets",
+      "Soy sauce",
+      "Garlic, minced",
+      "Ginger, minced",
+      "Vegetable oil",
+      "Sesame seeds"
+    ],
+    "directions": [
+      "Cook noodles according to package instructions, then drain and set aside.",
+      "Heat vegetable oil in a large skillet or wok over medium-high heat.",
+      "Add the garlic and ginger, sauté for a minute until fragrant.",
+      "Add the carrots, bell pepper, and broccoli, stir-frying until vegetables are tender but crisp.",
+      "Toss in the cooked noodles and soy sauce, stir well to combine.",
+      "Cook for an additional 2-3 minutes, stirring frequently.",
+      "Serve hot, garnished with sesame seeds."
+    ],
+    "image": "../images/garlic-butter-ribeye-with-green-onions.png"
+  }
+]
