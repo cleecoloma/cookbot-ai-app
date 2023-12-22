@@ -3,6 +3,8 @@
 .recipe-book {
   padding-top: 1rem;
   background-color: white;
+  margin: 0 auto;
+  width: 1300px;
 }
 
 .recipe-title {
