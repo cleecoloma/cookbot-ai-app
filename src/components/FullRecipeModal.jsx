@@ -1,9 +1,24 @@
 import React from 'react';
 import '../styles/FullRecipeModal.css';
 import { Modal, Button } from 'react-bootstrap';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import PropTypes from 'prop-types';
 
 function FullRecipeModal(props) {
+  const handleTimestampCheck = (timestamp) => {
+    const timestampDate = new Date(timestamp);
+    const currentTime = new Date();
+    const timeDifference = currentTime - timestampDate;
+    const oneHourInMilliS = 3600000; // One hour converted to milliseconds
+    if (timeDifference > oneHourInMilliS - 360000) {
+      return false; //subtracted 10 minutes from one hour
+    } else {
+      return true;
+    }
+  };
+
   return props.currentRecipe ? (
     <Modal
       show={props.show}
@@ -13,65 +28,55 @@ function FullRecipeModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>
-          <h3 className='recipe-title'>
-            {' '}
-            Full Recipe for{' '}
-            {props.currentRecipe ? props.currentRecipe.dishName : null}
-          </h3>
-        </Modal.Title>
+        <div className='recipe-title'>
+          <h3>{props.currentRecipe.dishName}</h3>
+        </div>
       </Modal.Header>
       <Modal.Body>
-        <div className='recipe-content'>
-          <img
-            className='img-fluid recipe-image'
-            src={
-              props.handleTimestampCheck(props.currentRecipe.timestamp)
-                ? props.currentRecipe.imageUrl
-                : '/images/cookbot-ai-default-img.jpg'
-            }
-            alt={props.currentRecipe.name}
-            style={{
-              width: '400px',
-              height: '400px',
-              objectFit: 'cover',
-            }}
-            title='OpenAI generated the image, but response url has limited lifespan of only one hour, after which they will automatically revert to this default image.'
-          />
-          <div className='recipe-details'>
-            <div className='recipe-duration'>
-              <h4>
-                <strong>Cooking Time:</strong>
-              </h4>
+        <div className='recipe-container'>
+          <div className='recipe-image-div'>
+            <img
+              className='recipe-image'
+              src={
+                handleTimestampCheck(props.currentRecipe.timestamp)
+                  ? props.currentRecipe.imageUrl
+                  : '../images/recipe-image-placeholder.png'
+              }
+              alt={props.currentRecipe.dishName}
+            />
+            <p className='recipe-image-see-more'>SEE MORE</p>
+          </div>
+
+          <div className='recipe-text'>
+            <div className='recipe-icons'>
+              <div className='recipe-icons-divs'>
+                <HourglassBottomIcon />
+                <p>PREP: {props.currentRecipe.prepDuration}</p>
+              </div>
+              <div className='recipe-icons-divs'>
+                <AccessTimeIcon />
+                <p>COOK: {props.currentRecipe.cookingDuration}</p>
+              </div>
+              <div className='recipe-icons-divs'>
+                <RestaurantIcon />
+                <p>SERVING: {props.currentRecipe.servingSize}</p>
+              </div>
+            </div>
+            <div className='ingredients'>
+              <p>INGREDIENTS</p>
               <ul>
-                <li>
-                  {props.currentRecipe
-                    ? props.currentRecipe.cookingDuration
-                    : null}
-                </li>
+                {props.currentRecipe.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
               </ul>
             </div>
-            <div className='recipe-ingredients'>
-              <h4>
-                <strong>Ingredients:</strong>
-              </h4>
-              <ul>
-                {props.currentRecipe &&
-                  props.currentRecipe.ingredients.map((ingredient, ingrIdx) => (
-                    <li key={ingrIdx}>{ingredient}</li>
-                  ))}
-              </ul>
-            </div>
-            <div className='recipe-steps'>
-              <h4>
-                <strong>Cooking Steps</strong>
-              </h4>
-              <ul>
-                {props.currentRecipe &&
-                  props.currentRecipe.cookingSteps.map((step, recipIdx) => (
-                    <li key={recipIdx}>{step}</li>
-                  ))}
-              </ul>
+            <div className='directions'>
+              <p>DIRECTIONS</p>
+              <ol>
+                {props.currentRecipe.cookingSteps.map((direction, index) => (
+                  <li key={index}>{direction}</li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>

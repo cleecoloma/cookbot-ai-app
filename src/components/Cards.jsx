@@ -1,19 +1,12 @@
 'use strict';
 
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import LaunchIcon from '@mui/icons-material/Launch';
 import '../styles/Cards.css';
 
@@ -22,9 +15,9 @@ function Cards(props) {
     const timestampDate = new Date(timestamp);
     const currentTime = new Date();
     const timeDifference = currentTime - timestampDate;
-    const oneHoursInMilliS = 3600000; // One hour converted to milliseconds
-    if (timeDifference > oneHoursInMilliS) {
-      return false;
+    const oneHourInMilliS = 3600000; // One hour converted to milliseconds
+    if (timeDifference > (oneHourInMilliS - 360000)) {
+      return false; //subtracted 10 minutes from one hour
     } else {
       return true;
     }
@@ -54,9 +47,12 @@ function Cards(props) {
   return (
     <Card sx={{ width: 345 }} className='card'>
       <CardHeader
-        className='card-header'
+        className='card-header-section'
         action={
-          <IconButton aria-label='settings'>
+          <IconButton
+            onClick={() => props.handleShowFullRecipeModal(props.recipe)}
+            aria-label='settings'
+          >
             <LaunchIcon />
           </IconButton>
         }
@@ -70,7 +66,7 @@ function Cards(props) {
         image={
           handleTimestampCheck(props.recipe.timestamp)
             ? props.recipe.imageUrl
-            : '/images/recipe-image-placeholder.png'
+            : '../images/recipe-image-placeholder.png'
         }
         alt={props.recipe.dishName}
       />
