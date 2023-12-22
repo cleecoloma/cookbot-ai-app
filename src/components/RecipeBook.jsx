@@ -10,7 +10,7 @@ import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import recipes from '../data/recipes.json';
 import '../styles/RecipeBook.css';
 
-function RecipeBook() {
+function RecipeBook({ id }) {
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
@@ -24,7 +24,7 @@ function RecipeBook() {
   }, []);
 
   return (
-    <div id='recipe-book'>
+    <div className='recipe-book' id={id}>
       <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

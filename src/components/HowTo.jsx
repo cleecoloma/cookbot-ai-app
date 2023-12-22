@@ -3,9 +3,9 @@
 import React from 'react';
 import '../styles/HowTo.css';
 
-function HowTo() {
+function HowTo({ id }) {
   return (
-    <div id='how-to'>
+    <div className='how-to' id={id}>
       <p>
         Follow the simple steps below to create your very own delicious recipes
         and start sharing your culinary masterpieces with the world!

@@ -107,9 +107,9 @@ function App(props) {
                   />
                 ) : (
                   <>
-                    <Hero />
-                    <RecipeBook />
-                    <HowTo />
+                    <Hero id='home' />
+                    <RecipeBook id='recipebook' />
+                    <HowTo id='howitworks' />
                     <Footer />
                   </>
                 )
