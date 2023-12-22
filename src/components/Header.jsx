@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { LoginContext } from '../context/Login';
 
 function Header() {
+  const { toggleLoginModal } = useContext(LoginContext);
   return (
-    <Navbar id='header-navbar' fixed='top' expand='lg' className='bg-body-tertiary header'>
+    <Navbar
+      id='header-navbar'
+      fixed='top'
+      expand='lg'
+      className='bg-body-tertiary header'
+    >
       <Container fluid>
         <Navbar.Brand as={Link} to='/' id='brand-name'>
           <img id='brand-image' src='../../images/cookbot-logo.png' />
@@ -18,10 +25,12 @@ function Header() {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             <Nav.Link href='#home'>Home</Nav.Link>
-            <div>
-              <Button id='create-button'>Create a recipe</Button>
-            </div>
           </Nav>
+          <div className='header-links'>
+            <Button id='create-button' onClick={toggleLoginModal}>
+              Create a recipe
+            </Button>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
