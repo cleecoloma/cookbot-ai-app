@@ -1,62 +1,81 @@
 'use strict';
 
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import LaunchIcon from '@mui/icons-material/Launch';
 import '../styles/Cards.css';
 
-function Cards() {
+function Cards(props) {
+  const handleTimestampCheck = (timestamp) => {
+    const timestampDate = new Date(timestamp);
+    const currentTime = new Date();
+    const timeDifference = currentTime - timestampDate;
+    const oneHourInMilliS = 3600000; // One hour converted to milliseconds
+    if (timeDifference > (oneHourInMilliS - 360000)) {
+      return false; //subtracted 10 minutes from one hour
+    } else {
+      return true;
+    }
+  };
+
+  const originalTimestamp = props.recipe.timestamp;
+  const date = new Date(originalTimestamp);
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const month = monthNames[date.getMonth()];
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const formattedTimestamp = `${month} ${day}, ${year}`;
+
   return (
-      <Card sx={{ maxWidth: 345 }} className='card'>
-        <CardHeader
-          action={
-            <IconButton aria-label='settings'>
-              <LaunchIcon />
-            </IconButton>
-          }
-          title='Shrimp and Chorizo Paella'
-          subheader='September 14, 2016'
-        />
-        <CardMedia
-          component='img'
-          height='194'
-          image='/static/images/cards/paella.jpg'
-          alt='Paella dish'
-        />
-        <CardContent>
-          <Typography variant='body2' color='text.secondary'>
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-          <div className='card-icons'>
-            <div className='card-icons-divs'>
-              <HourglassBottomIcon />
-              <p>PREP: </p>
-            </div>
-            <div className='card-icons-divs'>
-              <AccessTimeIcon />
-              <p>COOK: </p>
-            </div>
-            <div className='card-icons-divs'>
-              <RestaurantIcon />
-              <p>SERVING: </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+    <Card sx={{ width: 345 }} className='card'>
+      <CardHeader
+        className='card-header-section'
+        action={
+          <IconButton
+            onClick={() => props.handleShowFullRecipeModal(props.recipe)}
+            aria-label='settings'
+          >
+            <LaunchIcon />
+          </IconButton>
+        }
+        title={props.recipe.dishName}
+        subheader={formattedTimestamp}
+      />
+      <CardMedia
+        id='card-image-container'
+        component='img'
+        height='194'
+        image={
+          handleTimestampCheck(props.recipe.timestamp)
+            ? props.recipe.imageUrl
+            : '../images/recipe-image-placeholder.png'
+        }
+        alt={props.recipe.dishName}
+      />
+      <CardContent>
+        <Typography variant='body2' color='text.secondary'>
+          {props.recipe.dishDescription}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
 

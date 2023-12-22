@@ -8,10 +8,9 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import recipes from '../data/recipes.json';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import '../styles/RecipeBook.css';
 
-function RecipeBook() {
+function RecipeBook({ id }) {
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
@@ -25,7 +24,7 @@ function RecipeBook() {
   }, []);
 
   return (
-    <div id='recipe-book'>
+    <div className='recipe-book' id={id}>
       <Box sx={{ width: '100%', typography: 'body1' }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -42,15 +41,15 @@ function RecipeBook() {
                 <div className='recipe-icons'>
                   <div className='recipe-icons-divs'>
                     <HourglassBottomIcon />
-                    <p>PREP: {recipe.prepTime}</p>
+                    <p>PREP: {recipe.prepDuration}</p>
                   </div>
                   <div className='recipe-icons-divs'>
                     <AccessTimeIcon />
-                    <p>COOK: {recipe.cookTime}</p>
+                    <p>COOK: {recipe.cookingDuration}</p>
                   </div>
                   <div className='recipe-icons-divs'>
                     <RestaurantIcon />
-                    <p>SERVING: {recipe.servings}</p>
+                    <p>SERVING: {recipe.servingSize}</p>
                   </div>
                 </div>
               </div>

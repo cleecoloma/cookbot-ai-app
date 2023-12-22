@@ -2,9 +2,9 @@
   {
     "id": "1",
     "title": "Ribeye and Egg Stir Fry",
-    "prepTime": "5 min",
-    "cookTime": "30 min",
-    "servings": "2",
+    "prepDuration": "5 min",
+    "cookingDuration": "30 min",
+    "servingSize": "2",
     "ingredients": [
       "Ribeye steak",
       "Egg",
@@ -33,9 +33,9 @@
   {
     "id": "2",
     "title": "Classic Margherita Pizza",
-    "prepTime": "15 min",
-    "cookTime": "20 min",
-    "servings": "4",
+    "prepDuration": "15 min",
+    "cookingDuration": "20 min",
+    "servingSize": "4",
     "ingredients": [
       "Pizza dough",
       "Tomato sauce",
@@ -59,9 +59,9 @@
   {
     "id": "3",
     "title": "Vegetable Stir Fry Noodles",
-    "prepTime": "10 min",
-    "cookTime": "15 min",
-    "servings": "3",
+    "prepDuration": "10 min",
+    "cookingDuration": "15 min",
+    "servingSize": "3",
     "ingredients": [
       "Noodles",
       "Carrots, thinly sliced",

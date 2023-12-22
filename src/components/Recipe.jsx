@@ -153,6 +153,15 @@ function Recipe(props) {
         updateRecipe={updateRecipe}
         toggleLoading={toggleLoading}
       />
+      <FullRecipeModal
+        show={showFullRecipeModal}
+        onHide={handleCloseFullRecipeModal}
+        currentRecipe={currentRecipe}
+        updateRecipe={updateRecipe}
+        handleUpdateRecipe={handleUpdateRecipe}
+        deleteRecipe={deleteRecipe}
+        handleTimestampCheck={handleTimestampCheck}
+      />
       {isLoading ? (
         /* Loading screen/Div with className loader is from https://webdeasy.de/en/css-loading-animations/ - Author John Heiner */
         <div className='loader'>
@@ -172,11 +181,17 @@ function Recipe(props) {
         </div>
       ) : (
         <div className='card-container'>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {recipes.length ? (
+            recipes.map((recipe, idx) => (
+              <Cards
+                handleShowFullRecipeModal={handleShowFullRecipeModal}
+                key={idx}
+                recipe={recipe}
+              />
+            ))
+          ) : (
+            <p>No recipes yet</p>
+          )}
         </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;700&family=Roboto:wght@100;300;400;700&family=Smooch+Sans:wght@300;400;500;700&display=swap');
 
-#recipe-book {
+.recipe-book {
   padding-top: 1rem;
   background-color: white;
 }
