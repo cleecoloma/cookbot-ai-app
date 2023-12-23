@@ -7,7 +7,8 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { LoginContext } from '../context/Login';
 
 function LoginModal() {
-  const { loginModalPreview, toggleLoginModal } = useContext(LoginContext);
+  const { loginModalPreview, toggleLoginModal, handleDemoAccount } =
+    useContext(LoginContext);
 
   return (
     <>
@@ -19,10 +20,9 @@ function LoginModal() {
           <div className='login-div'>
             <Button
               id='demo-button'
-              onClick={() => {
-                props.handleDemoAccount();
-                props.toggleLoginModal();
-              }}
+              onClick={
+                handleDemoAccount
+              }
             >
               Demo
             </Button>

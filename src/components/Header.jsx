@@ -6,9 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { LoginContext } from '../context/Login';
+import { useAuth0 } from '@auth0/auth0-react';
+import Logout from '../auth/Logout';
 
-function Header() {
-  const { toggleLoginModal } = useContext(LoginContext);
+function Header(props) {
+  const { isAuthenticated } = useAuth0();
+  const { isDemoAccount, toggleLoginModal, handleDemoLogout } =
+    useContext(LoginContext);
+
   return (
     <Navbar
       id='header-navbar'
@@ -27,9 +32,23 @@ function Header() {
             <Nav.Link href='#home'>Home</Nav.Link>
           </Nav>
           <div className='header-links'>
-            <Button id='create-button' onClick={toggleLoginModal}>
-              Create a recipe
-            </Button>
+            {(!isDemoAccount && !isAuthenticated) && (
+              <Button id='create-button' onClick={toggleLoginModal}>
+                Create a recipe
+              </Button>
+            )}
+            {isAuthenticated && (
+              <div id='logout-button'>
+                <Logout />
+              </div>
+            )}
+            {isDemoAccount && (
+              <div id='logout-button'>
+                <Button variant='primary' onClick={handleDemoLogout}>
+                  Logout
+                </Button>
+              </div>
+            )}
           </div>
         </Navbar.Collapse>
       </Container>
