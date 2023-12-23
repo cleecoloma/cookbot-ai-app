@@ -5,7 +5,7 @@ import { LoginContext } from '../context/Login';
 
 function DemoAccount() {
   const { user } = useContext(LoginContext);
-
+  console.log("HERES THE USER", user)
   return (
     <div className='centered-container'>
       <h2>Profile</h2>

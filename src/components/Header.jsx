@@ -11,8 +11,12 @@ import Logout from '../auth/Logout';
 
 function Header(props) {
   const { isAuthenticated } = useAuth0();
-  const { isDemoAccount, toggleLoginModal, handleDemoLogout } =
-    useContext(LoginContext);
+  const {
+    isDemoAccount,
+    toggleLoginModal,
+    handleDemoLogout,
+    handleProfilePage,
+  } = useContext(LoginContext);
 
   return (
     <Navbar
@@ -32,18 +36,28 @@ function Header(props) {
             <Nav.Link href='#home'>Home</Nav.Link>
           </Nav>
           <div className='header-links'>
-            {(!isDemoAccount && !isAuthenticated) && (
+            {!isDemoAccount && !isAuthenticated && (
               <Button id='create-button' onClick={toggleLoginModal}>
                 Create a recipe
               </Button>
             )}
             {isAuthenticated && (
               <div id='logout-button'>
+                <Link className='nav-link' to='/Profile'>
+                  <Button id='profile-button' onClick={handleProfilePage}>
+                    Welcome
+                  </Button>
+                </Link>
                 <Logout />
               </div>
             )}
             {isDemoAccount && (
               <div id='logout-button'>
+                <Link className='nav-link' to='/DemoAccount'>
+                  <Button id='profile-button' onClick={handleProfilePage}>
+                    Welcome
+                  </Button>
+                </Link>
                 <Button variant='primary' onClick={handleDemoLogout}>
                   Logout
                 </Button>
