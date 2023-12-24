@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -16,7 +16,14 @@ function Header() {
     toggleLoginModal,
     handleDemoLogout,
     handleProfilePage,
+    handleAuthAccount,
   } = useContext(LoginContext);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      handleAuthAccount();
+    }
+  }, [isAuthenticated]);
 
   return (
     <Navbar
@@ -34,7 +41,7 @@ function Header() {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='/recipes'>My Recipes</Nav.Link>
+            <Nav.Link href='/my-recipes'>My Recipes</Nav.Link>
           </Nav>
           <div className='header-links'>
             {!isDemoAccount && !isAuthenticated && (
@@ -52,7 +59,7 @@ function Header() {
             )}
             {isDemoAccount && (
               <div id='logout-button'>
-                <Link className='nav-link' to='/demo-account'>
+                <Link className='nav-link' to='/profile'>
                   <Button id='profile-button' onClick={handleProfilePage}>
                     Welcome
                   </Button>

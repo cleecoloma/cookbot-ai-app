@@ -18,17 +18,12 @@ function LoginModal() {
         </Modal.Header>
         <div className='login-card'>
           <div className='login-div'>
-            <Button
-              id='demo-button'
-              onClick={
-                handleDemoAccount
-              }
-            >
+            <Button id='demo-button' onClick={handleDemoAccount}>
               Demo
             </Button>
           </div>
           <hr />
-          <Login className='login-button' />
+          <Login className='login-button'/>
           <p>using Auth0</p>
         </div>
       </Modal>

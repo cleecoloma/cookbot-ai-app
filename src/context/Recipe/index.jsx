@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const RecipeContext = React.createContext();
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 function RecipeProvider(props) {
   const [user, setUser] = useState(null);
@@ -28,8 +31,7 @@ function RecipeProvider(props) {
 
   const fetchRecipes = async (email) => {
     const queryParams = { user: email };
-    props
-      .authRequest('GET', token, null, null, queryParams)
+    authRequest('GET', token, null, null, queryParams)
       .then((response) => {
         setRecipes(response.data);
       });
@@ -40,14 +42,14 @@ function RecipeProvider(props) {
       user: user.email,
       foodItems: input,
     };
-    props.authRequest('POST', token, null, ingredientsObj).then((response) => {
+    authRequest('POST', token, null, ingredientsObj).then((response) => {
       setRecipes([...recipes, response.data]);
       toggleLoading();
     });
   };
 
   const updateRecipe = async (id, updatedData) => {
-    props.authRequest('PUT', token, id, updatedData).then((response) => {
+    authRequest('PUT', token, id, updatedData).then((response) => {
       const updatedRecipes = recipes.map((recipe) => {
         if (recipe.id === id) {
           return response.data;
@@ -61,7 +63,7 @@ function RecipeProvider(props) {
   };
 
   const deleteRecipe = async (id) => {
-    props.authRequest('DELETE', token, id, null).then((response) => {
+    authRequest('DELETE', token, id, null).then((response) => {
       const filteredRecipes = recipes.filter((recipe) => recipe._id !== id);
       setRecipes(filteredRecipes);
     });
@@ -75,6 +77,25 @@ function RecipeProvider(props) {
 
   const toggleLoading = () => {
     setIsLoading(!isLoading);
+  };
+
+  const authRequest = async (method, token, id, data, queryParams) => {
+    const baseURL = SERVER_URL;
+    let url = id ? `/recipes/${id}` : '/recipes';
+    if (queryParams) {
+      url += '?' + new URLSearchParams(queryParams).toString();
+    }
+
+    const config = {
+      method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      baseURL,
+      url,
+      data: data ? data : null,
+    };
+    return await axios(config);
   };
 
   return (
@@ -95,6 +116,7 @@ function RecipeProvider(props) {
         deleteRecipe,
         handleUpdateRecipe,
         toggleLoading,
+        authRequest,
       }}
     >
       {props.children}

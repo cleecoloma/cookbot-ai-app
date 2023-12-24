@@ -6,7 +6,6 @@ import Recipe from './components/Recipe';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
-import DemoAccount from './components/DemoAccount';
 import Hero from './components/Hero';
 import './styles/App.css';
 import RecipeBook from './components/RecipeBook';
@@ -33,19 +32,14 @@ function App() {
                     <Hero id='home' />
                     <RecipeBook id='recipebook' />
                     <HowTo id='howitworks' />
+                    <Footer />
                   </>
                 }
               ></Route>
 
               <Route exact path='/profile' element={<Profile />}></Route>
-              <Route
-                exact
-                path='/demo-account'
-                element={<DemoAccount />}
-              ></Route>
               <Route exact path='/my-recipes' element={<Recipe />}></Route>
             </Routes>
-            <Footer />
           </div>
         </RecipeProvider>
       </LoginProvider>

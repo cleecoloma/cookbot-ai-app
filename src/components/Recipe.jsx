@@ -9,11 +9,9 @@ import EditModal from './EditModal';
 import { RecipeContext } from '../context/Recipe';
 import { LoginContext } from '../context/Login';
 
-const DEMO_TOKEN = import.meta.env.VITE_DEMO_TOKEN;
-
 function Recipe() {
-
-  const { user, auth0 } = useAuth0();
+  const { auth0 } = useAuth0();
+  const { loggedUser, isDemoAccount } = useContext(LoginContext);
 
   const {
     showModal,
@@ -33,28 +31,13 @@ function Recipe() {
     toggleLoading,
   } = useContext(RecipeContext);
 
-  const { isDemoAccount } = useContext(LoginContext);
-
   useEffect(() => {
     async function fetchData() {
-      if (isDemoAccount) {
-        const token = DEMO_TOKEN;
-        const user = demoUser;
-        setToken(token);
-        setUser(user);
-        fetchRecipes(user.email);
-      } else {
-        const res = await auth0.getIdTokenClaims();
-        const token = res.__raw;
-        setToken(token);
-        setUser(res);
-        fetchRecipes(res.email);
-      }
+      fetchRecipes(loggedUser.email);
     }
 
     fetchData();
-  }, [isDemoAccount, auth0, fetchRecipes]);
-
+  }, [loggedUser]);
 
   return (
     <div id='recipe-container'>
@@ -67,21 +50,18 @@ function Recipe() {
         Add New Recipe
       </Button>
       <AddModal
-        user={user}
+        user={loggedUser}
         show={showModal}
-        onHide={!handleShowModal}
         addRecipe={addRecipe}
         toggleLoading={toggleLoading}
       />
       <EditModal
         show={showEditModal}
-        onHide={!handleShowEditModal}
         updateRecipe={updateRecipe}
         toggleLoading={toggleLoading}
       />
       <FullRecipeModal
         show={showFullRecipeModal}
-        onHide={!handleShowFullRecipeModal}
         currentRecipe={currentRecipe}
         updateRecipe={updateRecipe}
         handleUpdateRecipe={handleUpdateRecipe}

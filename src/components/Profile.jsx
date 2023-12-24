@@ -1,23 +1,22 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import Card from 'react-bootstrap/Card';
 import '../styles/Profile.css';
-import { useAuth0 } from '@auth0/auth0-react';
+import { LoginContext } from '../context/Login';
 
 function Profile() {
-  const { user, isAuthenticated } = useAuth0();
+  const { loggedUser } = useContext(LoginContext);
+
   return (
-    isAuthenticated && (
-      <div className='centered-container'>
-        <h2>Profile</h2>
-        <Card id='profile-card' style={{ width: '18rem' }}>
-          <Card.Img variant='top' src={user.picture} />
-          <Card.Body>
-            <Card.Title>{user.nickname}</Card.Title>
-            <Card.Text>{user.email}</Card.Text>
-          </Card.Body>
-        </Card>
-      </div>
-    )
+    <div className='centered-container'>
+      <h2>Profile</h2>
+      <Card id='profile-card' style={{ width: '18rem' }}>
+        <Card.Img variant='top' src={loggedUser.picture} />
+        <Card.Body>
+          <Card.Title>{loggedUser.nickname}</Card.Title>
+          <Card.Text>{loggedUser.email}</Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 
