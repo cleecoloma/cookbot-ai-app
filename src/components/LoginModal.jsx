@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import '../styles/LoginModal.css';
 import Login from '../auth/Login';
 import { withAuth0 } from '@auth0/auth0-react';
+import { LoginContext } from '../context/Login';
 
-function LoginModal(props) {
+function LoginModal() {
+  const { loginModalPreview, toggleLoginModal, handleDemoAccount } =
+    useContext(LoginContext);
+
   return (
     <>
-      <Modal
-        show={props.loginModalPreview}
-        onHide={props.toggleLoginModal}
-        size='sm'
-      >
+      <Modal show={loginModalPreview} onHide={toggleLoginModal} size='sm'>
         <Modal.Header closeButton>
           <Modal.Title id='login-title'>Select a login method</Modal.Title>
         </Modal.Header>
@@ -20,10 +20,9 @@ function LoginModal(props) {
           <div className='login-div'>
             <Button
               id='demo-button'
-              onClick={() => {
-                props.handleDemoAccount();
-                props.toggleLoginModal();
-              }}
+              onClick={
+                handleDemoAccount
+              }
             >
               Demo
             </Button>

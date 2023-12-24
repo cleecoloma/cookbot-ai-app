@@ -1,136 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
-import Recipe from './components/Recipe';
+// import Recipe from './components/Recipe';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Contact from './components/Contact';
+// import Contact from './components/Contact';
 import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 import DemoAccount from './components/DemoAccount';
 import Hero from './components/Hero';
-import axios from 'axios';
 import './styles/App.css';
 import RecipeBook from './components/RecipeBook';
 import HowTo from './components/HowTo';
 import Footer from './components/Footer';
+import LoginProvider from './context/Login';
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-
-function App(props) {
-  const [user, setUser] = useState(null);
-  const [loginModalPreview, setLoginModalPreview] = useState(false);
-  const [isDemoAccount, setIsDemoAccount] = useState(false);
-
-  const demoUser = {
-    picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
-    nickname: 'Demo User',
-    email: 'demo_user@email.com',
-  };
-
-  const authRequest = async (method, token, id, data, queryParams) => {
-    const baseURL = SERVER_URL;
-    let url = id ? `/recipes/${id}` : '/recipes';
-    if (queryParams) {
-      url += '?' + new URLSearchParams(queryParams).toString();
-    }
-
-    const config = {
-      method,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      baseURL,
-      url,
-      data: data ? data : null,
-    };
-    return await axios(config);
-  };
-
-  const toggleLoginModal = () => {
-    setLoginModalPreview(!loginModalPreview);
-  };
-
-  const handleDemoAccount = () => {
-    setIsDemoAccount(!isDemoAccount);
-    setUser(isDemoAccount ? '' : demoUser);
-  };
-
-  const handleDemoLogout = () => {
-    setIsDemoAccount(!isDemoAccount);
-    setUser('');
-  };
-
-  const handleProfilePage = (person) => {
-    setUser(person);
-  };
-
-  const { isAuthenticated } = props.auth0;
-
+function App() {
   return (
-    <div className='content'>
-      <Router>
-        <Header
-          user={user}
-          isDemoAccount={isDemoAccount}
-          handleDemoAccount={handleDemoAccount}
-          handleDemoLogout={handleDemoLogout}
-          toggleLoginModal={toggleLoginModal}
-        />
-        <LoginModal
-          handleDemoAccount={handleDemoAccount}
-          loginModalPreview={loginModalPreview}
-          toggleLoginModal={toggleLoginModal}
-        />
-        <Routes>
-          {isDemoAccount ? (
+    <LoginProvider>
+      <div className='content'>
+        <LoginModal />
+        <Router>
+          <Header />
+          <Routes>
             <Route
               exact
               path='/'
               element={
-                <Recipe
-                  isDemoAccount={isDemoAccount}
-                  authRequest={authRequest}
-                  demoUser={demoUser}
-                />
+                <>
+                  <Hero id='home' />
+                  <RecipeBook id='recipebook' />
+                  <HowTo id='howitworks' />
+                  <Footer />
+                </>
               }
             ></Route>
-          ) : (
-            <Route
-              exact
-              path='/'
-              element={
-                isAuthenticated ? (
-                  <Recipe
-                    handleProfilePage={handleProfilePage}
-                    authRequest={authRequest}
-                  />
-                ) : (
-                  <>
-                    <Hero id='home' />
-                    <RecipeBook id='recipebook' />
-                    <HowTo id='howitworks' />
-                    <Footer />
-                  </>
-                )
-              }
-            ></Route>
-          )}
 
-          <Route exact path='/Contact' element={<Contact />}></Route>
-          <Route
-            exact
-            path='/Profile'
-            element={isAuthenticated ? <Profile /> : null}
-          ></Route>
-          <Route
-            exact
-            path='/DemoAccount'
-            element={isDemoAccount ? <DemoAccount user={user} /> : null}
-          ></Route>
-        </Routes>
-      </Router>
-    </div>
+            <Route exact path='/Profile' element={<Profile />}></Route>
+            <Route exact path='/DemoAccount' element={<DemoAccount />}></Route>
+          </Routes>
+        </Router>
+      </div>
+    </LoginProvider>
   );
 }
 

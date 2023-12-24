@@ -1,3 +1,8 @@
+#header-navbar {
+  margin: 0 auto;
+  width: 1300px;
+}
+
 #brand-name {
   display: flex;
   justify-content: center;
@@ -7,6 +12,11 @@
   padding: 6px 12px;
   font-weight: 900;
   border-radius: 6px;
+}
+
+.header-links {
+  display: flex;
+  justify-content: end;
 }
 
 #brand-name h2 {
@@ -48,8 +58,17 @@
   align-items: center;
 }
 
+#logout-style-button {
+  border: 2px solid #878885;
+  background-color: #c3c5c1;
+}
+
+#logout-style-button:hover {
+  background-color: #878885;
+}
+
+
 #create-button {
-  margin-right: 1rem;
   border: 2px solid #438951;
   background-color: #51945f;
 }

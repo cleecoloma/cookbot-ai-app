@@ -7,7 +7,7 @@ import '../styles/Footer.css';
 
 function Footer() {
   return (
-    <div id='footer'>
+    <div className='footer-container'>
       {' '}
       <div id='link-container'>
         <a

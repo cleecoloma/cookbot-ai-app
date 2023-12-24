@@ -1,8 +1,10 @@
-#how-to {
+.how-to {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
   padding: 2rem;
+  margin: 0 auto;
+  width: 1300px;
 }
