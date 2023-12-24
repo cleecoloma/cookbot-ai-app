@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export const LoginContext = React.createContext();
@@ -6,15 +7,10 @@ export const LoginContext = React.createContext();
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 function LoginProvider(props) {
-  const [user, setUser] = useState(null);
   const [loginModalPreview, setLoginModalPreview] = useState(false);
   const [isDemoAccount, setIsDemoAccount] = useState(false);
 
-  const demoUser = {
-    picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
-    nickname: 'Demo User',
-    email: 'demo_user@email.com',
-  };
+    const navigate = useNavigate();
 
   const authRequest = async (method, token, id, data, queryParams) => {
     const baseURL = SERVER_URL;
@@ -41,29 +37,21 @@ function LoginProvider(props) {
 
   const handleDemoAccount = () => {
     setIsDemoAccount(!isDemoAccount);
-    setUser(demoUser);
     toggleLoginModal();
+    navigate('/');
   };
 
   const handleDemoLogout = () => {
     setIsDemoAccount(!isDemoAccount);
-    setUser('');
+    navigate('/');
   };
-
-  const handleProfilePage = (person) => {
-    setUser(person);
-  };
-  
-  console.log('HERES THE USER AT CONTEXT', user);
 
   return (
     <LoginContext.Provider
       value={{
-        user,
         loginModalPreview,
         isDemoAccount,
         toggleLoginModal,
-        handleProfilePage,
         handleDemoAccount,
         handleDemoLogout,
         authRequest,

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
@@ -17,10 +17,11 @@ import LoginProvider from './context/Login';
 
 function App() {
   return (
-    <LoginProvider>
-      <div className='content'>
-        <LoginModal />
-        <Router>
+    <Router>
+      <LoginProvider>
+        <div className='content'>
+          <LoginModal />
+
           <Header />
           <Routes>
             <Route
@@ -39,12 +40,10 @@ function App() {
             <Route exact path='/Profile' element={<Profile />}></Route>
             <Route exact path='/DemoAccount' element={<DemoAccount />}></Route>
           </Routes>
-        </Router>
-      </div>
-    </LoginProvider>
+        </div>
+      </LoginProvider>
+    </Router>
   );
 }
 
-const namedComp = withAuth0(App);
-
-export default namedComp;
+export default App;
