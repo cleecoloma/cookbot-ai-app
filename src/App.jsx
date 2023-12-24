@@ -20,7 +20,6 @@ function App() {
     <LoginProvider>
       <div className='content'>
         <LoginModal />
-
         <Router>
           <Header />
           <Routes>

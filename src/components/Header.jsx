@@ -9,7 +9,7 @@ import { LoginContext } from '../context/Login';
 import { useAuth0 } from '@auth0/auth0-react';
 import Logout from '../auth/Logout';
 
-function Header(props) {
+function Header() {
   const { isAuthenticated } = useAuth0();
   const {
     isDemoAccount,
@@ -44,9 +44,7 @@ function Header(props) {
             {isAuthenticated && (
               <div id='logout-button'>
                 <Link className='nav-link' to='/Profile'>
-                  <Button id='profile-button' onClick={handleProfilePage}>
-                    Welcome
-                  </Button>
+                  <Button id='profile-button'>Welcome</Button>
                 </Link>
                 <Logout />
               </div>
@@ -58,7 +56,10 @@ function Header(props) {
                     Welcome
                   </Button>
                 </Link>
-                <Button variant='primary' onClick={handleDemoLogout}>
+                <Button
+                  id='logout-style-button'
+                  onClick={handleDemoLogout}
+                >
                   Logout
                 </Button>
               </div>

@@ -41,7 +41,7 @@ function LoginProvider(props) {
 
   const handleDemoAccount = () => {
     setIsDemoAccount(!isDemoAccount);
-    setUser(isDemoAccount ? '' : demoUser);
+    setUser(demoUser);
     toggleLoginModal();
   };
 
@@ -53,6 +53,8 @@ function LoginProvider(props) {
   const handleProfilePage = (person) => {
     setUser(person);
   };
+  
+  console.log('HERES THE USER AT CONTEXT', user);
 
   return (
     <LoginContext.Provider
