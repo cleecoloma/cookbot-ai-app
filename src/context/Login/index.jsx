@@ -1,39 +1,25 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+
+const DEMO_TOKEN = import.meta.env.VITE_DEMO_TOKEN;
 
 export const LoginContext = React.createContext();
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const demoUser = {
+  picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
+  nickname: 'Demo User',
+  email: 'demo_user@email.com',
+  token: DEMO_TOKEN,
+};
 
 function LoginProvider(props) {
-  const [user, setUser] = useState(null);
+  const [loggedUser, setLoggedUser] = useState(null);
   const [loginModalPreview, setLoginModalPreview] = useState(false);
   const [isDemoAccount, setIsDemoAccount] = useState(false);
 
-  const demoUser = {
-    picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
-    nickname: 'Demo User',
-    email: 'demo_user@email.com',
-  };
-
-  const authRequest = async (method, token, id, data, queryParams) => {
-    const baseURL = SERVER_URL;
-    let url = id ? `/recipes/${id}` : '/recipes';
-    if (queryParams) {
-      url += '?' + new URLSearchParams(queryParams).toString();
-    }
-
-    const config = {
-      method,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      baseURL,
-      url,
-      data: data ? data : null,
-    };
-    return await axios(config);
-  };
+  const navigate = useNavigate();
+  const { user, getAccessTokenSilently } = useAuth0();
 
   const toggleLoginModal = () => {
     setLoginModalPreview(!loginModalPreview);
@@ -41,32 +27,41 @@ function LoginProvider(props) {
 
   const handleDemoAccount = () => {
     setIsDemoAccount(!isDemoAccount);
-    setUser(demoUser);
+    setLoggedUser(demoUser);
     toggleLoginModal();
+    navigate('/my-recipes');
+  };
+
+  const handleAuthAccount = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+      setLoggedUser({
+        picture: user.picture,
+        nickname: user.nickname,
+        email: user.email,
+        token,
+      });
+    } catch (e) {
+      console.error('Error fetching access token:', e);
+    }
   };
 
   const handleDemoLogout = () => {
     setIsDemoAccount(!isDemoAccount);
-    setUser('');
+    navigate('/my-recipes');
   };
 
-  const handleProfilePage = (person) => {
-    setUser(person);
-  };
-  
-  console.log('HERES THE USER AT CONTEXT', user);
 
   return (
     <LoginContext.Provider
       value={{
-        user,
+        loggedUser,
         loginModalPreview,
         isDemoAccount,
         toggleLoginModal,
-        handleProfilePage,
         handleDemoAccount,
         handleDemoLogout,
-        authRequest,
+        handleAuthAccount,
       }}
     >
       {props.children}
