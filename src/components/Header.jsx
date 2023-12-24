@@ -34,6 +34,7 @@ function Header() {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             <Nav.Link href='#home'>Home</Nav.Link>
+            <Nav.Link href='/recipes'>My Recipes</Nav.Link>
           </Nav>
           <div className='header-links'>
             {!isDemoAccount && !isAuthenticated && (
@@ -43,7 +44,7 @@ function Header() {
             )}
             {isAuthenticated && (
               <div id='logout-button'>
-                <Link className='nav-link' to='/Profile'>
+                <Link className='nav-link' to='/profile'>
                   <Button id='profile-button'>Welcome</Button>
                 </Link>
                 <Logout />
@@ -51,15 +52,12 @@ function Header() {
             )}
             {isDemoAccount && (
               <div id='logout-button'>
-                <Link className='nav-link' to='/DemoAccount'>
+                <Link className='nav-link' to='/demo-account'>
                   <Button id='profile-button' onClick={handleProfilePage}>
                     Welcome
                   </Button>
                 </Link>
-                <Button
-                  id='logout-style-button'
-                  onClick={handleDemoLogout}
-                >
+                <Button id='logout-style-button' onClick={handleDemoLogout}>
                   Logout
                 </Button>
               </div>
