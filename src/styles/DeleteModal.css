@@ -1,0 +1,32 @@
+.delete-modal-title {
+  color: #3e6a76;
+}
+
+.delete-modal-dish {
+  font-size: 200%;
+  color: #717270;
+  font-family: 'Smooch Sans', sans-serif;
+}
+
+#recipe-close-button,
+#recipe-delete-button {
+  margin: 0 1rem;
+}
+
+#recipe-close-button {
+  border: 2px solid #878885;
+  background-color: #c3c5c1;
+}
+
+#recipe-close-button:hover {
+  background-color: #878885;
+}
+
+#recipe-delete-button {
+  border: 2px solid #a12717;
+  background-color: #c2371e;
+}
+
+#recipe-delete-button:hover {
+  background-color: #a12717;
+}

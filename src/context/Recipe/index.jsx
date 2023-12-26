@@ -9,6 +9,7 @@ function RecipeProvider(props) {
   const [recipes, setRecipes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showFullRecipeModal, setShowFullRecipeModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,6 +20,14 @@ function RecipeProvider(props) {
 
   const handleCloseFullRecipeModal = () => {
     setShowFullRecipeModal(!showFullRecipeModal);
+  };
+
+  const handleShowDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
   };
 
   const handleShowModal = () => {
@@ -100,12 +109,15 @@ function RecipeProvider(props) {
       value={{
         showModal,
         showFullRecipeModal,
+        showDeleteModal,
         isLoading,
         recipes,
         currentRecipe,
         handleShowModal,
         handleShowFullRecipeModal,
         handleCloseFullRecipeModal,
+        handleShowDeleteModal,
+        handleCloseDeleteModal,
         fetchRecipes,
         addRecipe,
         deleteRecipe,
