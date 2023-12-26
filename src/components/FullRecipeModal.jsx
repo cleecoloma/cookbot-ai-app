@@ -85,7 +85,7 @@ function FullRecipeModal() {
               <p>DIRECTIONS</p>
               <ol>
                 {currentRecipe.cookingSteps.map((direction, index) => (
-                  <li key={index}>{direction}</li>
+                  <li key={index}>{direction.replace(/^\d+\.\s*/, '')}</li>
                 ))}
               </ol>
             </div>
