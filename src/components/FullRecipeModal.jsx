@@ -5,16 +5,18 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import { RecipeContext } from '../context/Recipe';
+import { LoginContext } from '../context/Login';
 
 function FullRecipeModal() {
+  const {
+    showFullRecipeModal,
+    currentRecipe,
+    handleShowFullRecipeModal,
+    handleCloseFullRecipeModal,
+    deleteRecipe,
+  } = useContext(RecipeContext);
 
-    const {
-      showFullRecipeModal,
-      currentRecipe,
-      handleShowFullRecipeModal,
-      handleCloseFullRecipeModal,
-      deleteRecipe,
-    } = useContext(RecipeContext);
+  const { loggedUser } = useContext(LoginContext);
 
   const handleTimestampCheck = (timestamp) => {
     const timestampDate = new Date(timestamp);
@@ -95,7 +97,7 @@ function FullRecipeModal() {
           variant='danger'
           style={{ width: '6rem' }}
           onClick={() => {
-            deleteRecipe(currentRecipe._id);
+            deleteRecipe(currentRecipe._id, loggedUser.token);
             handleCloseFullRecipeModal();
           }}
         >

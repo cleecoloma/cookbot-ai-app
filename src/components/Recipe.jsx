@@ -5,7 +5,6 @@ import FullRecipeModal from './FullRecipeModal';
 import Cards from './Cards';
 import { Button } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
-import EditModal from './EditModal';
 import { RecipeContext } from '../context/Recipe';
 import { LoginContext } from '../context/Login';
 
@@ -15,7 +14,6 @@ function Recipe() {
 
   const {
     showModal,
-    showEditModal,
     showFullRecipeModal,
     isLoading,
     recipes,
@@ -32,7 +30,7 @@ function Recipe() {
   useEffect(() => {
     async function fetchData() {
       if (loggedUser && loggedUser.email) {
-        fetchRecipes(loggedUser.email);
+        fetchRecipes(loggedUser.email, loggedUser.token);
       }
     }
 
@@ -51,11 +49,6 @@ function Recipe() {
         user={loggedUser}
         show={showModal}
         addRecipe={addRecipe}
-        toggleLoading={toggleLoading}
-      />
-      <EditModal
-        show={showEditModal}
-        updateRecipe={updateRecipe}
         toggleLoading={toggleLoading}
       />
       <FullRecipeModal

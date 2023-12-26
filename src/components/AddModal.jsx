@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Modal, Button, Form, ListGroup } from 'react-bootstrap';
+import { LoginContext } from '../context/Login';
+import { RecipeContext } from '../context/Recipe';
 import '../styles/AddModal.css';
 
-function AddModal(props) {
+function AddModal() {
   const [ingredients, setIngredients] = useState(['']);
+
+  const { showModal, handleShowModal, addRecipe, toggleLoading } =
+    useContext(RecipeContext);
+
+    const {
+      loggedUser,
+    } = useContext(LoginContext);
 
   const handleAddIngredient = () => {
     setIngredients([...ingredients, '']);
@@ -16,14 +25,13 @@ function AddModal(props) {
   };
 
   const handleSubmit = () => {
-    props.addRecipe(ingredients);
-    props.toggleLoading();
+    addRecipe(loggedUser.email, ingredients, loggedUser.token);
     setIngredients(['']);
-    props.onHide();
+    handleShowModal();
   };
 
   return (
-    <Modal show={props.show} onHide={props.onHide}>
+    <Modal show={showModal} onHide={handleShowModal}>
       <Modal.Header id='add-modal-header' closeButton>
         <Modal.Title>New Recipe</Modal.Title>
       </Modal.Header>
@@ -50,14 +58,13 @@ function AddModal(props) {
         </Form>
       </Modal.Body>
       <Modal.Footer id='add-modal-footer'>
-        <Button variant='secondary' onClick={props.onHide}>
+        <Button variant='secondary' onClick={handleShowModal}>
           Close
         </Button>
         <Button
           variant='primary'
           onClick={() => {
             handleSubmit();
-            props.onHide();
           }}
         >
           Submit Recipe
