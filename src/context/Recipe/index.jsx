@@ -26,15 +26,18 @@ function RecipeProvider(props) {
 
   const handleShowFullRecipeModal = (recipe) => {
     setShowFullRecipeModal(!showFullRecipeModal);
-    {showFullRecipeModal && setCurrentRecipe(recipe)}
+    setCurrentRecipe(recipe);
+  };
+
+  const handleCloseFullRecipeModal = () => {
+    setShowFullRecipeModal(!showFullRecipeModal);
   };
 
   const fetchRecipes = async (email) => {
     const queryParams = { user: email };
-    authRequest('GET', token, null, null, queryParams)
-      .then((response) => {
-        setRecipes(response.data);
-      });
+    authRequest('GET', token, null, null, queryParams).then((response) => {
+      setRecipes(response.data);
+    });
   };
 
   const addRecipe = async (input) => {
@@ -68,7 +71,7 @@ function RecipeProvider(props) {
       setRecipes(filteredRecipes);
     });
   };
-  
+
   const handleUpdateRecipe = (recipe) => {
     setEditRecipe(recipe);
     setShowFullRecipeModal(false);
@@ -110,6 +113,7 @@ function RecipeProvider(props) {
         handleShowModal,
         handleShowEditModal,
         handleShowFullRecipeModal,
+        handleCloseFullRecipeModal,
         fetchRecipes,
         addRecipe,
         updateRecipe,

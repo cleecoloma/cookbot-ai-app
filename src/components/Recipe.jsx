@@ -21,7 +21,6 @@ function Recipe() {
     recipes,
     currentRecipe,
     handleShowModal,
-    handleShowEditModal,
     handleShowFullRecipeModal,
     fetchRecipes,
     addRecipe,
@@ -87,7 +86,6 @@ function Recipe() {
           {recipes.length ? (
             recipes.map((recipe, idx) => (
               <Cards
-                handleShowFullRecipeModal={handleShowFullRecipeModal}
                 key={idx}
                 recipe={recipe}
               />

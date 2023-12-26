@@ -1,6 +1,6 @@
 'use strict';
 
-import * as React from 'react';
+import React, { useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,15 +8,27 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import LaunchIcon from '@mui/icons-material/Launch';
+import { RecipeContext } from '../context/Recipe';
 import '../styles/Cards.css';
 
 function Cards(props) {
+  const {
+    showModal,
+    showEditModal,
+    showFullRecipeModal,
+    isLoading,
+    recipes,
+    currentRecipe,
+    handleShowModal,
+    handleShowFullRecipeModal,
+  } = useContext(RecipeContext);
+
   const handleTimestampCheck = (timestamp) => {
     const timestampDate = new Date(timestamp);
     const currentTime = new Date();
     const timeDifference = currentTime - timestampDate;
     const oneHourInMilliS = 3600000; // One hour converted to milliseconds
-    if (timeDifference > (oneHourInMilliS - 360000)) {
+    if (timeDifference > oneHourInMilliS - 360000) {
       return false; //subtracted 10 minutes from one hour
     } else {
       return true;
@@ -50,7 +62,7 @@ function Cards(props) {
         className='card-header-section'
         action={
           <IconButton
-            onClick={() => props.handleShowFullRecipeModal(props.recipe)}
+            onClick={() => handleShowFullRecipeModal(props.recipe)}
             aria-label='settings'
           >
             <LaunchIcon />

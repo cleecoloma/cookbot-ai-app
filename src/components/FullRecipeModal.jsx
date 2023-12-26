@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/FullRecipeModal.css';
 import { Modal, Button } from 'react-bootstrap';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
-import PropTypes from 'prop-types';
+import { RecipeContext } from '../context/Recipe';
 
-function FullRecipeModal(props) {
+function FullRecipeModal() {
+
+    const {
+      showFullRecipeModal,
+      currentRecipe,
+      handleShowFullRecipeModal,
+      handleCloseFullRecipeModal,
+      deleteRecipe,
+      handleUpdateRecipe,
+    } = useContext(RecipeContext);
+
   const handleTimestampCheck = (timestamp) => {
     const timestampDate = new Date(timestamp);
     const currentTime = new Date();
@@ -19,17 +29,17 @@ function FullRecipeModal(props) {
     }
   };
 
-  return props.currentRecipe ? (
+  return currentRecipe ? (
     <Modal
-      show={props.show}
-      onHide={props.onHide}
+      show={showFullRecipeModal}
+      onHide={handleShowFullRecipeModal}
       size='xl'
       aria-labelledby='contained-modal-title-vcenter'
       centered
     >
       <Modal.Header closeButton>
         <div className='recipe-title'>
-          <h3>{props.currentRecipe.dishName}</h3>
+          <h3>{currentRecipe.dishName}</h3>
         </div>
       </Modal.Header>
       <Modal.Body>
@@ -38,11 +48,11 @@ function FullRecipeModal(props) {
             <img
               className='recipe-image'
               src={
-                handleTimestampCheck(props.currentRecipe.timestamp)
-                  ? props.currentRecipe.imageUrl
+                handleTimestampCheck(currentRecipe.timestamp)
+                  ? currentRecipe.imageUrl
                   : '../images/recipe-image-placeholder.png'
               }
-              alt={props.currentRecipe.dishName}
+              alt={currentRecipe.dishName}
             />
             <p className='recipe-image-see-more'>SEE MORE</p>
           </div>
@@ -51,21 +61,21 @@ function FullRecipeModal(props) {
             <div className='recipe-icons'>
               <div className='recipe-icons-divs'>
                 <HourglassBottomIcon />
-                <p>PREP: {props.currentRecipe.prepDuration}</p>
+                <p>PREP: {currentRecipe.prepDuration}</p>
               </div>
               <div className='recipe-icons-divs'>
                 <AccessTimeIcon />
-                <p>COOK: {props.currentRecipe.cookingDuration}</p>
+                <p>COOK: {currentRecipe.cookingDuration}</p>
               </div>
               <div className='recipe-icons-divs'>
                 <RestaurantIcon />
-                <p>SERVING: {props.currentRecipe.servingSize}</p>
+                <p>SERVING: {currentRecipe.servingSize}</p>
               </div>
             </div>
             <div className='ingredients'>
               <p>INGREDIENTS</p>
               <ul>
-                {props.currentRecipe.ingredients.map((ingredient, index) => (
+                {currentRecipe.ingredients.map((ingredient, index) => (
                   <li key={index}>{ingredient}</li>
                 ))}
               </ul>
@@ -73,7 +83,7 @@ function FullRecipeModal(props) {
             <div className='directions'>
               <p>DIRECTIONS</p>
               <ol>
-                {props.currentRecipe.cookingSteps.map((direction, index) => (
+                {currentRecipe.cookingSteps.map((direction, index) => (
                   <li key={index}>{direction}</li>
                 ))}
               </ol>
@@ -86,7 +96,7 @@ function FullRecipeModal(props) {
           variant='primary'
           style={{ width: '6rem' }}
           onClick={() => {
-            props.handleUpdateRecipe(props.currentRecipe);
+            handleUpdateRecipe(currentRecipe);
           }}
         >
           Edit
@@ -95,16 +105,15 @@ function FullRecipeModal(props) {
           variant='danger'
           style={{ width: '6rem' }}
           onClick={() => {
-            console.log('Deleting recipe with _id:', props.currentRecipe._id);
-            props.deleteRecipe(props.currentRecipe._id);
-            props.onHide();
+            deleteRecipe(currentRecipe._id);
+            handleCloseFullRecipeModal();
           }}
         >
           Delete
         </Button>
         <Button
           variant='secondary'
-          onClick={props.onHide}
+          onClick={handleCloseFullRecipeModal}
           style={{ width: '6rem' }}
         >
           Close
@@ -113,19 +122,5 @@ function FullRecipeModal(props) {
     </Modal>
   ) : null;
 }
-
-FullRecipeModal.propTypes = {
-  show: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  deleteRecipe: PropTypes.func.isRequired,
-  editRecipe: PropTypes.object,
-};
-
-FullRecipeModal.defaultProps = {
-  show: false,
-  onHide: () => {},
-  deleteRecipe: () => {},
-  editRecipe: null,
-};
 
 export default FullRecipeModal;
