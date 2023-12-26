@@ -11,7 +11,7 @@
 */
 * {
   margin: 0;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 80px;
 }
 /*
   Typographic tweaks!
@@ -64,6 +64,6 @@ h6 {
 
 @media only screen and (max-width: 550px) {
   * {
-    scroll-padding-top: 68px;
+    scroll-padding-top: 80px;
   }
 }

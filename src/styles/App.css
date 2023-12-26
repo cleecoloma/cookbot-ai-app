@@ -4,9 +4,49 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: white;
 }
 
 .content {
-  /* max-width: 1300px; */
+  max-width: 1300px;
   margin: 0 auto;
+}
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .content {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .content {
+    max-width: 950px;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1000px) {
+  .content {
+    max-width: 750px;
+  }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+  .content {
+    max-width: 540px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .content {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 8px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .content {
+    max-width: 350px;
+    padding: 0 4px;
+  }
 }

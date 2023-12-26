@@ -1,6 +1,9 @@
 #header-navbar {
   margin: 0 auto;
   width: 1300px;
+  z-index: 9001;
+  height: 80px;
+  background-color: white;
 }
 
 #brand-name {
@@ -91,19 +94,4 @@
 
 .header-buttons {
   display: flex;
-}
-
-@media (max-width: 1000px) {
-  .header {
-    padding: 8px 2rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .header {
-    padding: 8px 1rem;
-  }
-  #brand-name {
-    font-size: 95%;
-  }
 }

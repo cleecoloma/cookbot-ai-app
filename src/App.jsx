@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useAuth0 } from '@auth0/auth0-react';
 import Header from './components/Header';
 import Recipe from './components/Recipe';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -21,7 +20,6 @@ function App() {
         <RecipeProvider>
           <div className='content'>
             <LoginModal />
-
             <Header />
             <Routes>
               <Route
