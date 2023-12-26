@@ -42,9 +42,7 @@ function Recipe() {
   return (
     <div id='recipe-container'>
       <Button
-        className='addButton'
-        style={{ width: '10rem', margin: '0 auto' }}
-        variant='success'
+        id='addButton'
         onClick={handleShowModal}
       >
         Add New Recipe

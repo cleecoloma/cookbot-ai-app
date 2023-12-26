@@ -12,6 +12,7 @@ import Logout from '../auth/Logout';
 function Header() {
   const { isAuthenticated } = useAuth0();
   const {
+    loggedUser,
     isDemoAccount,
     toggleLoginModal,
     handleDemoLogout,
@@ -39,11 +40,10 @@ function Header() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='me-auto'>
+          <Nav className='me-auto header-link-paths' variant='underline'>
             <Nav.Link as={NavLink} to='/'>
               Home
             </Nav.Link>{' '}
-            {/* Updated this line */}
             {isDemoAccount || isAuthenticated ? (
               <Nav.Link as={NavLink} to='/my-recipes'>
                 My Recipes
@@ -59,7 +59,9 @@ function Header() {
             {isAuthenticated && (
               <div id='logout-button'>
                 <Link className='nav-link' to='/profile'>
-                  <Button id='profile-button'>Welcome</Button>
+                  <Button id='profile-button'>
+                    Welcome, {loggedUser ? loggedUser.nickname : null}
+                  </Button>
                 </Link>
                 <Logout />
               </div>
@@ -68,7 +70,7 @@ function Header() {
               <div id='logout-button'>
                 <Link className='nav-link' to='/profile'>
                   <Button id='profile-button' onClick={handleProfilePage}>
-                    Welcome
+                    Welcome, {loggedUser.nickname}
                   </Button>
                 </Link>
                 <Button id='logout-style-button' onClick={handleDemoLogout}>

@@ -6,13 +6,18 @@
   justify-content: center;
 }
 
-.addButton {
+#addButton {
   width: 20rem;
   height: 3rem;
   left: 50%;
   border: 2px solid #438951;
   background-color: #51945f;
 }
+
+#addButton:hover {
+  background-color: #438951;
+}
+
 
 .card-container {
   display: flex;
