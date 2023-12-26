@@ -17,12 +17,6 @@ function RecipeBook({ id }) {
     setValue(newValue);
   };
 
-  const [recipeData, setRecipeData] = useState([]);
-
-  useEffect(() => {
-    setRecipeData(recipes);
-  }, []);
-
   return (
     <div className='recipe-book' id={id}>
       <Box sx={{ width: '100%', typography: 'body1' }}>
