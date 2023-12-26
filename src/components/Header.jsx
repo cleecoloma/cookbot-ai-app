@@ -3,7 +3,7 @@ import '../styles/Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { LoginContext } from '../context/Login';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -40,8 +40,15 @@ function Header() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
-            <Nav.Link href='#home'>Home</Nav.Link>
-            <Nav.Link href='/my-recipes'>My Recipes</Nav.Link>
+            <Nav.Link as={NavLink} to='/'>
+              Home
+            </Nav.Link>{' '}
+            {/* Updated this line */}
+            {isDemoAccount || isAuthenticated ? (
+              <Nav.Link as={NavLink} to='/my-recipes'>
+                My Recipes
+              </Nav.Link>
+            ) : null}
           </Nav>
           <div className='header-links'>
             {!isDemoAccount && !isAuthenticated && (
