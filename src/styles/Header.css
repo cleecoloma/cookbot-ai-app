@@ -14,6 +14,12 @@
   border-radius: 6px;
 }
 
+.header-link-paths {
+  letter-spacing: 2px;
+  font-family: 'Gluten', cursive;
+  font-weight: 300;
+}
+
 .header-links {
   display: flex;
   justify-content: end;

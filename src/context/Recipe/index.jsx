@@ -6,73 +6,79 @@ export const RecipeContext = React.createContext();
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 function RecipeProvider(props) {
-  const [user, setUser] = useState(null);
   const [recipes, setRecipes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showFullRecipeModal, setShowFullRecipeModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState(null);
-  const [token, setToken] = useState(null);
-  const [editRecipe, setEditRecipe] = useState(null);
-  const [showEditModal, setShowEditModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleShowFullRecipeModal = (recipe) => {
+    setShowFullRecipeModal(!showFullRecipeModal);
+    setCurrentRecipe(recipe);
+  };
+
+  const handleCloseFullRecipeModal = () => {
+    setShowFullRecipeModal(!showFullRecipeModal);
+  };
+
+  const handleShowDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+  };
 
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
 
-  const handleShowEditModal = () => {
-    setShowEditModal(!showEditModal);
-  };
-
-  const handleShowFullRecipeModal = (recipe) => {
-    setShowFullRecipeModal(!showFullRecipeModal);
-    {showFullRecipeModal && setCurrentRecipe(recipe)}
-  };
-
-  const fetchRecipes = async (email) => {
+  const fetchRecipes = async (email, token) => {
+    setIsLoading(true);
     const queryParams = { user: email };
-    authRequest('GET', token, null, null, queryParams)
-      .then((response) => {
-        setRecipes(response.data);
-      });
+    try {
+      const response = await authRequest('GET', token, null, null, queryParams);
+      setRecipes(response.data);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const addRecipe = async (input) => {
+  const addRecipe = async (email, ingredients, userToken) => {
+    setIsLoading(true);
     let ingredientsObj = {
-      user: user.email,
-      foodItems: input,
+      user: email,
+      foodItems: ingredients,
     };
-    authRequest('POST', token, null, ingredientsObj).then((response) => {
+    try {
+      const response = await authRequest(
+        'POST',
+        userToken,
+        null,
+        ingredientsObj
+      );
       setRecipes([...recipes, response.data]);
-      toggleLoading();
-    });
+    } catch (error) {
+      console.error('Error adding recipe:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const updateRecipe = async (id, updatedData) => {
-    authRequest('PUT', token, id, updatedData).then((response) => {
-      const updatedRecipes = recipes.map((recipe) => {
-        if (recipe.id === id) {
-          return response.data;
-        }
-        return recipe;
-      });
-      setRecipes(updatedRecipes);
-      toggleLoading();
-      fetchRecipes();
-    });
-  };
-
-  const deleteRecipe = async (id) => {
-    authRequest('DELETE', token, id, null).then((response) => {
+  const deleteRecipe = async (id, userToken) => {
+    setIsLoading(true);
+    try {
+      await authRequest('DELETE', userToken, id, null);
       const filteredRecipes = recipes.filter((recipe) => recipe._id !== id);
       setRecipes(filteredRecipes);
-    });
-  };
-  
-  const handleUpdateRecipe = (recipe) => {
-    setEditRecipe(recipe);
-    setShowFullRecipeModal(false);
-    setShowEditModal(true);
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const toggleLoading = () => {
@@ -102,19 +108,19 @@ function RecipeProvider(props) {
     <RecipeContext.Provider
       value={{
         showModal,
-        showEditModal,
         showFullRecipeModal,
+        showDeleteModal,
         isLoading,
         recipes,
         currentRecipe,
         handleShowModal,
-        handleShowEditModal,
         handleShowFullRecipeModal,
+        handleCloseFullRecipeModal,
+        handleShowDeleteModal,
+        handleCloseDeleteModal,
         fetchRecipes,
         addRecipe,
-        updateRecipe,
         deleteRecipe,
-        handleUpdateRecipe,
         toggleLoading,
         authRequest,
       }}

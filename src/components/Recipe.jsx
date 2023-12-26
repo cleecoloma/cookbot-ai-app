@@ -5,7 +5,6 @@ import FullRecipeModal from './FullRecipeModal';
 import Cards from './Cards';
 import { Button } from 'react-bootstrap';
 import { useAuth0 } from '@auth0/auth0-react';
-import EditModal from './EditModal';
 import { RecipeContext } from '../context/Recipe';
 import { LoginContext } from '../context/Login';
 
@@ -15,14 +14,11 @@ function Recipe() {
 
   const {
     showModal,
-    showEditModal,
     showFullRecipeModal,
     isLoading,
     recipes,
     currentRecipe,
     handleShowModal,
-    handleShowEditModal,
-    handleShowFullRecipeModal,
     fetchRecipes,
     addRecipe,
     updateRecipe,
@@ -33,7 +29,9 @@ function Recipe() {
 
   useEffect(() => {
     async function fetchData() {
-      fetchRecipes(loggedUser.email);
+      if (loggedUser && loggedUser.email) {
+        fetchRecipes(loggedUser.email, loggedUser.token);
+      }
     }
 
     fetchData();
@@ -42,9 +40,7 @@ function Recipe() {
   return (
     <div id='recipe-container'>
       <Button
-        className='addButton'
-        style={{ width: '10rem', margin: '0 auto' }}
-        variant='success'
+        id='addButton'
         onClick={handleShowModal}
       >
         Add New Recipe
@@ -53,11 +49,6 @@ function Recipe() {
         user={loggedUser}
         show={showModal}
         addRecipe={addRecipe}
-        toggleLoading={toggleLoading}
-      />
-      <EditModal
-        show={showEditModal}
-        updateRecipe={updateRecipe}
         toggleLoading={toggleLoading}
       />
       <FullRecipeModal
@@ -89,7 +80,6 @@ function Recipe() {
           {recipes.length ? (
             recipes.map((recipe, idx) => (
               <Cards
-                handleShowFullRecipeModal={handleShowFullRecipeModal}
                 key={idx}
                 recipe={recipe}
               />
