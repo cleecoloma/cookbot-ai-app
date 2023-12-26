@@ -48,7 +48,7 @@ function LoginProvider(props) {
 
   const handleDemoLogout = () => {
     setIsDemoAccount(!isDemoAccount);
-    navigate('/my-recipes');
+    navigate('/');
   };
 
 

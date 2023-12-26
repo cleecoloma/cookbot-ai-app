@@ -21,7 +21,6 @@ function Recipe() {
     recipes,
     currentRecipe,
     handleShowModal,
-    handleShowFullRecipeModal,
     fetchRecipes,
     addRecipe,
     updateRecipe,
@@ -32,7 +31,9 @@ function Recipe() {
 
   useEffect(() => {
     async function fetchData() {
-      fetchRecipes(loggedUser.email);
+      if (loggedUser && loggedUser.email) {
+        fetchRecipes(loggedUser.email);
+      }
     }
 
     fetchData();

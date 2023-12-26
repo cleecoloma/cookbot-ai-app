@@ -16,13 +16,6 @@ function RecipeProvider(props) {
   const [showEditModal, setShowEditModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleShowModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const handleShowEditModal = () => {
-    setShowEditModal(!showEditModal);
-  };
 
   const handleShowFullRecipeModal = (recipe) => {
     setShowFullRecipeModal(!showFullRecipeModal);
@@ -32,6 +25,10 @@ function RecipeProvider(props) {
   const handleCloseFullRecipeModal = () => {
     setShowFullRecipeModal(!showFullRecipeModal);
   };
+
+  const handleShowModal = () => {
+    setShowModal(!showModal)
+  }
 
   const fetchRecipes = async (email) => {
     const queryParams = { user: email };
@@ -51,31 +48,12 @@ function RecipeProvider(props) {
     });
   };
 
-  const updateRecipe = async (id, updatedData) => {
-    authRequest('PUT', token, id, updatedData).then((response) => {
-      const updatedRecipes = recipes.map((recipe) => {
-        if (recipe.id === id) {
-          return response.data;
-        }
-        return recipe;
-      });
-      setRecipes(updatedRecipes);
-      toggleLoading();
-      fetchRecipes();
-    });
-  };
 
   const deleteRecipe = async (id) => {
     authRequest('DELETE', token, id, null).then((response) => {
       const filteredRecipes = recipes.filter((recipe) => recipe._id !== id);
       setRecipes(filteredRecipes);
     });
-  };
-
-  const handleUpdateRecipe = (recipe) => {
-    setEditRecipe(recipe);
-    setShowFullRecipeModal(false);
-    setShowEditModal(true);
   };
 
   const toggleLoading = () => {
@@ -105,20 +83,16 @@ function RecipeProvider(props) {
     <RecipeContext.Provider
       value={{
         showModal,
-        showEditModal,
         showFullRecipeModal,
         isLoading,
         recipes,
         currentRecipe,
         handleShowModal,
-        handleShowEditModal,
         handleShowFullRecipeModal,
         handleCloseFullRecipeModal,
         fetchRecipes,
         addRecipe,
-        updateRecipe,
         deleteRecipe,
-        handleUpdateRecipe,
         toggleLoading,
         authRequest,
       }}

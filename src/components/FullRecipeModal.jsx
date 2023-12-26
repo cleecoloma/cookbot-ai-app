@@ -14,7 +14,6 @@ function FullRecipeModal() {
       handleShowFullRecipeModal,
       handleCloseFullRecipeModal,
       deleteRecipe,
-      handleUpdateRecipe,
     } = useContext(RecipeContext);
 
   const handleTimestampCheck = (timestamp) => {
@@ -92,15 +91,6 @@ function FullRecipeModal() {
         </div>
       </Modal.Body>
       <Modal.Footer style={{ margin: '0 auto' }}>
-        <Button
-          variant='primary'
-          style={{ width: '6rem' }}
-          onClick={() => {
-            handleUpdateRecipe(currentRecipe);
-          }}
-        >
-          Edit
-        </Button>
         <Button
           variant='danger'
           style={{ width: '6rem' }}
