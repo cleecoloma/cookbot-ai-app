@@ -9,9 +9,9 @@ function Profile() {
   return (
     <div className='centered-container'>
       <h2>Profile</h2>
-      <Card id='profile-card' style={{ width: '18rem' }}>
+      <Card className='profile-card' style={{ width: '18rem' }}>
         <Card.Img variant='top' src={loggedUser.picture} />
-        <Card.Body>
+        <Card.Body className='profile-body'>
           <Card.Title>{loggedUser.nickname}</Card.Title>
           <Card.Text>{loggedUser.email}</Card.Text>
         </Card.Body>

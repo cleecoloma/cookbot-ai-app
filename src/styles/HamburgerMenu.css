@@ -2,20 +2,22 @@
   position: absolute;
   right: 1rem;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #f7f7f7;
   color: #3e6a76;
   z-index: 1000;
   text-align: end;
   top: 1rem;
+  border-radius: 1rem;
 }
 
 #hamburger-menu svg {
   font-size: 3rem;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: #3e7373;
-    color: white;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #3e7373;
+  color: white;
 }
 
 @media only screen and (max-width: 1220px) {
@@ -33,6 +35,11 @@
   text-decoration: none;
 }
 
-.logout-link, .create-link {
+.logout-link,
+.create-link {
   margin-bottom: 1rem;
 }
+
+/* .mobile-navbar {
+  background-color: #f7f7f7;
+} */

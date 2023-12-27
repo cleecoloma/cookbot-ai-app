@@ -7,7 +7,7 @@ const DEMO_TOKEN = import.meta.env.VITE_DEMO_TOKEN;
 export const LoginContext = React.createContext();
 
 const demoUser = {
-  picture: 'https://place-hold.it/400x400&text=DEMO&bold&fontsize=20',
+  picture: '../images/cookbot-logo.png',
   nickname: 'demo user',
   email: 'demo_user@email.com',
   token: DEMO_TOKEN,

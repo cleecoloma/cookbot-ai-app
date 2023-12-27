@@ -37,7 +37,7 @@ function HamburgerMenu() {
     <div id='hamburger-menu' onClick={handleMenuToggle}>
       {showMenu ? <CloseIcon id='close-button' /> : <MenuIcon />}
       {showMenu && (
-        <Navbar>
+        <Navbar className='mobile-navbar'>
           <Nav id='mobile-navigation-links' variant='pills'>
             {isAuthenticated && (
               <>
