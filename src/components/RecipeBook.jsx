@@ -12,6 +12,33 @@ import '../styles/RecipeBook.css';
 
 function RecipeBook({ id }) {
   const [value, setValue] = useState('1');
+  const [modifiedRecipes, setModifiedRecipes] = useState(recipes);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 800) {
+        // Modify the labels to 'A', 'B', 'C', etc.
+        setModifiedRecipes(
+          recipes.map((recipe, index) => ({
+            ...recipe,
+            title: `Recipe ${String.fromCharCode(65 + index)}`,
+          }))
+        );
+      } else {
+        // Reset to original labels
+        setModifiedRecipes(recipes);
+      }
+    }
+
+    // Set up the event listener
+    window.addEventListener('resize', handleResize);
+
+    // Call the function to set the initial state
+    handleResize();
+
+    // Clean up the event listener
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -23,13 +50,17 @@ function RecipeBook({ id }) {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label='recipe tabs' centered>
-              {recipes.map((recipe) => (
+              {modifiedRecipes.map((recipe) => (
                 <Tab key={recipe.id} label={recipe.title} value={recipe.id} />
               ))}
             </TabList>
           </Box>
           {recipes.map((recipe) => (
-            <TabPanel key={recipe.id} value={recipe.id}>
+            <TabPanel
+              key={recipe.id}
+              value={recipe.id}
+              className='recipe-book-container'
+            >
               <div className='recipe-title'>
                 <h3>{recipe.title}</h3>
                 <div className='recipe-icons'>

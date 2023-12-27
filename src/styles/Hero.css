@@ -1,8 +1,8 @@
 .hero-container {
   display: flex;
   width: 1300px;
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
+  margin-top: 90px;
+  min-height: calc(100vh - 100px);
   background-color: #e4d0d0;
   border-radius: 1rem;
 }
@@ -50,16 +50,115 @@ https://slidesgo.com/theme/printable-recipe-cards */
   background-color: #cb864a;
 }
 
-#try-it-button {
+#how-button {
   margin-left: 1rem;
   border: 2px solid #438951;
   background-color: #51945f;
 }
 
-#try-it-button:hover {
+#how-button:hover {
   background-color: #438951;
 }
 
 #hero-buttons {
   margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .hero-container {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .hero-container {
+    max-width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hero-container {
+    max-width: 750px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+  }
+
+  #hero-right {
+    order: -1;
+  }
+
+  #hero-right,
+  #hero-left {
+    width: 80%;
+  }
+
+  #hero-left h2 {
+    font-size: 250%;
+    padding: 0;
+  }
+
+  #hero-image {
+    width: 750px;
+  }
+
+  #hero-buttons {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hero-container {
+    max-width: 540px;
+  }
+
+  #hero-right,
+  #hero-left {
+    width: 80%;
+  }
+
+  #hero-left h2 {
+    font-size: 250%;
+    padding: 0;
+  }
+
+  #hero-image {
+    width: 750px;
+    border-radius: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .hero-container {
+    max-width: 400px;
+  }
+
+  #hero-right,
+  #hero-left {
+    width: 95%;
+  }
+
+  #hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #how-button {
+    margin: 1rem 0 0;
+  }
+
+  #how-button,
+  #see-recipes-button {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .hero-container {
+    max-width: 350px;
+  }
 }

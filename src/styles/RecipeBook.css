@@ -131,3 +131,147 @@
 .ingredients li {
   break-inside: avoid-column;
 }
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .recipe-book {
+    max-width: 1200px;
+  }
+
+  .recipe-image-div {
+    right: 65%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(25%);
+  }
+
+  .recipe-text {
+    padding-left: 40%;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .recipe-book {
+    max-width: 950px;
+  }
+
+  .recipe-image-div {
+    width: 55%;
+    right: 75%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(60%);
+  }
+
+  .recipe-text {
+    padding-left: 30%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .recipe-book {
+    max-width: 750px;
+  }
+
+  .recipe-icons {
+    width: 90%;
+  }
+
+  .recipe-image-div {
+    width: 75%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(70%);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .recipe-book {
+    max-width: 540px;
+  }
+
+  .recipe-image-div {
+    position: static;
+  }
+
+  .recipe-container {
+    direction: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .recipe-image-see-more {
+    display: none;
+  }
+
+  .recipe-image-div {
+    width: 95%;
+    background-color: transparent;
+  }
+
+  .recipe-image {
+    margin-top: 1.5rem;
+    object-fit: cover;
+    padding: 0;
+    border-radius: 1.5rem;
+  }
+
+  .recipe-image-div:hover {
+    transform: none;
+  }
+
+  .recipe-text {
+    padding-left: 0;
+    align-items: center;
+    padding: 1rem;
+    margin-left: 0;
+  }
+
+  .recipe-title h3 {
+    font-size: 250%;
+  }
+
+  .directions p,
+  .ingredients p {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .recipe-book {
+    max-width: 400px;
+  }
+
+  .recipe-book-container {
+    padding: 0 !important;
+  }
+
+  .recipe-image {
+    object-fit: contain;
+    margin-top: 1rem;
+  }
+
+  .recipe-image-div {
+    height: 100%;
+  }
+
+  .recipe-title h3 {
+    font-size: 200%;
+  }
+
+  .recipe-icons-divs {
+    font-size: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .recipe-book {
+    max-width: 350px;
+  }
+
+  .recipe-icons-divs {
+    font-size: 80%;
+  }
+}

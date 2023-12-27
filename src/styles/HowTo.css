@@ -10,3 +10,39 @@
   font-family: 'Gluten', cursive;
   color: #3e6a76;
 }
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .how-to {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .how-to {
+    max-width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .how-to {
+    max-width: 750px;
+  }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+  .how-to {
+    max-width: 540px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .how-to {
+    max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .how-to {
+    max-width: 350px;
+  }
+}

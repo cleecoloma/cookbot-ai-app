@@ -61,9 +61,3 @@ h6 {
 #__next {
   isolation: isolate;
 }
-
-@media only screen and (max-width: 550px) {
-  * {
-    scroll-padding-top: 80px;
-  }
-}

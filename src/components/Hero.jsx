@@ -16,7 +16,7 @@ function Hero({ id }) {
           <Button href='#recipebook' id='see-recipes-button' size='lg'>
             See some recipes
           </Button>
-          <Button href='#howitworks' id='try-it-button' size='lg'>
+          <Button href='#howitworks' id='how-button' size='lg'>
             How it works?
           </Button>
         </div>
