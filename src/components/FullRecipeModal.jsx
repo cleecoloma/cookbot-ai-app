@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import '../styles/FullRecipeModal.css';
 import { Modal, Button } from 'react-bootstrap';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import DeleteModal from './DeleteModal';
 import { RecipeContext } from '../context/Recipe';
+import '../styles/FullRecipeModal.css';
 
 function FullRecipeModal() {
   const {
@@ -33,8 +33,9 @@ function FullRecipeModal() {
       <Modal
         show={showFullRecipeModal}
         onHide={handleCloseFullRecipeModal}
-        size='xl'
+        // size='xl'
         aria-labelledby='contained-modal-title-vcenter'
+        dialogClassName='custom-modal-size'
         centered
       >
         <Modal.Header closeButton>
