@@ -1,3 +1,8 @@
+#new-recipe-title {
+  color: #3e6a76;
+  font-family: 'Gluten', cursive;
+}
+
 #add-modal-header {
   background-color: white;
 }
@@ -10,7 +15,34 @@
   background-color: white;
 }
 
+.ingredient-input {
+  margin-top: 0.5rem;
+}
 
 #add-ingredient-button {
   margin-top: 1rem;
+  border: 2px solid #438951;
+  background-color: #51945f;
+}
+
+#add-ingredient-button:hover {
+  background-color: #438951;
+}
+
+#recipe-close-button {
+  border: 2px solid #878885;
+  background-color: #c3c5c1;
+}
+
+#recipe-close-button:hover {
+  background-color: #878885;
+}
+
+#submit-recipe-button {
+  border: 2px solid #438951;
+  background-color: #51945f;
+}
+
+#submit-recipe-button:hover {
+  background-color: #438951;
 }
