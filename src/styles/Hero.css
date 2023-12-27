@@ -50,13 +50,13 @@ https://slidesgo.com/theme/printable-recipe-cards */
   background-color: #cb864a;
 }
 
-#try-it-button {
+#how-button {
   margin-left: 1rem;
   border: 2px solid #438951;
   background-color: #51945f;
 }
 
-#try-it-button:hover {
+#how-button:hover {
   background-color: #438951;
 }
 
@@ -82,6 +82,7 @@ https://slidesgo.com/theme/printable-recipe-cards */
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: auto;
   }
 
   #hero-right {
@@ -107,12 +108,12 @@ https://slidesgo.com/theme/printable-recipe-cards */
   }
 }
 
-@media only screen and (min-width: 551px) and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   .hero-container {
     max-width: 540px;
   }
 
-    #hero-right,
+  #hero-right,
   #hero-left {
     width: 80%;
   }
@@ -124,5 +125,40 @@ https://slidesgo.com/theme/printable-recipe-cards */
 
   #hero-image {
     width: 750px;
+    border-radius: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .hero-container {
+    max-width: 400px;
+  }
+
+  #hero-right,
+  #hero-left {
+    width: 95%;
+  }
+
+  #hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #how-button {
+    margin: 1rem 0 0;
+  }
+
+  #how-button,
+  #see-recipes-button {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .hero-container {
+    max-width: 350px;
   }
 }

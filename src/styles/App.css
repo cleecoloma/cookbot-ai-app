@@ -38,15 +38,12 @@ body {
 
 @media only screen and (max-width: 550px) {
   .content {
-    width: 100%;
-    max-width: 500px;
-    padding: 0 8px;
+    max-width: 400px;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .content {
     max-width: 350px;
-    padding: 0 4px;
   }
 }
