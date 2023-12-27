@@ -35,3 +35,21 @@
 #footer-container span {
   color: #3e6a76;
 }
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .footer-container {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .footer-container {
+    max-width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .footer-container {
+    max-width: 750px;
+  }
+}

@@ -29,7 +29,7 @@ function Header() {
     <Navbar
       id='header-navbar'
       fixed='top'
-      expand='lg'
+      expand='xl'
     >
       <Navbar.Brand as={Link} to='/' id='brand-name'>
         <img id='brand-image' src='../../images/cookbot-logo.png' />

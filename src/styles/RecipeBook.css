@@ -131,3 +131,54 @@
 .ingredients li {
   break-inside: avoid-column;
 }
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .recipe-book {
+    max-width: 1200px;
+  }
+
+  .recipe-image-div {
+    right: 65%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(25%);
+  }
+
+  .recipe-text {
+    padding-left: 40%;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .recipe-book {
+    max-width: 950px;
+  }
+
+  .recipe-image-div {
+    width: 55%;
+    right: 75%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(60%);
+  }
+
+  .recipe-text {
+    padding-left: 30%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .recipe-book {
+    max-width: 750px;
+  }
+
+  .recipe-image-div {
+    width: 75%;
+  }
+
+  .recipe-image-div:hover {
+    transform: translateX(70%);
+  }
+}

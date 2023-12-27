@@ -1,8 +1,8 @@
 .hero-container {
   display: flex;
   width: 1300px;
-  margin-top: 80px;
-  min-height: calc(100vh - 80px);
+  margin-top: 90px;
+  min-height: calc(100vh - 100px);
   background-color: #e4d0d0;
   border-radius: 1rem;
 }
@@ -62,4 +62,46 @@ https://slidesgo.com/theme/printable-recipe-cards */
 
 #hero-buttons {
   margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1221px) and (max-width: 1440px) {
+  .hero-container {
+    max-width: 1200px;
+  }
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1220px) {
+  .hero-container {
+    max-width: 950px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hero-container {
+    max-width: 750px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #hero-right {
+    order: -1;
+  }
+
+  #hero-right, #hero-left {
+    width: 80%;
+  }
+
+  #hero-left h2 {
+    font-size: 250%;
+    padding: 0;
+  }
+
+  #hero-image {
+    width: 750px;
+  }
+
+  #hero-buttons {
+    margin-bottom: 2rem;
+  }
 }
