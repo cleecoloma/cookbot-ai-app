@@ -1,0 +1,38 @@
+#hamburger-menu {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  background-color: #fff;
+  color: #0f8064;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: end;
+}
+
+#hamburger-menu svg {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 800px) {
+  #mobile-navigation-links {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#mobile-navigation-links {
+  padding: 0 2rem;
+  text-align: center;
+  color: #5b5b5b;
+  text-decoration: none;
+}
+
+#close-button {
+  margin-top: 10px;
+}
+
+#hamburger-menu:hover {
+  background-color: #f1f5f4;
+}

@@ -17,7 +17,13 @@
   border-radius: 6px;
 }
 
+.navbar-collapsed-buttons {
+  justify-content: space-between;
+}
+
 .header-link-paths {
+  display: flex;
+  justify-content: space-between;
   letter-spacing: 2px;
   font-family: 'Gluten', cursive;
   font-weight: 300;
@@ -61,7 +67,7 @@
   background-color: lightblue;
 }
 
-#logout-button {
+#action-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +84,7 @@
 }
 
 #create-button {
+  margin-right: 1rem;
   border: 2px solid #438951;
   background-color: #51945f;
 }
@@ -100,6 +107,10 @@
   #header-navbar {
     max-width: 1200px;
   }
+
+  .navbar-collapsed-buttons {
+    justify-content: space-between;
+  }
 }
 
 @media only screen and (min-width: 1001px) and (max-width: 1220px) {
@@ -111,6 +122,34 @@
 @media only screen and (min-width: 801px) and (max-width: 1000px) {
   #header-navbar {
     max-width: 750px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .header-link-paths {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
+
+  .navbar-collapsed-buttons {
+    flex-direction: column;
+  }
+
+  #profile-button {
+    order: 1;
+  }
+
+  .header-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  #action-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
   }
 }
 

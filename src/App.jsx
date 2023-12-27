@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Recipe from './components/Recipe';
@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 import Hero from './components/Hero';
 import './styles/App.css';
+import HamburgerMenu from './components/HamburgerMenu';
 import RecipeBook from './components/RecipeBook';
 import HowTo from './components/HowTo';
 import Footer from './components/Footer';
@@ -14,6 +15,8 @@ import LoginProvider from './context/Login';
 import RecipeProvider from './context/Recipe';
 
 function App() {
+
+
   return (
     <Router>
       <LoginProvider>
