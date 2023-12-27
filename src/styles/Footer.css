@@ -53,3 +53,9 @@
     max-width: 750px;
   }
 }
+
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+  .footer-container {
+    max-width: 540px;
+  }
+}

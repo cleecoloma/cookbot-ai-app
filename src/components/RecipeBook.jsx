@@ -29,7 +29,7 @@ function RecipeBook({ id }) {
             </TabList>
           </Box>
           {recipes.map((recipe) => (
-            <TabPanel key={recipe.id} value={recipe.id}>
+            <TabPanel key={recipe.id} value={recipe.id} className='recipe-book-container'>
               <div className='recipe-title'>
                 <h3>{recipe.title}</h3>
                 <div className='recipe-icons'>

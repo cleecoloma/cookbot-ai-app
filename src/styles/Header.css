@@ -126,19 +126,9 @@
 }
 
 @media only screen and (max-width: 550px) {
-  #header-navbar {
-    width: 100%;
-    max-width: 500px;
-    padding: 0 8px;
-  }
 
-  #navigation-links {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 400px) {
-  #header-navbar {
-    max-width: 350px;
-  }
+
 }
