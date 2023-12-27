@@ -14,6 +14,7 @@ function HamburgerMenu() {
 
   return (
     <div id='hamburger-menu' onClick={handleMenuToggle}>
+      {showMenu ? <CloseIcon id='close-button' /> : <MenuIcon />}
       {showMenu && (
         <Navbar>
           <Nav
@@ -39,7 +40,6 @@ function HamburgerMenu() {
           </Nav>
         </Navbar>
       )}
-      {showMenu ? <CloseIcon id='close-button' /> : <MenuIcon />}
     </div>
   );
 }

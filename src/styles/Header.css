@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   color: #3e6a76;
   font-family: 'Gluten', cursive;
   padding: 6px 12px;
