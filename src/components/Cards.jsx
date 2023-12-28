@@ -12,9 +12,7 @@ import { RecipeContext } from '../context/Recipe';
 import '../styles/Cards.css';
 
 function Cards(props) {
-  const {
-    handleShowFullRecipeModal,
-  } = useContext(RecipeContext);
+  const { handleShowFullRecipeModal } = useContext(RecipeContext);
 
   const handleTimestampCheck = (timestamp) => {
     const timestampDate = new Date(timestamp);
@@ -64,17 +62,24 @@ function Cards(props) {
         title={props.recipe.dishName}
         subheader={formattedTimestamp}
       />
-      <CardMedia
-        id='card-image-container'
-        component='img'
-        height='194'
-        image={
-          handleTimestampCheck(props.recipe.timestamp)
-            ? props.recipe.imageUrl
-            : '../images/recipe-image-placeholder.png'
-        }
-        alt={props.recipe.dishName}
-      />
+      {handleTimestampCheck(props.recipe.timestamp) ? (
+        <CardMedia
+          id='card-image-container'
+          component='img'
+          height='194'
+          image={props.recipe.imageUrl}
+          alt={props.recipe.dishName}
+        />
+      ) : (
+        <CardMedia
+          id='card-image-container'
+          component='img'
+          height='194'
+          title='AI-generated images are retained for only one hour. After this period, a default image will replace them.'
+          image='../images/recipe-image-placeholder.png'
+          alt={props.recipe.dishName}
+        />
+      )}
       <CardContent>
         <Typography variant='body2' color='text.secondary'>
           {props.recipe.dishDescription}

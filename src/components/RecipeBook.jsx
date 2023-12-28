@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -17,7 +19,6 @@ function RecipeBook({ id }) {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 800) {
-        // Modify the labels to 'A', 'B', 'C', etc.
         setModifiedRecipes(
           recipes.map((recipe, index) => ({
             ...recipe,
@@ -25,18 +26,14 @@ function RecipeBook({ id }) {
           }))
         );
       } else {
-        // Reset to original labels
         setModifiedRecipes(recipes);
       }
     }
 
-    // Set up the event listener
     window.addEventListener('resize', handleResize);
 
-    // Call the function to set the initial state
     handleResize();
 
-    // Clean up the event listener
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 

@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState, useEffect, useContext } from 'react';
 import '../styles/Header.css';
 import Nav from 'react-bootstrap/Nav';

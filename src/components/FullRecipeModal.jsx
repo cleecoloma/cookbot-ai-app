@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
@@ -33,7 +35,6 @@ function FullRecipeModal() {
       <Modal
         show={showFullRecipeModal}
         onHide={handleCloseFullRecipeModal}
-        // size='xl'
         aria-labelledby='contained-modal-title-vcenter'
         dialogClassName='custom-modal-size'
         centered

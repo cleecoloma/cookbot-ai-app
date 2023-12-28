@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState, useContext } from 'react';
 import { Modal, Button, Form, ListGroup, Alert } from 'react-bootstrap';
 import { LoginContext } from '../context/Login';

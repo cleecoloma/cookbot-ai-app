@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+'use strict';
+
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export const RecipeContext = React.createContext();
