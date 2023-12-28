@@ -47,6 +47,9 @@
       </li>
       </ul>
     </li>
+        <li>
+      <a href="#contact">Contact</a>
+    </li>
   </ol>
 </details>
 
@@ -58,7 +61,7 @@ The CookBot AI Recipe Project is a web application designed to assist users in m
 
 ### Note
 
-This is a forked repository of my team project that was developed with 2 other teammates. See below for old version of code/repository.
+This is a forked repository of my team project that was developed with 2 other teammates. I was a key contributor for this project. See below for old version of code/repository.
 
 - [Old CookBotAI APP](https://github.com/CookBotAI/cook-bot-app)
 
@@ -144,5 +147,13 @@ VITE_DEMO_TOKEN={Hard Coded Auth0 Token}
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## Contact
+
+If you have any questions or comments, don't hesitate to reach out to me at [chesterleecoloma.com](https://chesterleecoloma.com/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
