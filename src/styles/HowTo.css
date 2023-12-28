@@ -11,6 +11,17 @@
   color: #3e6a76;
 }
 
+.how-to-image {
+  padding: 0 5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.how-to-tablet,
+.how-to-mobile {
+  display: none;
+}
+
 @media only screen and (min-width: 1221px) and (max-width: 1440px) {
   .how-to {
     max-width: 1200px;
@@ -21,11 +32,36 @@
   .how-to {
     max-width: 950px;
   }
+
+  .how-to-image {
+    padding: 0 3rem;
+  }
+
+  .how-to-desktop {
+    display: none;
+  }
+
+  .how-to-tablet {
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
   .how-to {
     max-width: 750px;
+  }
+
+  .how-to-image {
+    padding: 0 1rem;
+  }
+
+  .how-to-desktop,
+  .how-to-tablet {
+    display: none;
+  }
+
+  .how-to-mobile {
+    display: block;
   }
 }
 

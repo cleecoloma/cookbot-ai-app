@@ -13,13 +13,6 @@ import '../styles/Cards.css';
 
 function Cards(props) {
   const {
-    showModal,
-    showEditModal,
-    showFullRecipeModal,
-    isLoading,
-    recipes,
-    currentRecipe,
-    handleShowModal,
     handleShowFullRecipeModal,
   } = useContext(RecipeContext);
 

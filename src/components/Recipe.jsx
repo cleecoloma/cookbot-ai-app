@@ -37,12 +37,15 @@ function Recipe() {
     fetchData();
   }, [loggedUser]);
 
+  const sortedRecipes = [...recipes].sort((a, b) => {
+    const timestampA = new Date(a.timestamp).getTime();
+    const timestampB = new Date(b.timestamp).getTime();
+    return timestampB - timestampA;
+  });
+
   return (
     <div id='recipe-container'>
-      <Button
-        id='addButton'
-        onClick={handleShowModal}
-      >
+      <Button id='addButton' onClick={handleShowModal}>
         Add New Recipe
       </Button>
       <AddModal
@@ -77,12 +80,9 @@ function Recipe() {
         </div>
       ) : (
         <div className='card-container'>
-          {recipes.length ? (
-            recipes.map((recipe, idx) => (
-              <Cards
-                key={idx}
-                recipe={recipe}
-              />
+          {sortedRecipes.length ? (
+            sortedRecipes.map((recipe, idx) => (
+              <Cards key={idx} recipe={recipe} />
             ))
           ) : (
             <p>No recipes yet</p>
