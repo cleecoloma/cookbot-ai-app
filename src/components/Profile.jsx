@@ -1,7 +1,9 @@
-import React, { useContext} from 'react';
+'use strict';
+
+import React, { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
-import '../styles/Profile.css';
 import { LoginContext } from '../context/Login';
+import '../styles/Profile.css';
 
 function Profile() {
   const { loggedUser } = useContext(LoginContext);

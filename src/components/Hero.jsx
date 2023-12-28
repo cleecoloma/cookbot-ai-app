@@ -22,7 +22,10 @@ function Hero({ id }) {
         </div>
       </div>
       <div id='hero-right'>
-        <img id='hero-image' src='../images/pizza.png'></img>
+        <img
+          id='hero-image'
+          src='../images/pizza.png'
+        ></img>
       </div>
     </div>
   );

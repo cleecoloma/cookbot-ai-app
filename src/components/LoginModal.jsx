@@ -1,10 +1,12 @@
+'use strict';
+
 import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import '../styles/LoginModal.css';
 import Login from '../auth/Login';
 import { withAuth0 } from '@auth0/auth0-react';
 import { LoginContext } from '../context/Login';
+import '../styles/LoginModal.css';
 
 function LoginModal() {
   const { loginModalPreview, toggleLoginModal, handleDemoAccount } =
@@ -23,7 +25,7 @@ function LoginModal() {
             </Button>
           </div>
           <hr />
-          <Login className='login-button'/>
+          <Login className='login-button' />
           <p>using Auth0</p>
         </div>
       </Modal>

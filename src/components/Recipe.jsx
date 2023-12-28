@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import '../styles/Recipe.css';
+'use strict';
+
+import React, { useEffect, useContext } from 'react';
 import AddModal from './AddModal';
 import FullRecipeModal from './FullRecipeModal';
 import Cards from './Cards';
 import { Button } from 'react-bootstrap';
-import { useAuth0 } from '@auth0/auth0-react';
 import { RecipeContext } from '../context/Recipe';
 import { LoginContext } from '../context/Login';
+import '../styles/Recipe.css';
 
 function Recipe() {
-  const { auth0 } = useAuth0();
-  const { loggedUser, isDemoAccount } = useContext(LoginContext);
+  const { loggedUser } = useContext(LoginContext);
 
   const {
     showModal,

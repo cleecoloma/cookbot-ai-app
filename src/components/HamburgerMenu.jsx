@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState, useEffect, useContext } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
