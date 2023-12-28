@@ -61,9 +61,9 @@ The CookBot AI Recipe Project is a web application designed to assist users in m
 
 ### Note
 
-This is a forked repository of my team project that was developed with 2 other teammates. I was a key contributor for this project. See below for old version of code/repository.
+This is a forked repository of my team project that was developed with 2 other teammates. I was a key contributor for this project. See below for old version of the application.
 
-- [Old CookBotAI APP](https://github.com/CookBotAI/cook-bot-app)
+- [Old CookBotAI Repo](https://github.com/CookBotAI/cook-bot-app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -128,7 +128,7 @@ See the following readme file for backend portion: [CookBot API](https://github.
 ### Configure
 
 ```text
-VITE_SERVER_URL={http://localhost:3001 or backend/api URL}
+VITE_SERVER_URL={http://localhost:3001 or backend/API URL}
 VITE_AUTH_DOMAIN={Auth0 Domain}
 VITE_AUTH_CLIENT_ID={Auth0 Client ID}
 VITE_DEMO_TOKEN={Hard Coded Auth0 Token}
