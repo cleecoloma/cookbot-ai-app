@@ -69,7 +69,10 @@ This is a forked repository of my team project that was developed with 2 other t
 ## Demo
 
 Here's the live link: [CookBot AI](https://cookbot-ai-app.netlify.app/)
-![Demo][/public/images/how-to-shrimp.gif]
+
+<div align="center">
+    <img src="/public/images/how-to-shrimp.gif"  alt="Demo"/>
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
