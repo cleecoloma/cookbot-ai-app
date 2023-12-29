@@ -136,9 +136,8 @@ VITE_DEMO_TOKEN={Hard Coded Auth0 Token}
 
 ### Start
 
-1. npm install
-2. npm run dev (development mode)
-3. npm run build (production mode)
+1. npm run dev (development mode)
+2. npm run build (production mode)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
