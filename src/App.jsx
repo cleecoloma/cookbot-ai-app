@@ -7,7 +7,6 @@ import Profile from './components/Profile';
 import LoginModal from './components/LoginModal';
 import Hero from './components/Hero';
 import './styles/App.css';
-import HamburgerMenu from './components/HamburgerMenu';
 import RecipeBook from './components/RecipeBook';
 import HowTo from './components/HowTo';
 import Footer from './components/Footer';
