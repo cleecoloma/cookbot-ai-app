@@ -7,7 +7,7 @@
 
 <h3 align="center">CookBot-AI</h3>
 <p align="center">
-  <a href="https://app.netlify.com/sites/cleecoloma/deploys" target="_blank">
+  <a href="https://app.netlify.com/sites/cookbot-ai-app/deploys" target="_blank">
     <img src="https://api.netlify.com/api/v1/badges/67c37c2a-ffc6-4672-b1cb-708b7373433c/deploy-status" alt="Netlify Status" />
   </a>
 </p>
