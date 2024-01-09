@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/cleecoloma/portfolio-website">
+  <a href="https://cookbot-ai-app.netlify.app/">
     <img src="/public/images/cookbot-logo.png" alt="Logo" width="80" height="80">
   </a>
 
